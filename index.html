@@ -5,138 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>株式会社LifeGame</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
-<body class="bg-black text-white font-sans" x-data="{ submitted: false }">
-  <!-- Header -->
-  <header class="fixed top-0 left-0 w-full bg-black z-50 shadow-md">
-    <div class="flex items-center justify-between p-4 max-w-6xl mx-auto">
-      <img src="logo.png" alt="LifeGame Logo" class="h-10 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-      <nav class="space-x-6 text-sm md:text-base">
-        <a href="#about" class="hover:text-yellow-400 transition duration-200">会社紹介</a>
-        <a href="#product" class="hover:text-yellow-400 transition duration-200">プロダクト</a>
-        <a href="#recruit" class="hover:text-yellow-400 transition duration-200">採用</a>
-      </nav>
-    </div>
+<body class="bg-black text-white font-sans">
+  <!-- Header（ナビゲーション） -->
+  <header class="flex items-center justify-between px-8 py-6 bg-black border-b border-gray-900 sticky top-0 z-50">
+    <img src="logo.png" alt="LifeGame Logo" class="h-10 w-10">
+    <nav class="space-x-8">
+      <a href="#about" class="hover:text-yellow-400 transition">会社紹介</a>
+      <a href="#product" class="hover:text-yellow-400 transition">プロダクト</a>
+      <a href="#recruit" class="hover:text-yellow-400 transition">採用</a>
+    </nav>
   </header>
 
-  <!-- Hero -->
+  <!-- Heroセクション（ロゴ＋会社名＋キャッチコピー） -->
   <section class="text-center py-32 bg-gradient-to-b from-black via-gray-900 to-black">
-    <h1 class="text-5xl font-bold text-yellow-400">LifeGame Inc.</h1>
-    <p class="mt-4 text-xl">言語化できない自分を、物語に。</p>
+    <img src="logo.png" alt="LifeGame Logo" class="mx-auto mb-6" style="width:110px; height:110px;">
+    <h1 class="text-5xl md:text-6xl font-bold text-yellow-400 tracking-tight mb-2">LifeGame Inc.</h1>
+    <p class="mt-2 text-lg md:text-2xl text-gray-200">言語化できない自分を、物語に。</p>
   </section>
 
-  <!-- About -->
+  <!-- About（会社紹介） -->
   <section id="about" class="py-20 px-6 max-w-4xl mx-auto">
     <h2 class="text-3xl font-bold mb-8">会社紹介</h2>
-    <p class="text-lg mb-6">
-      株式会社LifeGameは、「自分を言語化できない人」のための他己紹介生成サービス「TAKOLOG」を開発しています。
-      ビジョンは、“言葉の力で、人生の可能性を最大化すること”。
-    </p>
+    <p class="text-lg mb-6">株式会社LifeGameは、「自分を言語化できない人」のための他己紹介生成サービス「TAKOLOG」を開発しています。ビジョンは、“言葉の力で、人生の可能性を最大化すること”。</p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="bg-gray-800 p-6 rounded-xl">
-        <h3 class="text-xl font-semibold">Kazuki Tsugane</h3>
-        <p>Founder, CEO</p>
+      <div class="bg-gray-800 p-6 rounded-xl text-center">
+        <h3 class="text-xl font-semibold mb-2">Kazuki Tsugane</h3>
+        <p class="text-gray-300">Founder, CEO</p>
       </div>
-      <div class="bg-gray-800 p-6 rounded-xl">
-        <h3 class="text-xl font-semibold">Yuka Kimura</h3>
-        <p>Head of Biz</p>
+      <div class="bg-gray-800 p-6 rounded-xl text-center">
+        <h3 class="text-xl font-semibold mb-2">Yuka Kimura</h3>
+        <p class="text-gray-300">Head of Biz</p>
       </div>
     </div>
   </section>
 
-  <!-- Product -->
+  <!-- Product（プロダクト紹介） -->
   <section id="product" class="py-20 px-6 bg-gray-900">
     <h2 class="text-3xl font-bold mb-8">プロダクト紹介</h2>
-
-    <div class="mb-12">
-      <h3 class="text-2xl font-semibold mb-2">現代の課題</h3>
+    <div class="mb-6">
+      <h3 class="text-xl font-bold mb-2">現代の課題</h3>
       <p class="mb-4">「言葉にできない＝評価されない」時代。テンプレ化された言葉では、本当の魅力が伝わらない。</p>
-      <h3 class="text-2xl font-semibold mb-2">LifeGameの答え</h3>
-      <p class="mb-6">“物語”によって人を伝える。他己紹介という視点から、新しい自己表現の文化を作ります。</p>
+      <h3 class="text-xl font-bold mb-2">LifeGameの答え</h3>
+      <p class="mb-4">“物語”によって人を伝える。他己紹介という視点から、新しい自己表現の文化を作ります。</p>
     </div>
-
-    <div class="mb-12">
-      <h3 class="text-2xl font-semibold mb-4">使い方（How It Works）</h3>
+    <!-- How It Works（ステップ） -->
+    <div class="mb-8">
+      <h3 class="text-xl font-bold mb-4">使い方（How It Works）</h3>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="bg-gray-800 p-4 rounded-xl text-center">ヒアリング</div>
-        <div class="bg-gray-800 p-4 rounded-xl text-center">構成＆執筆</div>
-        <div class="bg-gray-800 p-4 rounded-xl text-center">納品＆確認</div>
-        <div class="bg-gray-800 p-4 rounded-xl text-center">再利用</div>
+        <div class="bg-gray-800 p-4 rounded-lg">ヒアリング</div>
+        <div class="bg-gray-800 p-4 rounded-lg">構成＆執筆</div>
+        <div class="bg-gray-800 p-4 rounded-lg">納品＆確認</div>
+        <div class="bg-gray-800 p-4 rounded-lg">再利用</div>
       </div>
     </div>
-
-    <div class="mb-12">
-      <h3 class="text-2xl font-semibold mb-4">なぜTAKOLOGか？</h3>
-      <div class="overflow-x-auto">
-        <table class="table-auto w-full text-left text-sm">
-          <thead>
-            <tr class="text-yellow-400 border-b border-gray-600">
-              <th class="p-2">比較</th>
-              <th class="p-2">ChatGPT</th>
-              <th class="p-2">ココナラ</th>
-              <th class="p-2">LifeGame</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-b border-gray-700">
-              <td class="p-2">スピード</td>
-              <td class="p-2">◎</td>
-              <td class="p-2">△</td>
-              <td class="p-2">○</td>
-            </tr>
-            <tr class="border-b border-gray-700">
-              <td class="p-2">表現力</td>
-              <td class="p-2">△</td>
-              <td class="p-2">△</td>
-              <td class="p-2">◎</td>
-            </tr>
-            <tr>
-              <td class="p-2">構造＆再現性</td>
-              <td class="p-2">×</td>
-              <td class="p-2">×</td>
-              <td class="p-2">◎</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <!-- 競合比較表 -->
+    <div class="overflow-x-auto mb-10">
+      <h3 class="text-xl font-bold mb-2">なぜTAKOLOGか？</h3>
+      <table class="min-w-full text-center">
+        <thead>
+          <tr class="text-yellow-400">
+            <th class="py-2 px-4">比較</th>
+            <th class="py-2 px-4">ChatGPT</th>
+            <th class="py-2 px-4">ココナラ</th>
+            <th class="py-2 px-4">LifeGame</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-200">
+          <tr><td class="py-2 px-4">スピード</td><td>◎</td><td>△</td><td>◎</td></tr>
+          <tr><td class="py-2 px-4">表現力</td><td>△</td><td>△</td><td>◎</td></tr>
+          <tr><td class="py-2 px-4">構造＆再現性</td><td>×</td><td>×</td><td>◎</td></tr>
+        </tbody>
+      </table>
+      <p class="text-sm text-gray-400 mt-2">※内容はLifeGame社による独自調査に基づいた比較です。</p>
     </div>
-
-    <div class="mb-12">
-      <h3 class="text-2xl font-semibold mb-4">今後の展開</h3>
-      <p class="mb-2">履歴書生成・恋活応用・法人導入・API連携など順次展開予定。</p>
-      <p class="text-yellow-500 font-bold">Coming Soon...</p>
+    <!-- Coming Soonエリア -->
+    <div class="bg-gray-800 p-6 rounded-xl text-center mt-8">
+      <p class="text-yellow-300 text-lg font-semibold mb-1">Coming Soon</p>
+      <p class="text-gray-200">法人向けプラン・API連携・自己PR生成β版も順次リリース予定</p>
     </div>
   </section>
 
-  <!-- Recruit -->
-  <section id="recruit" class="py-20 px-6">
-    <h2 class="text-3xl font-bold mb-8">採用情報</h2>
-    <p class="text-lg mb-6">私たちと一緒に「言葉の力」で世界を変えませんか？</p>
+  <!-- Recruit（採用セクション＆フォーム） -->
+  <section id="recruit" class="py-20 px-6 max-w-3xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-      <div class="bg-gray-800 p-6 rounded-xl">
-        <h3 class="text-xl font-semibold">Head of Product</h3>
-        <p>プロダクト全体を統括し、ユーザー視点と技術視点の橋渡しを行います。</p>
+      <div class="bg-gray-800 p-6 rounded-xl text-center">
+        <h3 class="text-xl font-semibold mb-2">Tech/Biz Advisor</h3>
+        <p class="text-gray-300">技術とビジネスをつなぎ、戦略を支える知見を提供します。</p>
       </div>
-      <div class="bg-gray-800 p-6 rounded-xl">
-        <h3 class="text-xl font-semibold">UI/UX Designer</h3>
-        <p>感性とロジックを融合し、ユーザー体験を設計します。</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-xl">
-        <h3 class="text-xl font-semibold">Tech/Biz Advisor</h3>
-        <p>技術とビジネスをつなぎ、戦略を支える知見を提供します。</p>
+      <div class="bg-gray-800 p-6 rounded-xl text-center">
+        <h3 class="text-xl font-semibold mb-2">UI/UX Designer</h3>
+        <p class="text-gray-300">ユーザー体験を最適化し、プロダクトの魅力を最大化。</p>
       </div>
     </div>
-
-    <div class="max-w-xl mx-auto bg-gray-900 p-6 rounded-xl">
+    <div class="max-w-xl mx-auto bg-gray-900 p-6 rounded-xl mb-6">
       <h3 class="text-2xl font-bold mb-4">応募フォーム</h3>
-      <form @submit.prevent="submitted = true" action="https://formspree.io/f/xovdbqdv" method="POST" class="space-y-4">
+      <form action="https://formspree.io/f/xovbdqdv" method="POST" class="space-y-4">
         <input type="text" name="name" placeholder="お名前" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400" required>
         <input type="email" name="email" placeholder="メールアドレス" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400" required>
-        <textarea name="message" rows="5" placeholder="志望理由やメッセージ" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400" required></textarea>
-        <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded transition duration-200">送信する</button>
+        <textarea name="message" rows="5" placeholder="応募メッセージ" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400" required></textarea>
+        <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded transition duration-200">応募する</button>
       </form>
-      <div x-show="submitted" class="mt-4 text-green-400 font-semibold transition duration-200">
+      <div id="form-success" class="hidden mt-4 text-green-400 font-semibold transition duration-200">
         応募が完了しました。ご入力ありがとうございました！
       </div>
     </div>
@@ -146,5 +116,21 @@
   <footer class="text-center py-6 bg-black text-sm text-gray-400">
     &copy; 2025 株式会社LifeGame. All rights reserved.
   </footer>
+
+  <!-- 応募完了メッセージ表示用（JS） -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form');
+      if(form) {
+        form.addEventListener('submit', function(e) {
+          setTimeout(() => {
+            document.getElementById('form-success').classList.remove('hidden');
+            form.reset();
+          }, 300); // 擬似的な遅延(0.3秒)
+        });
+      }
+    });
+  </script>
+
 </body>
 </html>

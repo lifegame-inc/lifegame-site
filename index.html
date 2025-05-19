@@ -139,30 +139,83 @@
     </div>
   </section>
 
-  <!-- チーム紹介 -->
-  <section id="team" class="py-16 px-6 max-w-4xl mx-auto">
-    <h2 class="text-3xl font-bold mb-8">チーム</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-gray-800 p-6 rounded-xl text-center flex flex-col items-center">
-       <img src="kazuki.png" alt="Kazuki Tsugane" class="rounded-full w-24 h-24 mb-4">
-        <h3 class="text-xl font-semibold mb-1">Kazuki Tsugane</h3>
-        <p class="text-gray-400">Founder, CEO</p>
-        <a href="https://twitter.com/kazuki_lifegame" target="_blank" class="text-yellow-400 text-sm mt-2 hover:underline">X（Twitter）</a>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-xl text-center flex flex-col items-center">
-        <img src="yuka.png" alt="Yuka Kimura" class="rounded-full w-24 h-24 mb-4">
-        <h3 class="text-xl font-semibold mb-1">Yuka Kimura</h3>
-        <p class="text-gray-400">Head of Biz</p>
-        <span class="text-gray-500 text-sm mt-2">（準備中）</span>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-xl text-center flex flex-col items-center">
-        <img src="unidentified.png" alt="Coming Soon" class="rounded-full w-24 h-24 mb-4 opacity-60">
-        <h3 class="text-xl font-semibold mb-1">Head of Product</h3>
-        <p class="text-gray-400">募集中！</p>
-        <span class="text-gray-500 text-sm mt-2">（詳細は採用欄へ）</span>
-      </div>
+  <!-- チーム紹介セクション＋ポップアップ（モーダル）機能つき 完全版 -->
+<section id="team" class="py-16 px-6 max-w-4xl mx-auto">
+  <h2 class="text-3xl font-bold mb-8">チーム</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Kazuki Tsugane カード -->
+    <div onclick="openModal('kazuki')" class="bg-gray-800 p-6 rounded-xl text-center flex flex-col items-center cursor-pointer hover:scale-105 hover:shadow-2xl transition-all">
+      <img src="kazuki.png" alt="Kazuki Tsugane" class="rounded-full w-24 h-24 mb-4">
+      <h3 class="text-xl font-semibold mb-1">Kazuki Tsugane</h3>
+      <p class="text-gray-400">Founder, CEO</p>
+      <a href="https://twitter.com/kazuki_lifegame" target="_blank" class="text-yellow-400 text-sm mt-2 hover:underline">X（Twitter）</a>
     </div>
-  </section>
+    <!-- Yuka Kimura カード -->
+    <div onclick="openModal('yuka')" class="bg-gray-800 p-6 rounded-xl text-center flex flex-col items-center cursor-pointer hover:scale-105 hover:shadow-2xl transition-all">
+      <img src="yuka.png" alt="Yuka Kimura" class="rounded-full w-24 h-24 mb-4">
+      <h3 class="text-xl font-semibold mb-1">Yuka Kimura</h3>
+      <p class="text-gray-400">Head of Biz</p>
+      <span class="text-gray-500 text-sm mt-2">（準備中）</span>
+    </div>
+    <!-- Head of Product カード（Coming Soon） -->
+    <div onclick="openModal('product')" class="bg-gray-800 p-6 rounded-xl text-center flex flex-col items-center cursor-pointer hover:scale-105 hover:shadow-2xl transition-all">
+      <img src="unidentified.png" alt="Coming Soon" class="rounded-full w-24 h-24 mb-4 opacity-60">
+      <h3 class="text-xl font-semibold mb-1">Head of Product</h3>
+      <p class="text-gray-400">募集中！</p>
+      <span class="text-gray-500 text-sm mt-2">（詳細は採用欄へ）</span>
+    </div>
+  </div>
+
+  <!-- Kazuki モーダル -->
+  <div id="modal-kazuki" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-2xl p-8 max-w-md w-full relative animate-pop">
+      <button onclick="closeModal('kazuki')" class="absolute top-3 right-3 text-2xl text-gray-400 hover:text-black">&times;</button>
+      <img src="kazuki.png" class="w-24 h-24 mx-auto rounded-full mb-4">
+      <h3 class="text-2xl font-bold text-center mb-2 text-black">Kazuki Tsugane</h3>
+      <p class="text-gray-700 text-center mb-4">Founder, CEO<br>事業立ち上げ・経営・SNS運用を一手に担当。学生時代から爆速で挑戦を続け、AI×プロダクトの未来を切り拓く。</p>
+      <a href="https://twitter.com/kazuki_lifegame" target="_blank" class="block text-yellow-500 text-center font-bold hover:underline mb-2">X（Twitter）</a>
+    </div>
+  </div>
+  <!-- Yuka モーダル -->
+  <div id="modal-yuka" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-2xl p-8 max-w-md w-full relative animate-pop">
+      <button onclick="closeModal('yuka')" class="absolute top-3 right-3 text-2xl text-gray-400 hover:text-black">&times;</button>
+      <img src="yuka.png" class="w-24 h-24 mx-auto rounded-full mb-4">
+      <h3 class="text-2xl font-bold text-center mb-2 text-black">Yuka Kimura</h3>
+      <p class="text-gray-700 text-center mb-4">Head of Biz<br>チームの「推進力」として事業の幅を広げる。今後の活躍にご期待ください。</p>
+    </div>
+  </div>
+  <!-- Head of Product モーダル -->
+  <div id="modal-product" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden">
+    <div class="bg-white rounded-2xl p-8 max-w-md w-full relative animate-pop">
+      <button onclick="closeModal('product')" class="absolute top-3 right-3 text-2xl text-gray-400 hover:text-black">&times;</button>
+      <img src="unidentified.png" class="w-24 h-24 mx-auto rounded-full mb-4 opacity-60">
+      <h3 class="text-2xl font-bold text-center mb-2 text-black">Head of Product</h3>
+      <p class="text-gray-700 text-center mb-4">募集中！<br>このポジションは現在採用中です。詳細は採用情報ページをご覧ください。</p>
+      <a href="#recruit" class="block text-yellow-500 text-center font-bold hover:underline">採用情報へ</a>
+    </div>
+  </div>
+</section>
+
+<!-- 必要なJS：モーダル制御 -->
+<script>
+function openModal(name) {
+  document.getElementById(`modal-${name}`).classList.remove('hidden');
+}
+function closeModal(name) {
+  document.getElementById(`modal-${name}`).classList.add('hidden');
+}
+</script>
+
+<!-- Tailwindのアニメーション拡張例（必要なら追加） -->
+<style>
+@keyframes pop {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.animate-pop { animation: pop 0.2s cubic-bezier(.4,2,.6,1) both; }
+</style>
+
 
   <!-- Recruit（採用セクション＆カードクリックで詳細展開＆フォーム） -->
   <section id="recruit" class="py-20 px-6 max-w-5xl mx-auto">

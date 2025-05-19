@@ -86,24 +86,47 @@
     </div>
   </section>
 
-  <!-- Recruit（採用セクション＆フォーム） -->
-  <section id="recruit" class="py-20 px-6 max-w-3xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-      <div class="bg-gray-800 p-6 rounded-xl text-center">
-        <h3 class="text-xl font-semibold mb-2">Tech/Biz Advisor</h3>
-        <p class="text-gray-300">技術とビジネスをつなぎ、戦略を支える知見を提供します。</p>
+  <!-- Recruit（採用セクション＆カードクリックで詳細展開＆フォーム） -->
+  <section id="recruit" class="py-20 px-6 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8">採用情報</h2>
+    <p class="mb-8">私たちと一緒に「言葉の力」で世界を変えませんか？</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <!-- Head of Product -->
+      <div onclick="toggleDetail('product')" class="bg-gray-800 p-6 rounded-xl cursor-pointer transition hover:bg-yellow-100 hover:text-black">
+        <h3 class="text-xl font-bold mb-1">Head of Product</h3>
+        <p>プロダクト全体を統括し、ユーザー視点と技術視点の橋渡しを行います。</p>
+        <div id="detail-product" class="hidden mt-4 text-sm text-gray-200">
+          <p class="mb-2">【主な仕事内容】<br>・プロダクトマネジメント<br>・市場調査と企画立案<br>・チームマネジメント・仕様策定</p>
+          <p class="mb-2">【求める人物像】<br>・好奇心旺盛な方<br>・技術とビジネス両方に興味がある方</p>
+          <p>【歓迎条件】<br>・スタートアップ経験者、PM経験者歓迎！</p>
+        </div>
       </div>
-      <div class="bg-gray-800 p-6 rounded-xl text-center">
-        <h3 class="text-xl font-semibold mb-2">UI/UX Designer</h3>
-        <p class="text-gray-300">ユーザー体験を最適化し、プロダクトの魅力を最大化。</p>
+      <!-- UI/UX Designer -->
+      <div onclick="toggleDetail('designer')" class="bg-gray-800 p-6 rounded-xl cursor-pointer transition hover:bg-yellow-100 hover:text-black">
+        <h3 class="text-xl font-bold mb-1">UI/UX Designer</h3>
+        <p>感性とロジックを融合し、ユーザー体験を設計します。</p>
+        <div id="detail-designer" class="hidden mt-4 text-sm text-gray-200">
+          <p class="mb-2">【主な仕事内容】<br>・サービス設計<br>・プロトタイプ作成<br>・デザインシステム運用</p>
+          <p class="mb-2">【求める人物像】<br>・トレンドへの感度が高い方<br>・Figma/Adobe XD経験者歓迎！</p>
+        </div>
+      </div>
+      <!-- Tech/Biz Advisor -->
+      <div onclick="toggleDetail('advisor')" class="bg-gray-800 p-6 rounded-xl cursor-pointer transition hover:bg-yellow-100 hover:text-black md:col-span-2">
+        <h3 class="text-xl font-bold mb-1">Tech/Biz Advisor</h3>
+        <p>技術とビジネスをつなぎ、戦略を支える知見を提供します。</p>
+        <div id="detail-advisor" class="hidden mt-4 text-sm text-gray-200">
+          <p class="mb-2">【主な仕事内容】<br>・プロダクト監修・技術戦略策定<br>・新規事業メンタリング<br>・ネットワークの提供</p>
+          <p class="mb-2">【求める人物像】<br>・CxO経験や事業立ち上げ経験がある方<br>・スタートアップに興味がある方</p>
+        </div>
       </div>
     </div>
+    <!-- 応募フォーム -->
     <div class="max-w-xl mx-auto bg-gray-900 p-6 rounded-xl mb-6">
       <h3 class="text-2xl font-bold mb-4">応募フォーム</h3>
       <form action="https://formspree.io/f/xovbdqdv" method="POST" class="space-y-4">
         <input type="text" name="name" placeholder="お名前" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400" required>
         <input type="email" name="email" placeholder="メールアドレス" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400" required>
-        <textarea name="message" rows="5" placeholder="応募メッセージ" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400" required></textarea>
+        <textarea name="message" rows="5" placeholder="志望理由やメッセージ" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400" required></textarea>
         <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded transition duration-200">応募する</button>
       </form>
       <div id="form-success" class="hidden mt-4 text-green-400 font-semibold transition duration-200">
@@ -117,8 +140,9 @@
     &copy; 2025 株式会社LifeGame. All rights reserved.
   </footer>
 
-  <!-- 応募完了メッセージ表示用（JS） -->
+  <!-- JS（応募完了メッセージ、カード詳細展開） -->
   <script>
+    // 応募フォーム送信後メッセージ
     document.addEventListener('DOMContentLoaded', function() {
       const form = document.querySelector('form');
       if(form) {
@@ -130,7 +154,19 @@
         });
       }
     });
+    // カードクリックで詳細展開
+    function toggleDetail(role) {
+      const ids = ["detail-product", "detail-designer", "detail-advisor"];
+      ids.forEach(id => {
+        if(id === "detail-" + role){
+          document.getElementById(id).classList.toggle("hidden");
+        } else {
+          document.getElementById(id).classList.add("hidden");
+        }
+      });
+    }
   </script>
 
 </body>
 </html>
+　

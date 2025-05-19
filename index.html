@@ -5,20 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>株式会社LifeGame</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
-<body class="bg-black text-white font-sans">
+<body class="bg-black text-white font-sans" x-data="{ submitted: false }">
   <!-- Header -->
-  <header class="flex items-center justify-between p-6 bg-black">
-    <img src="logo.png" alt="LifeGame Logo" class="h-12">
-    <nav class="space-x-6">
-      <a href="#about" class="hover:text-yellow-400">会社紹介</a>
-      <a href="#product" class="hover:text-yellow-400">プロダクト</a>
-      <a href="#recruit" class="hover:text-yellow-400">採用</a>
-    </nav>
+  <header class="fixed top-0 left-0 w-full bg-black z-50 shadow-md">
+    <div class="flex items-center justify-between p-4 max-w-6xl mx-auto">
+      <img src="logo.png" alt="LifeGame Logo" class="h-10 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      <nav class="space-x-6 text-sm md:text-base">
+        <a href="#about" class="hover:text-yellow-400 transition duration-200">会社紹介</a>
+        <a href="#product" class="hover:text-yellow-400 transition duration-200">プロダクト</a>
+        <a href="#recruit" class="hover:text-yellow-400 transition duration-200">採用</a>
+      </nav>
+    </div>
   </header>
 
   <!-- Hero -->
-  <section class="text-center py-20 bg-gradient-to-b from-black via-gray-900 to-black">
+  <section class="text-center py-32 bg-gradient-to-b from-black via-gray-900 to-black">
     <h1 class="text-5xl font-bold text-yellow-400">LifeGame Inc.</h1>
     <p class="mt-4 text-xl">言語化できない自分を、物語に。</p>
   </section>
@@ -49,18 +52,19 @@
       TAKOLOGは、プロライターのインタビューと物語テンプレートを融合した他己紹介ジェネレーター。
       GPTだけでは届かない、人間らしい深みを言語化します。
     </p>
-    <ul class="list-disc ml-6 text-white">
+    <ul class="list-disc ml-6 text-white mb-6">
       <li>自己紹介・就活PR・恋活・SNSまでカバー</li>
       <li>単発/パック/サブスク対応</li>
       <li>今後はToB・API展開も視野</li>
     </ul>
+    <div class="bg-yellow-500 text-black py-3 px-6 rounded-lg inline-block font-bold">Coming Soon...</div>
   </section>
 
   <!-- Recruit -->
   <section id="recruit" class="py-20 px-6">
     <h2 class="text-3xl font-bold mb-8">採用情報</h2>
     <p class="text-lg mb-6">私たちと一緒に「言葉の力」で世界を変えませんか？</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
       <div class="bg-gray-800 p-6 rounded-xl">
         <h3 class="text-xl font-semibold">Head of Product</h3>
         <p>プロダクト全体を統括し、ユーザー視点と技術視点の橋渡しを行います。</p>
@@ -74,6 +78,19 @@
         <p>技術とビジネスをつなぎ、戦略を支える知見を提供します。</p>
       </div>
     </div>
+
+    <div class="max-w-xl mx-auto bg-gray-900 p-6 rounded-xl">
+      <h3 class="text-2xl font-bold mb-4">応募フォーム</h3>
+      <form @submit.prevent="submitted = true" action="https://formspree.io/f/xknldykz" method="POST" class="space-y-4">
+        <input type="text" name="name" placeholder="お名前" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400" required>
+        <input type="email" name="email" placeholder="メールアドレス" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400" required>
+        <textarea name="message" rows="5" placeholder="志望理由やメッセージ" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400" required></textarea>
+        <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded transition duration-200">送信する</button>
+      </form>
+      <div x-show="submitted" class="mt-4 text-green-400 font-semibold transition duration-200">
+        応募が完了しました。ご入力ありがとうございました！
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -82,5 +99,3 @@
   </footer>
 </body>
 </html>
-
-　　　　　

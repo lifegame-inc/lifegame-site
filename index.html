@@ -3,42 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LifeGame Inc. | 言語化できない自分を、物語に。</title>
-  <meta name="description" content="LifeGame Inc.は、AI×自己紹介の力で人生の可能性を最大化する新時代のスタートアップ。学生インターン募集中、創業メンバーWanted！">
-  <meta name="keywords" content="LifeGame, TAKOLOG, 自己紹介, スタートアップ, AI, インターン, 採用, 学生, プロダクト, テクノロジー">
+  <title>LifeGame Inc. | Z世代の“挑戦”に、AIで勝ち筋を。</title>
+  <meta name="description" content="Z世代×AI副業マッチングの新時代。SNSとAIが“あなたの強み”を診断し、本当に合った副業とつなげるスタートアップ。学生インターン募集中、創業メンバーWanted！">
+  <meta name="keywords" content="LifeGame, 副業, Z世代, AI, マッチング, SNS, インターン, 採用, 学生, プロダクト, テクノロジー">
   <meta name="author" content="LifeGame Inc.">
   <link rel="icon" href="logo.png" type="image/png">
-  <!-- OGP (SNSシェア用) -->
+  <!-- OGP -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="LifeGame Inc. | 言語化できない自分を、物語に。">
-  <meta property="og:description" content="AI×自己紹介で人生の可能性を最大化する、創業メンバー・学生インターン募集中のスタートアップ。">
+  <meta property="og:title" content="LifeGame Inc. | Z世代の“挑戦”に、AIで勝ち筋を。">
+  <meta property="og:description" content="Z世代×AI副業マッチングの新時代。SNSとAIが“あなたの強み”を診断し、本当に合った副業とつなげるスタートアップ。">
   <meta property="og:url" content="https://lifegame-inc.github.io/lifegame-site/">
   <meta property="og:image" content="https://lifegame-inc.github.io/lifegame-site/logo.png">
   <meta property="og:site_name" content="LifeGame Inc.">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="LifeGame Inc. | 言語化できない自分を、物語に。">
-  <meta name="twitter:description" content="AI×自己紹介で人生の可能性を最大化。創業メンバー/学生インターン募集。">
+  <meta name="twitter:title" content="LifeGame Inc. | Z世代の“挑戦”に、AIで勝ち筋を。">
+  <meta name="twitter:description" content="SNSとAIがあなたの強みを診断し、本当に合った副業を提案。創業メンバー/学生インターン募集。">
   <meta name="twitter:image" content="https://lifegame-inc.github.io/lifegame-site/logo.png">
-  <!-- Tailwind CSS（既存） -->
+  <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-black text-white font-sans">
-  <!-- Header（ナビゲーション） -->
+  <!-- Header -->
   <header class="flex items-center justify-between px-8 py-6 bg-black border-b border-gray-900 sticky top-0 z-50">
-    <!-- ナビゲーションバー -->
 <nav class="w-full px-6 py-4 flex items-center justify-between bg-black">
   <div class="flex items-center space-x-2">
     <img src="logo.png" class="h-8" alt="logo">
     <span class="text-yellow-400 text-xl font-bold">LifeGame Inc.</span>
   </div>
-  <!-- ハンバーガーボタン -->
   <button class="md:hidden text-yellow-400 focus:outline-none" onclick="document.getElementById('nav-menu').classList.toggle('hidden')">
     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
     </svg>
   </button>
-  <!-- メニュー -->
   <div id="nav-menu" class="hidden md:flex md:space-x-6 flex-col md:flex-row absolute md:static top-16 left-0 w-full md:w-auto bg-black md:bg-transparent z-50">
     <a href="#about" class="block px-6 py-4 md:p-0 text-white hover:text-yellow-400">会社紹介</a>
     <a href="#vision" class="block px-6 py-4 md:p-0 text-white hover:text-yellow-400">ビジョン</a>
@@ -49,124 +46,116 @@
     <a href="#faq" class="block px-6 py-4 md:p-0 text-white hover:text-yellow-400">FAQ</a>
   </div>
 </nav>
-
   </header>
 
-  <!-- Heroセクション（ロゴ＋会社名＋キャッチコピー） -->
+  <!-- Heroセクション -->
   <section class="text-center py-32 bg-gradient-to-b from-black via-gray-900 to-black">
     <img src="logo.png" alt="LifeGame Logo" class="mx-auto mb-6" style="width:110px; height:110px;">
-    <h1 class="text-5xl md:text-6xl font-bold text-yellow-400 tracking-tight mb-2">LifeGame Inc.</h1>
-    <p class="mt-2 text-lg md:text-2xl text-gray-200">言語化できない自分を、物語に。</p>
+    <h1 class="text-5xl md:text-6xl font-bold text-yellow-400 tracking-tight mb-2">Z世代の“挑戦”に、AIで勝ち筋を。</h1>
+    <p class="mt-2 text-lg md:text-2xl text-gray-200">SNS×AIで「最適な副業」をあなたに届ける、新時代の副業マッチングサービス。</p>
+    <p class="mt-4 text-base md:text-lg text-gray-400">「やってみたい」から「できる」へ——。AIがあなたの強みと可能性を診断し、本当に自分に合った副業・案件とつなぎます。</p>
   </section>
 
-  <!-- Vision/Mission/Value -->
+  <!-- Vision / Mission / Value -->
   <section id="vision" class="py-16 px-6 max-w-4xl mx-auto">
     <h2 class="text-3xl font-bold mb-8">Vision / Mission / Value</h2>
     <div class="grid md:grid-cols-3 gap-8">
       <div>
         <h3 class="text-xl font-bold text-yellow-400 mb-2">Vision</h3>
-        <p class="text-gray-200">“言葉の力で、人生の可能性を最大化する”<br>自分の価値・物語を新しい形で伝える文化を創る。</p>
+        <p class="text-gray-200">挑戦者が圧倒的に報われる社会をつくる。<br>誰もが自分で稼ぎ、経済的自立を実現できる未来へ。</p>
       </div>
       <div>
         <h3 class="text-xl font-bold text-yellow-400 mb-2">Mission</h3>
-        <p class="text-gray-200">“他己紹介”で誰もが語れる世界へ。<br>言語化できない想い・能力を“物語”として社会に届ける。</p>
+        <p class="text-gray-200">全ての挑戦者に、自分だけの“勝ち筋”を与える。<br>一人ひとりが主役として成長できる社会を創る。</p>
       </div>
       <div>
         <h3 class="text-xl font-bold text-yellow-400 mb-2">Value</h3>
         <ul class="text-gray-200 list-disc list-inside">
-          <li>挑戦する勇気と失敗からの成長</li>
-          <li>多様性・個性をリスペクト</li>
-          <li>テクノロジーと創造力の融合</li>
+          <li>限界は自分で決めない</li>
+          <li>圧倒的スピードでPDCAを回す</li>
+          <li>全ての行動は“主役意識”から始まる</li>
+          <li>他人や世論ではなく、自分の信念で未来を設計する</li>
+          <li>できないことほど最速でトライ</li>
         </ul>
       </div>
-    </div>
-  </section>
-
-  <!-- 創業ストーリー/メッセージ -->
-  <section class="py-16 px-6 max-w-3xl mx-auto">
-    <h2 class="text-3xl font-bold mb-8">創業ストーリー</h2>
-    <div class="bg-gray-900 p-8 rounded-xl">
-      <h3 class="text-xl font-bold mb-4 text-yellow-400">代表メッセージ（Kazuki Tsugane）</h3>
-      <p class="text-gray-200">「自分の“らしさ”を言葉で伝えられずに埋もれてしまう才能を、世界からなくしたい。<br>
-      自分自身も“他人に紹介してもらった言葉”によって一歩踏み出せた経験があります。<br>
-      LifeGameは、ただの自己PRツールではなく、“物語”によって人生を変えるプラットフォームです。<br>
-      まだまだ未完成なチームですが、“誰もが自分を物語にできる社会”を一緒に創っていきましょう。」</p>
     </div>
   </section>
 
   <!-- About（会社紹介） -->
   <section id="about" class="py-20 px-6 max-w-4xl mx-auto">
     <h2 class="text-3xl font-bold mb-8">会社紹介</h2>
-    <p class="text-lg mb-6">株式会社LifeGameは、「自分を言語化できない人」のための他己紹介生成サービス「TAKOLOG」を開発しています。ビジョンは、“言葉の力で、人生の可能性を最大化すること”。</p>
+    <p class="text-lg mb-6">株式会社LifeGameは、Z世代の“自己実現”と“スキルアップ”をAIで後押しする副業マッチングプラットフォームを開発しています。SNS（XやInstagram等）連携であなたの強み・適性を自動診断、本当に合った副業案件とつなぎます。</p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="bg-gray-800 p-6 rounded-xl text-center">
         <h3 class="text-xl font-semibold mb-2">Kazuki Tsugane</h3>
         <p class="text-gray-300">Founder, CEO</p>
       </div>
       <div class="bg-gray-800 p-6 rounded-xl text-center">
-        <h3 class="text-xl font-semibold mb-2">Yuka Kimura</h3>
-        <p class="text-gray-300">Head of Biz</p>
+        <h3 class="text-xl font-semibold mb-2">Jun Otsu</h3>
+        <p class="text-gray-300">Head of Product</p>
       </div>
     </div>
   </section>
 
-  <!-- Product（プロダクト紹介） -->
+  <!-- プロダクト紹介 -->
   <section id="product" class="py-20 px-6 bg-gray-900">
     <h2 class="text-3xl font-bold mb-8">プロダクト紹介</h2>
     <div class="mb-6">
-      <h3 class="text-xl font-bold mb-2">現代の課題</h3>
-      <p class="mb-4">「言葉にできない＝評価されない」時代。テンプレ化された言葉では、本当の魅力が伝わらない。</p>
-      <h3 class="text-xl font-bold mb-2">LifeGameの答え</h3>
-      <p class="mb-4">“物語”によって人を伝える。他己紹介という視点から、新しい自己表現の文化を作ります。</p>
+      <h3 class="text-xl font-bold mb-2">サービス概要</h3>
+      <p class="mb-4">LifeGameは、Z世代の“自己実現”と“スキルアップ”を後押しするAI副業マッチングプラットフォームです。SNS（XやInstagram等）のアカウントと連携し、AIが投稿内容やプロフィールから「あなたの強み・適性・興味」を自動診断。分析結果をもとに“本当に合った副業案件”だけを自動でピックアップしてご提案します。</p>
+      <p>副業が初めての方・自分の強みが分からない方も、自己分析や応募サポート機能で「安心して最初の一歩」を踏み出せます。</p>
     </div>
-    <!-- How It Works（ステップ） -->
-    <div class="mb-8">
-      <h3 class="text-xl font-bold mb-4">使い方（How It Works）</h3>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="bg-gray-800 p-4 rounded-lg">ヒアリング</div>
-        <div class="bg-gray-800 p-4 rounded-lg">構成＆執筆</div>
-        <div class="bg-gray-800 p-4 rounded-lg">納品＆確認</div>
-        <div class="bg-gray-800 p-4 rounded-lg">再利用</div>
-      </div>
+    <div class="mb-6">
+      <h3 class="text-xl font-bold mb-2">サービス特徴</h3>
+      <ul class="list-disc list-inside text-gray-200">
+        <li>SNS連携によるAI自己PR診断＆スキル可視化</li>
+        <li>初心者／未経験者でもすぐ始められる</li>
+        <li>マッチングのミスマッチを最小化</li>
+        <li>すべてオンライン完結＆無料でスタートOK</li>
+      </ul>
     </div>
     <!-- 競合比較表 -->
     <div class="overflow-x-auto mb-10">
-      <h3 class="text-xl font-bold mb-2">なぜTAKOLOGか？</h3>
+      <h3 class="text-xl font-bold mb-2">競合比較</h3>
       <table class="min-w-full text-center">
         <thead>
           <tr class="text-yellow-400">
             <th class="py-2 px-4">比較</th>
-            <th class="py-2 px-4">ChatGPT</th>
-            <th class="py-2 px-4">ココナラ</th>
+            <th class="py-2 px-4">クラウドワークス</th>
+            <th class="py-2 px-4">ランサーズ</th>
             <th class="py-2 px-4">LifeGame</th>
           </tr>
         </thead>
         <tbody class="text-gray-200">
-          <tr><td class="py-2 px-4">スピード</td><td>◎</td><td>△</td><td>◎</td></tr>
-          <tr><td class="py-2 px-4">表現力</td><td>△</td><td>△</td><td>◎</td></tr>
-          <tr><td class="py-2 px-4">構造＆再現性</td><td>×</td><td>×</td><td>◎</td></tr>
+          <tr><td class="py-2 px-4">案件検索</td><td>△（自力検索）</td><td>△（自力検索）</td><td>◎（AIが自動推薦）</td></tr>
+          <tr><td class="py-2 px-4">初心者支援</td><td>×</td><td>×</td><td>◎（AI診断サポート）</td></tr>
+          <tr><td class="py-2 px-4">スキル可視化</td><td>×</td><td>×</td><td>◎</td></tr>
+          <tr><td class="py-2 px-4">SNS連携</td><td>×</td><td>×</td><td>◎</td></tr>
         </tbody>
       </table>
       <p class="text-sm text-gray-400 mt-2">※内容はLifeGame社による独自調査に基づいた比較です。</p>
     </div>
-    <!-- Coming Soonエリア -->
-    <div class="bg-gray-800 p-6 rounded-xl text-center mt-8">
-      <p class="text-yellow-300 text-lg font-semibold mb-1">Coming Soon</p>
-      <p class="text-gray-200">法人向けプラン・API連携・自己PR生成β版も順次リリース予定</p>
-    </div>
   </section>
 
-  <!-- Roadmap（マイルストーン） -->
+  <!-- ロードマップ -->
   <section id="roadmap" class="py-16 px-6 max-w-4xl mx-auto">
     <h2 class="text-3xl font-bold mb-8">ロードマップ</h2>
     <div class="bg-gray-900 p-8 rounded-xl">
       <ol class="list-decimal list-inside text-lg text-gray-200 space-y-2">
-        <li>2025年5月：βサービス初公開</li>
-        <li>2025年6月：法人向けプラン開発</li>
-        <li>2025年7月：API・外部連携α版リリース</li>
-        <li>2025年8月：UI/UX強化＆メディア掲載</li>
-        <li>2025年秋：資金調達・本格グロース開始</li>
+        <li>1～2ヶ月目：ユーザー登録機能、X連携、プロファイル画面の実装／AI診断プロトタイプ作成</li>
+        <li>3～4ヶ月目：診断ロジック・DB構築／マッチングアルゴリズム実装・UI整備</li>
+        <li>5～6ヶ月目：Instagram対応・UI/UX改良・セキュリティ強化／βリリース＆ユーザーテスト</li>
       </ol>
+      <p class="mt-4 text-gray-400">大学生・新卒社会人男女10～20名規模でPoCを実施し、短期PDCAで最速グロース！</p>
+    </div>
+  </section>
+
+  <!-- 代表メッセージ -->
+  <section class="py-16 px-6 max-w-3xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8">代表メッセージ</h2>
+    <div class="bg-gray-900 p-8 rounded-xl">
+      <h3 class="text-xl font-bold mb-4 text-yellow-400">Kazuki Tsugane</h3>
+      <p class="text-gray-200">自分には何もできない——そう思っていた過去の自分を、行動と挑戦で変えてきました。<br>だからこそ、同じように「一歩踏み出したい」全てのZ世代の挑戦を、本気で後押ししたい。<br>LifeGameは、AIの力で“本当の強み”を見つけ、「挑戦の勝ち筋」を与えるサービスです。<br>最初は誰でも未経験。ここでの“最初の挑戦”が、あなたの人生を大きく変えるきっかけになると信じています。</p>
     </div>
   </section>
 
@@ -182,20 +171,12 @@
       <a href="https://twitter.com/kazuki_lifegame" target="_blank" class="text-yellow-400 text-sm mt-2 hover:underline">X（Twitter）</a>
     </div>
     <!-- Yuka Kimura カード -->
-    <div onclick="openModal('yuka')" class="bg-gray-800 p-6 rounded-xl text-center flex flex-col items-center cursor-pointer hover:scale-105 hover:shadow-2xl transition-all">
-      <img src="yuka.png" alt="Yuka Kimura" class="rounded-full w-24 h-24 mb-4">
-      <h3 class="text-xl font-semibold mb-1">Yuka Kimura</h3>
-      <p class="text-gray-400">Head of Biz</p>
+    <div onclick="openModal('Jun')" class="bg-gray-800 p-6 rounded-xl text-center flex flex-col items-center cursor-pointer hover:scale-105 hover:shadow-2xl transition-all">
+      <img src="unidentified.png" alt="Jun Otsu" class="rounded-full w-24 h-24 mb-4">
+      <h3 class="text-xl font-semibold mb-1">Jun Otsu</h3>
+      <p class="text-gray-400">Head of Product</p>
       <span class="text-gray-500 text-sm mt-2">（準備中）</span>
     </div>
-    <!-- Head of Product カード（Coming Soon） -->
-    <div onclick="openModal('product')" class="bg-gray-800 p-6 rounded-xl text-center flex flex-col items-center cursor-pointer hover:scale-105 hover:shadow-2xl transition-all">
-      <img src="unidentified.png" alt="Coming Soon" class="rounded-full w-24 h-24 mb-4 opacity-60">
-      <h3 class="text-xl font-semibold mb-1">Head of Product</h3>
-      <p class="text-gray-400">募集中！</p>
-      <span class="text-gray-500 text-sm mt-2">（詳細は採用欄へ）</span>
-    </div>
-  </div>
 
   <!-- Kazuki モーダル -->
   <div id="modal-kazuki" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden">
@@ -208,22 +189,12 @@
     </div>
   </div>
   <!-- Yuka モーダル -->
-  <div id="modal-yuka" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden">
+  <div id="modal-Jun" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden">
     <div class="bg-white rounded-2xl p-8 max-w-md w-full relative animate-pop">
-      <button onclick="closeModal('yuka')" class="absolute top-3 right-3 text-2xl text-gray-400 hover:text-black">&times;</button>
-      <img src="yuka.png" class="w-24 h-24 mx-auto rounded-full mb-4">
-      <h3 class="text-2xl font-bold text-center mb-2 text-black">Yuka Kimura</h3>
-      <p class="text-gray-700 text-center mb-4">Head of Biz<br>チームの「推進力」として事業の幅を広げる。今後の活躍にご期待ください。</p>
-    </div>
-  </div>
-  <!-- Head of Product モーダル -->
-  <div id="modal-product" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden">
-    <div class="bg-white rounded-2xl p-8 max-w-md w-full relative animate-pop">
-      <button onclick="closeModal('product')" class="absolute top-3 right-3 text-2xl text-gray-400 hover:text-black">&times;</button>
-      <img src="unidentified.png" class="w-24 h-24 mx-auto rounded-full mb-4 opacity-60">
-      <h3 class="text-2xl font-bold text-center mb-2 text-black">Head of Product</h3>
-      <p class="text-gray-700 text-center mb-4">募集中！<br>このポジションは現在採用中です。詳細は採用情報ページをご覧ください。</p>
-      <a href="#recruit" class="block text-yellow-500 text-center font-bold hover:underline">採用情報へ</a>
+      <button onclick="closeModal('Jun')" class="absolute top-3 right-3 text-2xl text-gray-400 hover:text-black">&times;</button>
+      <img src="unidentified.png" class="w-24 h-24 mx-auto rounded-full mb-4">
+      <h3 class="text-2xl font-bold text-center mb-2 text-black">Jun Otsu</h3>
+      <p class="text-gray-700 text-center mb-4">Head of Product<br>代表とともに、チームの「推進力」として最高のプロダクトを作ります。</p>
     </div>
   </div>
 </section>
@@ -254,13 +225,13 @@ function closeModal(name) {
     <p class="mb-8">私たちと一緒に「言葉の力」で世界を変えませんか？</p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
       <!-- Head of Product -->
-      <div onclick="toggleDetail('product')" class="bg-gray-800 p-6 rounded-xl cursor-pointer transition hover:bg-yellow-100 hover:text-black">
-        <h3 class="text-xl font-bold mb-1">Head of Product</h3>
-        <p>プロダクト全体を統括し、ユーザー視点と技術視点の橋渡しを行います。</p>
+      <div onclick="toggleDetail('business')" class="bg-gray-800 p-6 rounded-xl cursor-pointer transition hover:bg-yellow-100 hover:text-black">
+        <h3 class="text-xl font-bold mb-1">Head of Business</h3>
+        <p>プロダクト全体を統括し、ユーザー視点で事業推進をします。</p>
         <div id="detail-product" class="hidden mt-4 text-sm text-gray-200">
-          <p class="mb-2">【主な仕事内容】<br>・プロダクトマネジメント<br>・市場調査と企画立案<br>・チームマネジメント・仕様策定</p>
-          <p class="mb-2">【求める人物像】<br>・好奇心旺盛な方<br>・技術とビジネス両方に興味がある方</p>
-          <p>【歓迎条件】<br>・スタートアップ経験者、PM経験者歓迎！</p>
+          <p class="mb-2">【主な仕事内容】<br>・事業開発活動<br>・市場調査と企画立案<br>・チームマネジメント</p>
+          <p class="mb-2">【求める人物像】<br>・好奇心旺盛な方<br>・ビジネス力で世界を変えたい方</p>
+          <p>【歓迎条件】<br>・スタートアップ経験者、BD経験者歓迎！</p>
         </div>
       </div>
       <!-- UI/UX Designer -->
@@ -335,25 +306,25 @@ function closeModal(name) {
     </div>
   </section>
 
-  <!-- FAQ（よくある質問） -->
+  <!-- FAQ -->
   <section id="faq" class="py-16 px-6 max-w-4xl mx-auto">
     <h2 class="text-3xl font-bold mb-8">FAQ</h2>
     <div class="space-y-6">
       <div class="bg-gray-800 p-6 rounded-xl">
-        <h3 class="font-semibold mb-2">Q. 未経験でも応募できますか？</h3>
-        <p class="text-gray-300">A. もちろんです！チャレンジ意欲や“物語”への共感があれば大歓迎です。</p>
+        <h3 class="font-semibold mb-2">Q. 副業・スキルに自信がなくても利用できますか？</h3>
+        <p class="text-gray-300">A. もちろん大丈夫です！AI診断とサポートで、未経験・初心者でも自分に合った案件から始められます。</p>
       </div>
       <div class="bg-gray-800 p-6 rounded-xl">
-        <h3 class="font-semibold mb-2">Q. 副業・学生でも参画可能ですか？</h3>
-        <p class="text-gray-300">A. はい、副業や学生インターンも可能です。働き方も柔軟に相談できます。</p>
+        <h3 class="font-semibold mb-2">Q. 利用料はかかりますか？</h3>
+        <p class="text-gray-300">A. サービス利用は無料です。今後、キャリア相談や特別サポートなど一部有料オプションも展開予定です。</p>
       </div>
       <div class="bg-gray-800 p-6 rounded-xl">
-        <h3 class="font-semibold mb-2">Q. 選考フローはどんな感じ？</h3>
-        <p class="text-gray-300">A. 書類応募→カジュアル面談→課題 or 追加面談→意思確認で決定します。</p>
+        <h3 class="font-semibold mb-2">Q. どんな案件がありますか？</h3>
+        <p class="text-gray-300">A. ライティング、SNS運用、デザイン、動画編集、プログラミングなど幅広く用意しています。あなたの強みや興味に合った案件だけをAIがご提案します。</p>
       </div>
       <div class="bg-gray-800 p-6 rounded-xl">
-        <h3 class="font-semibold mb-2">Q. どんなスキル・経験が役立ちますか？</h3>
-        <p class="text-gray-300">A. 企画力、文章力、デザイン、開発、広報、マーケなど幅広く歓迎しています。</p>
+        <h3 class="font-semibold mb-2">Q. 他社サービスとどう違うの？</h3>
+        <p class="text-gray-300">A. SNS連携×AI診断で“あなたの強みを自動可視化”。マッチング精度が高く、初心者でも始めやすい設計が特長です。</p>
       </div>
     </div>
   </section>
@@ -379,7 +350,7 @@ function closeModal(name) {
     });
     // カードクリックで詳細展開
     function toggleDetail(role) {
-      const ids = ["detail-product", "detail-designer", "detail-advisor"];
+      const ids = ["detail-business", "detail-designer", "detail-advisor"];
       ids.forEach(id => {
         if(id === "detail-" + role){
           document.getElementById(id).classList.toggle("hidden");

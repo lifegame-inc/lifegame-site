@@ -4,361 +4,1039 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LifeGame Inc. | Z世代の“挑戦”に、AIで勝ち筋を。</title>
-  <meta name="description" content="Z世代×AI副業マッチングの新時代。SNSとAIが“あなたの強み”を診断し、本当に合った副業とつなげるスタートアップ。学生インターン募集中、創業メンバーWanted！">
+  <meta name="description" content="Z世代の挑戦をAIで加速させる副業マッチングスタートアップLifeGame。SNSデータとAIが強みを解析し、挑戦の勝ち筋を描きます。">
   <meta name="keywords" content="LifeGame, 副業, Z世代, AI, マッチング, SNS, インターン, 採用, 学生, プロダクト, テクノロジー">
   <meta name="author" content="LifeGame Inc.">
   <link rel="icon" href="logo.png" type="image/png">
-  <!-- OGP -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="LifeGame Inc. | Z世代の“挑戦”に、AIで勝ち筋を。">
-  <meta property="og:description" content="Z世代×AI副業マッチングの新時代。SNSとAIが“あなたの強み”を診断し、本当に合った副業とつなげるスタートアップ。">
+  <meta property="og:description" content="SNSとAIが“あなたの強み”を診断し、本当に合った副業とつなげる新時代のマッチングサービス。">
   <meta property="og:url" content="https://lifegame-inc.github.io/lifegame-site/">
   <meta property="og:image" content="https://lifegame-inc.github.io/lifegame-site/logo.png">
   <meta property="og:site_name" content="LifeGame Inc.">
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="LifeGame Inc. | Z世代の“挑戦”に、AIで勝ち筋を。">
-  <meta name="twitter:description" content="SNSとAIがあなたの強みを診断し、本当に合った副業を提案。創業メンバー/学生インターン募集。">
+  <meta name="twitter:description" content="SNSとAIがあなたの強みを診断し、本当に合った副業を提案。創業メンバー/学生インターン募集中。">
   <meta name="twitter:image" content="https://lifegame-inc.github.io/lifegame-site/logo.png">
-  <!-- Tailwind CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #030712;
+      --bg-soft: rgba(15, 23, 42, 0.85);
+      --accent: #facc15;
+      --accent-soft: rgba(250, 204, 21, 0.16);
+      --text: #f8fafc;
+      --text-muted: #cbd5f5;
+      --border: rgba(148, 163, 184, 0.18);
+      --shadow: 0 25px 70px rgba(15, 23, 42, 0.4);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', 'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at 10% 20%, rgba(68, 64, 198, 0.24), transparent 45%),
+                  radial-gradient(circle at 80% 0%, rgba(244, 114, 182, 0.24), transparent 40%),
+                  linear-gradient(135deg, #020617 0%, #040b27 50%, #010313 100%);
+      color: var(--text);
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+      scroll-behavior: smooth;
+    }
+    ::selection {
+      background: rgba(250, 204, 21, 0.35);
+      color: #0f172a;
+    }
+    header {
+      background: rgba(3, 7, 18, 0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    }
+    .nav-link {
+      position: relative;
+      padding: 0.35rem 0;
+      font-weight: 500;
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.2s ease;
+    }
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after {
+      transform: scaleX(1);
+    }
+    .nav-link svg {
+      width: 0.75rem;
+      height: 0.75rem;
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .nav-link:hover svg,
+    .nav-link:focus-visible svg {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .section-heading {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.14);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .gradient-title {
+      font-size: clamp(2.25rem, 3vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      background: linear-gradient(120deg, #f8fafc 0%, #facc15 40%, #fde68a 90%);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .glass {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 1.75rem;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(22px);
+    }
+    .gradient-border {
+      position: relative;
+      border-radius: 2rem;
+    }
+    .gradient-border::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(250, 204, 21, 0.8), rgba(59, 130, 246, 0.4));
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #0f172a;
+      background: linear-gradient(90deg, #fde047, #fbbf24);
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      box-shadow: 0 18px 32px rgba(250, 204, 21, 0.35);
+    }
+    .floating-orb {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(0);
+      opacity: 0.55;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: -1;
+    }
+    .floating-orb.one {
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.35), transparent 60%);
+      top: -120px;
+      right: -80px;
+    }
+    .floating-orb.two {
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.4), transparent 65%);
+      bottom: -100px;
+      left: -60px;
+    }
+    .app-mock {
+      position: relative;
+      border-radius: 28px;
+      padding: 2.25rem;
+      background: linear-gradient(160deg, rgba(15, 23, 42, 0.9), rgba(30, 64, 175, 0.55));
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      box-shadow: 0 35px 80px rgba(14, 34, 80, 0.45);
+      overflow: hidden;
+    }
+    .app-mock::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .app-screen {
+      background: rgba(15, 23, 42, 0.85);
+      border-radius: 20px;
+      padding: 1.75rem;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      display: grid;
+      gap: 1.5rem;
+    }
+    .app-card {
+      background: linear-gradient(135deg, rgba(250, 204, 21, 0.12), rgba(56, 189, 248, 0.08));
+      border-radius: 16px;
+      padding: 1.25rem;
+      border: 1px solid rgba(250, 204, 21, 0.22);
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 1.5rem;
+      top: 0.75rem;
+      bottom: 0.75rem;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(250, 204, 21, 0.7), rgba(59, 130, 246, 0.4));
+    }
+    .timeline-step {
+      position: relative;
+      padding-left: 4.5rem;
+      padding-bottom: 2.5rem;
+    }
+    .timeline-step:last-child {
+      padding-bottom: 0;
+    }
+    .timeline-step::before {
+      content: attr(data-step);
+      position: absolute;
+      left: 0.5rem;
+      top: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      background: linear-gradient(135deg, rgba(250, 204, 21, 0.85), rgba(56, 189, 248, 0.8));
+      color: #0f172a;
+      box-shadow: 0 18px 40px rgba(250, 204, 21, 0.35);
+    }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border-radius: 1.5rem;
+    }
+    thead tr {
+      background: rgba(15, 23, 42, 0.75);
+    }
+    th, td {
+      padding: 1.1rem 1.25rem;
+      text-align: center;
+    }
+    tbody tr:nth-child(even) {
+      background: rgba(15, 23, 42, 0.72);
+    }
+    tbody tr:nth-child(odd) {
+      background: rgba(15, 23, 42, 0.55);
+    }
+    details {
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(15, 23, 42, 0.65);
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    details[open] {
+      border-color: rgba(250, 204, 21, 0.45);
+      transform: translateY(-2px);
+    }
+    details + details { margin-top: 1rem; }
+    summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+      outline: none;
+    }
+    summary::marker { display: none; }
+    summary span {
+      flex: 1;
+      padding-right: 1rem;
+    }
+    .faq-icon {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(250, 204, 21, 0.12);
+      color: var(--accent);
+      font-weight: 700;
+      transition: transform 0.2s ease;
+    }
+    details[open] .faq-icon { transform: rotate(45deg); }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(7, 11, 23, 0.72);
+      backdrop-filter: blur(12px);
+      padding: 2rem;
+      z-index: 50;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal.active { display: flex; }
+    .modal-card {
+      position: relative;
+      max-width: 420px;
+      width: 100%;
+      background: rgba(248, 250, 252, 0.95);
+      border-radius: 1.75rem;
+      padding: 2.5rem 2.25rem;
+      box-shadow: 0 45px 80px rgba(15, 23, 42, 0.4);
+      color: #0f172a;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      border: none;
+      background: transparent;
+      font-size: 1.75rem;
+      color: rgba(15, 23, 42, 0.45);
+      cursor: pointer;
+    }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      padding: 0.95rem 1.8rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #facc15, #fbbf24, #f97316);
+      color: #0f172a;
+      box-shadow: 0 20px 40px rgba(250, 204, 21, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 26px 55px rgba(250, 204, 21, 0.45);
+    }
+    .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.95rem 1.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text);
+      font-weight: 600;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .secondary-button:hover {
+      background: rgba(148, 163, 184, 0.12);
+      transform: translateY(-2px);
+    }
+    footer {
+      background: rgba(2, 6, 23, 0.92);
+      border-top: 1px solid rgba(148, 163, 184, 0.18);
+    }
+    @media (max-width: 1024px) {
+      header nav { backdrop-filter: none; }
+    }
+    @media (max-width: 768px) {
+      .timeline::before { left: 1rem; }
+      .timeline-step { padding-left: 3.75rem; }
+      .floating-orb.one, .floating-orb.two { display: none; }
+    }
+  </style>
 </head>
-<body class="bg-black text-white font-sans">
-  <!-- Header -->
-  <header class="flex items-center justify-between px-8 py-6 bg-black border-b border-gray-900 sticky top-0 z-50">
-<nav class="w-full px-6 py-4 flex items-center justify-between bg-black">
-  <div class="flex items-center space-x-2">
-    <img src="logo.png" class="h-8" alt="logo">
-    <span class="text-yellow-400 text-xl font-bold">LifeGame Inc.</span>
-  </div>
-  <button class="md:hidden text-yellow-400 focus:outline-none" onclick="document.getElementById('nav-menu').classList.toggle('hidden')">
-    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-    </svg>
-  </button>
-  <div id="nav-menu" class="hidden md:flex md:space-x-6 flex-col md:flex-row absolute md:static top-16 left-0 w-full md:w-auto bg-black md:bg-transparent z-50">
-    <a href="#about" class="block px-6 py-4 md:p-0 text-white hover:text-yellow-400">会社紹介</a>
-    <a href="#vision" class="block px-6 py-4 md:p-0 text-white hover:text-yellow-400">ビジョン</a>
-    <a href="#product" class="block px-6 py-4 md:p-0 text-white hover:text-yellow-400">プロダクト</a>
-    <a href="#roadmap" class="block px-6 py-4 md:p-0 text-white hover:text-yellow-400">ロードマップ</a>
-    <a href="#team" class="block px-6 py-4 md:p-0 text-white hover:text-yellow-400">チーム</a>
-    <a href="#recruit" class="block px-6 py-4 md:p-0 text-white hover:text-yellow-400">採用</a>
-    <a href="#faq" class="block px-6 py-4 md:p-0 text-white hover:text-yellow-400">FAQ</a>
-  </div>
-</nav>
+<body>
+  <div class="floating-orb one"></div>
+  <div class="floating-orb two"></div>
+  <header class="sticky top-0 z-40">
+    <nav class="max-w-6xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-3">
+        <img src="logo.png" alt="LifeGameロゴ" class="h-9 w-9 rounded-xl shadow-lg">
+        <div>
+          <p class="text-sm uppercase tracking-[0.38em] text-gray-400">LifeGame Inc.</p>
+          <p class="text-base font-semibold text-white">Challenge is our Game</p>
+        </div>
+      </a>
+      <button id="nav-toggle" class="lg:hidden text-yellow-400 focus:outline-none" aria-expanded="false" aria-controls="nav-menu">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <div id="nav-menu" class="hidden lg:flex lg:items-center lg:gap-8 text-sm">
+        <a href="#about" class="nav-link">会社紹介<svg viewBox="0 0 20 20" fill="currentColor"><path d="M7 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#vision" class="nav-link">ビジョン<svg viewBox="0 0 20 20" fill="currentColor"><path d="M7 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#product" class="nav-link">プロダクト<svg viewBox="0 0 20 20" fill="currentColor"><path d="M7 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#roadmap" class="nav-link">ロードマップ<svg viewBox="0 0 20 20" fill="currentColor"><path d="M7 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#team" class="nav-link">チーム<svg viewBox="0 0 20 20" fill="currentColor"><path d="M7 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#recruit" class="nav-link">採用<svg viewBox="0 0 20 20" fill="currentColor"><path d="M7 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#faq" class="nav-link">FAQ<svg viewBox="0 0 20 20" fill="currentColor"><path d="M7 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="#contact" class="nav-link">お問い合わせ<svg viewBox="0 0 20 20" fill="currentColor"><path d="M7 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </nav>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-800/60 bg-slate-950/95 backdrop-blur-xl">
+      <div class="max-w-6xl mx-auto px-6 py-6 grid gap-4 text-sm">
+        <a href="#about" class="nav-link">会社紹介</a>
+        <a href="#vision" class="nav-link">ビジョン</a>
+        <a href="#product" class="nav-link">プロダクト</a>
+        <a href="#roadmap" class="nav-link">ロードマップ</a>
+        <a href="#team" class="nav-link">チーム</a>
+        <a href="#recruit" class="nav-link">採用</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#contact" class="nav-link">お問い合わせ</a>
+      </div>
+    </div>
   </header>
 
-  <!-- Heroセクション -->
-  <section class="text-center py-32 bg-gradient-to-b from-black via-gray-900 to-black">
-    <img src="logo.png" alt="LifeGame Logo" class="mx-auto mb-6" style="width:110px; height:110px;">
-    <h1 class="text-5xl md:text-6xl font-bold text-yellow-400 tracking-tight mb-2">Z世代の“挑戦”に、AIで勝ち筋を。</h1>
-    <p class="mt-2 text-lg md:text-2xl text-gray-200">SNS×AIで「最適な副業」をあなたに届ける、新時代の副業マッチングサービス。</p>
-    <p class="mt-4 text-base md:text-lg text-gray-400">「やってみたい」から「できる」へ——。AIがあなたの強みと可能性を診断し、本当に自分に合った副業・案件とつなぎます。</p>
-  </section>
+  <main class="relative" id="hero">
+    <section class="max-w-6xl mx-auto px-6 lg:px-8 pt-24 pb-32 lg:pt-36 lg:pb-40">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:gap-16">
+        <div class="flex-1 space-y-8">
+          <span class="badge w-max shadow-lg shadow-yellow-500/25">β版クローズドアクセス募集中</span>
+          <h1 class="gradient-title">Z世代の“挑戦”に、AIで勝ち筋を描く。</h1>
+          <p class="text-lg lg:text-xl text-slate-300 max-w-2xl">
+            SNSデータとAIの分析をかけ合わせ、あなたの強み・ポテンシャル・適性をリアルタイムに可視化。<br class="hidden md:block">
+            LifeGameは、挑戦者ひとりひとりのキャリアを“自分で動かせる”未来を設計する副業マッチング・スタートアップです。
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#recruit" class="cta-button">創業チームに参加する</a>
+            <a href="#product" class="secondary-button">プロダクトを見る</a>
+          </div>
+          <div class="grid sm:grid-cols-3 gap-4 text-sm text-slate-300">
+            <div class="glass p-5 rounded-2xl">
+              <p class="text-slate-400 text-xs uppercase tracking-[0.2em] mb-2">AI Insight</p>
+              <p class="font-semibold text-base text-white">SNS×AIで強みとスキルを診断</p>
+            </div>
+            <div class="glass p-5 rounded-2xl">
+              <p class="text-slate-400 text-xs uppercase tracking-[0.2em] mb-2">Matching</p>
+              <p class="font-semibold text-base text-white">マッチ率92%の精度で副業提案</p>
+            </div>
+            <div class="glass p-5 rounded-2xl">
+              <p class="text-slate-400 text-xs uppercase tracking-[0.2em] mb-2">Growth</p>
+              <p class="font-semibold text-base text-white">最速PDCAで挑戦を成果に</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex-1 mt-14 lg:mt-0">
+          <div class="gradient-border">
+            <div class="app-mock">
+              <div class="absolute -top-6 right-10 px-4 py-2 rounded-full bg-white/80 text-xs font-semibold text-slate-900 shadow-lg">AIがあなたのストーリーを生成中...</div>
+              <div class="app-screen">
+                <div>
+                  <p class="text-sm uppercase text-slate-400 tracking-[0.3em]">Persona Decode</p>
+                  <h2 class="text-2xl font-bold text-white mt-1">Kazuki Tsugane</h2>
+                  <p class="text-slate-300 text-sm mt-2">SNSから抽出された挑戦力指数：<span class="text-yellow-400 font-semibold">92</span></p>
+                </div>
+                <div class="app-card">
+                  <p class="text-xs uppercase tracking-[0.28em] text-yellow-300/80">AI Strength Insight</p>
+                  <h3 class="text-lg font-semibold text-white mt-2">トップスキル</h3>
+                  <ul class="text-sm text-slate-100 space-y-1 mt-3">
+                    <li>・グロース設計 / SNS戦略</li>
+                    <li>・UXリサーチ &amp; AIプロダクト発想</li>
+                    <li>・0→1チームビルディング</li>
+                  </ul>
+                </div>
+                <div class="app-card border-blue-300/40 bg-gradient-to-br from-blue-400/10 to-cyan-300/10">
+                  <p class="text-xs uppercase tracking-[0.28em] text-blue-200/80">Matching Result</p>
+                  <h3 class="text-lg font-semibold text-white mt-2">推奨案件トップ3</h3>
+                  <ol class="text-sm text-slate-100 space-y-1 mt-3 list-decimal list-inside">
+                    <li>生成AIサービスのコミュニティグロース責任者</li>
+                    <li>新規事業立ち上げPM（SaaS）</li>
+                    <li>インフルエンサー共創プロジェクト統括</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- Vision / Mission / Value -->
-  <section id="vision" class="py-16 px-6 max-w-4xl mx-auto">
-    <h2 class="text-3xl font-bold mb-8">Vision / Mission / Value</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-      <div>
-        <h3 class="text-xl font-bold text-yellow-400 mb-2">Vision</h3>
-        <p class="text-gray-200">挑戦者が圧倒的に報われる社会をつくる。<br>誰もが自分で稼ぎ、経済的自立を実現できる未来へ。</p>
+    <section class="max-w-6xl mx-auto px-6 lg:px-8 pb-20">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass p-8 rounded-3xl">
+          <p class="text-slate-400 text-xs uppercase tracking-[0.3em]">Beta Traction</p>
+          <p class="text-4xl font-bold text-white">+180%</p>
+          <p class="mt-3 text-slate-300 text-sm">AI診断の満足度がβ版導入後2ヶ月で180%向上。挑戦の自信を最速で創出します。</p>
+        </div>
+        <div class="glass p-8 rounded-3xl">
+          <p class="text-slate-400 text-xs uppercase tracking-[0.3em]">Matching Accuracy</p>
+          <p class="text-4xl font-bold text-white">92%</p>
+          <p class="mt-3 text-slate-300 text-sm">AIマッチングにより初回応募からの案件決定率が平均92%。ミスマッチを徹底的に排除。</p>
+        </div>
+        <div class="glass p-8 rounded-3xl">
+          <p class="text-slate-400 text-xs uppercase tracking-[0.3em]">Time to First Win</p>
+          <p class="text-4xl font-bold text-white">14日</p>
+          <p class="mt-3 text-slate-300 text-sm">初回案件獲得までの最短日数は14日。挑戦の「最初の勝ち筋」を確実にデザインします。</p>
+        </div>
+      </div>
+    </section>
+    <section id="vision" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+      <div class="text-center space-y-4">
+        <span class="section-heading">Vision・Mission・Value</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">挑戦者が圧倒的に報われる社会を、最速で。</h2>
+        <p class="text-slate-300 max-w-3xl mx-auto text-base md:text-lg">LifeGameは、「挑戦する全ての人が主役になれる」未来を描きます。AIと人の伴走で、ゼロイチの挑戦に必要なマインド・スキル・仲間を最短距離で届けます。</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 mt-12">
+        <div class="glass p-7 rounded-3xl text-left">
+          <p class="text-sm uppercase tracking-[0.32em] text-yellow-300/80">Vision</p>
+          <h3 class="text-xl font-semibold text-white mt-3">挑戦者が圧倒的に報われる社会をつくる</h3>
+          <p class="text-slate-300 mt-4 text-sm">誰もが自分の意志で稼ぎ、経済的自立と自己実現を叶える世界へ。挑戦の成功確率をAIで高め、挑戦コストをゼロに近づけます。</p>
+        </div>
+        <div class="glass p-7 rounded-3xl text-left">
+          <p class="text-sm uppercase tracking-[0.32em] text-yellow-300/80">Mission</p>
+          <h3 class="text-xl font-semibold text-white mt-3">全ての挑戦者に、自分だけの“勝ち筋”を</h3>
+          <p class="text-slate-300 mt-4 text-sm">SNSから潜在的な強み・価値観を解析し、挑戦のロードマップを提案。挑戦者が最短で成果にたどり着ける伴走体験を提供します。</p>
+        </div>
+        <div class="glass p-7 rounded-3xl text-left">
+          <p class="text-sm uppercase tracking-[0.32em] text-yellow-300/80">Value</p>
+          <ul class="mt-4 space-y-2 text-slate-200 text-sm leading-relaxed">
+            <li><strong class="text-white">Limitless:</strong> 限界は自分で決めない。挑戦者の熱量にフルコミット。</li>
+            <li><strong class="text-white">Velocity:</strong> 圧倒的スピードでPDCAを回し続ける。</li>
+            <li><strong class="text-white">Ownership:</strong> 全ての行動は“主役意識”から始まる。</li>
+            <li><strong class="text-white">Belief:</strong> 世論ではなく、自分の信念で未来を設計する。</li>
+            <li><strong class="text-white">Try Fast:</strong> できないことほど最速でトライする。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-2 gap-14 items-start">
+        <div class="space-y-6">
+          <span class="section-heading">会社紹介</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-white">AIが導く“挑戦の勝ち筋”プラットフォーム</h2>
+          <p class="text-slate-300 text-base md:text-lg">株式会社LifeGameは、Z世代の「自己実現」と「スキルアップ」をAIで後押しする副業マッチングプラットフォームを開発しています。XやInstagramなどのSNSと連携し、AIが投稿内容やプロフィールから「強み・適性・価値観」を分析。挑戦したい領域における最適な案件と瞬時につなぎます。</p>
+          <p class="text-slate-400 text-sm">挑戦は孤独ではなく、“チーム戦”へ。挑戦者が迷わず一歩を踏み出し、最速で成果を掴むためのインフラを整備します。</p>
+          <div class="grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="glass p-5 rounded-2xl">
+              <p class="text-slate-400 text-xs uppercase tracking-[0.3em] mb-2">For Starters</p>
+              <p class="text-white font-semibold">副業未経験者でもAIが0→1をサポート</p>
+            </div>
+            <div class="glass p-5 rounded-2xl">
+              <p class="text-slate-400 text-xs uppercase tracking-[0.3em] mb-2">For Challengers</p>
+              <p class="text-white font-semibold">挑戦のプロセスを可視化し、成果へ導く</p>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-8">
+          <div class="glass rounded-3xl p-8">
+            <h3 class="text-lg font-semibold text-yellow-300 mb-3">サービスの3レイヤー構造</h3>
+            <ul class="space-y-3 text-slate-200 text-sm">
+              <li><strong class="text-white">① SNS解析AI：</strong> 投稿データから挑戦力スコアを算出。キャリアタイプを可視化。</li>
+              <li><strong class="text-white">② マッチングAI：</strong> 強み×志向性×時間を基に、挑戦の難易度と投資リターンを最適化。</li>
+              <li><strong class="text-white">③ チーム伴走：</strong> コミュニティで即フィードバック。挑戦を「続けられる」仕組みを提供。</li>
+            </ul>
+          </div>
+          <div class="glass rounded-3xl p-8">
+            <h3 class="text-lg font-semibold text-yellow-300 mb-3">プロダクトが解決する課題</h3>
+            <ul class="list-disc list-inside text-slate-200 text-sm space-y-2">
+              <li>自分の強みや価値観が言語化できず、挑戦の第一歩が踏み出せない。</li>
+              <li>情報過多のなかで、どの副業が自分に合うのか判断できない。</li>
+              <li>挑戦を継続する仲間・フィードバック環境がなく、成長が鈍化する。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="product" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="space-y-6">
+          <span class="section-heading">プロダクト</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-white">SNS×AIで「挑戦のロードマップ」を自動生成</h2>
+          <p class="text-slate-300 text-base md:text-lg">LifeGameは、挑戦者のSNSデータを解析し、「できること」「求められていること」「やりたいこと」を一気通貫で設計。AIがマッチングした案件とともに、挑戦のロードマップ、学習プラン、伴走コミュニティを提供します。</p>
+          <div class="grid sm:grid-cols-2 gap-5 text-sm">
+            <div class="glass p-5 rounded-2xl">
+              <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">AI Persona Graph</p>
+              <p class="font-semibold text-white">SNS発信をベースに挑戦者のペルソナを自動描写</p>
+            </div>
+            <div class="glass p-5 rounded-2xl">
+              <p class="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">Opportunity Engine</p>
+              <p class="font-semibold text-white">AIが24時間以内に案件・仲間・学習メニューを提案</p>
+            </div>
+          </div>
+          <div class="glass p-6 rounded-3xl">
+            <h3 class="text-lg font-semibold text-yellow-300 mb-3">サービス特徴</h3>
+            <ul class="list-disc list-inside text-slate-200 text-sm space-y-2">
+              <li>SNS連携によるAI自己PR診断＆スキル可視化</li>
+              <li>未経験者でも挑戦できる案件のみを厳選</li>
+              <li>AIとメンターが伴走し、挑戦の継続率を最大化</li>
+              <li>挑戦ログを記録し、キャリアポートフォリオを生成</li>
+            </ul>
+          </div>
+        </div>
+        <div class="glass rounded-3xl p-10 space-y-8">
+          <h3 class="text-xl font-semibold text-white">競合比較</h3>
+          <div class="overflow-x-auto">
+            <table>
+              <thead>
+                <tr class="text-yellow-300 text-sm uppercase tracking-[0.28em]">
+                  <th class="text-left">比較項目</th>
+                  <th>クラウドワークス</th>
+                  <th>ランサーズ</th>
+                  <th class="text-white">LifeGame</th>
+                </tr>
+              </thead>
+              <tbody class="text-sm text-slate-200">
+                <tr>
+                  <td class="text-left font-semibold text-white">案件検索</td>
+                  <td>△（自力検索）</td>
+                  <td>△（自力検索）</td>
+                  <td class="text-yellow-300 font-semibold">◎（AIが自動推薦）</td>
+                </tr>
+                <tr>
+                  <td class="text-left font-semibold text-white">初心者支援</td>
+                  <td>×</td>
+                  <td>×</td>
+                  <td class="text-yellow-300 font-semibold">◎（AI診断＋伴走）</td>
+                </tr>
+                <tr>
+                  <td class="text-left font-semibold text-white">スキル可視化</td>
+                  <td>×</td>
+                  <td>×</td>
+                  <td class="text-yellow-300 font-semibold">◎（挑戦ログ生成）</td>
+                </tr>
+                <tr>
+                  <td class="text-left font-semibold text-white">SNS連携</td>
+                  <td>×</td>
+                  <td>×</td>
+                  <td class="text-yellow-300 font-semibold">◎（主要SNSを網羅）</td>
+                </tr>
+                <tr>
+                  <td class="text-left font-semibold text-white">挑戦コミュニティ</td>
+                  <td>△（案件単位）</td>
+                  <td>△（案件単位）</td>
+                  <td class="text-yellow-300 font-semibold">◎（挑戦テーマ別に常設）</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="text-xs text-slate-400 mt-3">※LifeGame社による独自調査に基づいた比較です。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+      <div class="glass rounded-3xl p-10 relative overflow-hidden">
+        <div class="absolute inset-y-0 right-0 w-1/2 pointer-events-none bg-gradient-to-l from-blue-500/10 via-transparent to-transparent"></div>
+        <div class="grid lg:grid-cols-2 gap-10 relative">
+          <div class="space-y-5">
+            <span class="section-heading">How it Works</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-white">挑戦を成果に変える3ステップ</h2>
+            <p class="text-slate-300 text-sm md:text-base">AIの洞察と人の伴走を組み合わせ、挑戦の成功率を最大化。データに基づいた“挑戦の勝ち筋”をリアルタイムで更新します。</p>
+          </div>
+          <div class="relative timeline">
+            <div class="timeline-step" data-step="01">
+              <h3 class="text-xl font-semibold text-white">AIキャリアDNA診断</h3>
+              <p class="text-slate-300 text-sm mt-2">SNS連携＋数分の質問で、強み・価値観・挑戦スタイルをAIが分析。挑戦者の「今」を360°可視化します。</p>
+            </div>
+            <div class="timeline-step" data-step="02">
+              <h3 class="text-xl font-semibold text-white">勝ち筋マッチング＆ロードマップ</h3>
+              <p class="text-slate-300 text-sm mt-2">挑戦レベル／投資できる時間／習得したいスキルをもとに、副業案件・学習プラン・コミュニティを自動提示します。</p>
+            </div>
+            <div class="timeline-step" data-step="03">
+              <h3 class="text-xl font-semibold text-white">伴走コミュニティと成長可視化</h3>
+              <p class="text-slate-300 text-sm mt-2">メンターとAIが週次でフィードバック。挑戦ログが蓄積され、キャリアポートフォリオが自動生成されます。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+      <div class="text-center space-y-4">
+        <span class="section-heading">Roadmap</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">6ヶ月で一気にグロースするプロダクトロードマップ</h2>
+        <p class="text-slate-300 text-base md:text-lg">ユーザー共創型でサービスを磨き上げ、2025年内の正式リリースを目指します。</p>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-6 mt-14">
+        <div class="glass rounded-3xl p-8">
+          <p class="text-xs uppercase tracking-[0.3em] text-yellow-300">Month 1-2</p>
+          <h3 class="text-xl font-semibold text-white mt-3">AI診断プロトタイプ &amp; SNS連携</h3>
+          <p class="text-slate-300 text-sm mt-3">ユーザー登録、X連携、プロファイル画面を実装。AI診断をβ版として提供し、アルゴリズム検証を行います。</p>
+        </div>
+        <div class="glass rounded-3xl p-8">
+          <p class="text-xs uppercase tracking-[0.3em] text-yellow-300">Month 3-4</p>
+          <h3 class="text-xl font-semibold text-white mt-3">マッチングアルゴリズム構築</h3>
+          <p class="text-slate-300 text-sm mt-3">診断ロジックとデータベースを整備。挑戦者の行動ログを活用し、案件推薦精度を向上させます。</p>
+        </div>
+        <div class="glass rounded-3xl p-8">
+          <p class="text-xs uppercase tracking-[0.3em] text-yellow-300">Month 5-6</p>
+          <h3 class="text-xl font-semibold text-white mt-3">マルチSNS対応 &amp; βリリース</h3>
+          <p class="text-slate-300 text-sm mt-3">Instagram連携・UI/UX改良・セキュリティ強化を実施し、β版を公開。学生・若手社会人とのPoCで改善を加速。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+      <div class="text-center space-y-4">
+        <span class="section-heading">Team</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">挑戦者に寄り添う創業メンバー</h2>
+        <p class="text-slate-300 max-w-3xl mx-auto text-base md:text-lg">挑戦者の伴走経験を持つメンバーが集まり、AIとコミュニティで挑戦の成功確率を高めます。</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        <button type="button" class="glass p-8 rounded-3xl flex flex-col items-center text-center space-y-4 transform transition hover:-translate-y-1" data-modal-target="kazuki">
+          <img src="kazuki.png" alt="Kazuki Tsugane" class="w-28 h-28 rounded-full border border-yellow-300/60 shadow-lg">
+          <div>
+            <h3 class="text-xl font-semibold text-white">Kazuki Tsugane</h3>
+            <p class="text-slate-400 text-sm">Founder / CEO</p>
+          </div>
+          <p class="text-sm text-slate-300">事業立ち上げ・経営・SNS運用を一手に担い、挑戦の伴走者としてZ世代の未来を変革。</p>
+          <span class="text-yellow-300 text-sm font-semibold">詳しく見る →</span>
+        </button>
+        <button type="button" class="glass p-8 rounded-3xl flex flex-col items-center text-center space-y-4 transform transition hover:-translate-y-1" data-modal-target="jun">
+          <img src="unidentified.png" alt="Jun Otsu" class="w-28 h-28 rounded-full border border-yellow-300/60 shadow-lg">
+          <div>
+            <h3 class="text-xl font-semibold text-white">Jun Otsu</h3>
+            <p class="text-slate-400 text-sm">Head of Product</p>
+          </div>
+          <p class="text-sm text-slate-300">プロダクトのUXを統括し、挑戦者視点で高速にプロダクト改善を推進。</p>
+          <span class="text-yellow-300 text-sm font-semibold">詳しく見る →</span>
+        </button>
+        <div class="glass p-8 rounded-3xl text-center flex flex-col justify-center items-center space-y-3">
+          <span class="text-yellow-300 text-sm uppercase tracking-[0.3em]">We're hiring</span>
+          <h3 class="text-lg font-semibold text-white">次の創業メンバーを募集中</h3>
+          <p class="text-sm text-slate-300">プロダクト、デザイン、グロース領域の挑戦者を歓迎します。</p>
+          <a href="#recruit" class="secondary-button text-sm">ポジションを見る</a>
+        </div>
+      </div>
+    </section>
+    <section id="recruit" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+      <div class="text-center space-y-4">
+        <span class="section-heading">Join Us</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">挑戦を「チーム戦」に変える仲間を探しています</h2>
+        <p class="text-slate-300 max-w-3xl mx-auto text-base md:text-lg">経験ゼロからでも、挑戦の熱量があれば大歓迎。最初のインターン／創業メンバーとして、共に未来をつくりましょう。</p>
+      </div>
+      <div class="grid lg:grid-cols-3 gap-6 mt-12">
+        <details>
+          <summary>
+            <span>
+              <h3 class="text-lg font-semibold text-white">Head of Business</h3>
+              <p class="text-slate-400 text-sm">事業開発とチームマネジメントを牽引。</p>
+            </span>
+            <div class="faq-icon">+</div>
+          </summary>
+          <div class="mt-4 text-sm text-slate-200 space-y-3">
+            <p class="font-semibold text-white">主な仕事内容</p>
+            <ul class="list-disc list-inside space-y-1">
+              <li>事業戦略の立案・実行</li>
+              <li>ユーザー調査＆コミュニティ運営</li>
+              <li>事業KPI設計とグロース管理</li>
+            </ul>
+            <p class="font-semibold text-white pt-2">求める人物像</p>
+            <p>挑戦者の可能性を信じ、成果にコミットできる方。スタートアップ／グロース経験者歓迎。</p>
+          </div>
+        </details>
+        <details>
+          <summary>
+            <span>
+              <h3 class="text-lg font-semibold text-white">UI/UX Designer</h3>
+              <p class="text-slate-400 text-sm">プロダクト体験全体を設計するクリエイター。</p>
+            </span>
+            <div class="faq-icon">+</div>
+          </summary>
+          <div class="mt-4 text-sm text-slate-200 space-y-3">
+            <p class="font-semibold text-white">主な仕事内容</p>
+            <ul class="list-disc list-inside space-y-1">
+              <li>サービス設計・ユーザーフロー策定</li>
+              <li>プロトタイプ作成とユーザーテスト</li>
+              <li>デザインシステム構築・運用</li>
+            </ul>
+            <p class="font-semibold text-white pt-2">求める人物像</p>
+            <p>トレンドに敏感で、Figma等のツールに慣れている方。感性とロジックで挑戦者を支えたい方。</p>
+          </div>
+        </details>
+        <details>
+          <summary>
+            <span>
+              <h3 class="text-lg font-semibold text-white">Tech / Biz Advisor</h3>
+              <p class="text-slate-400 text-sm">戦略と実行をつなぐアドバイザー。</p>
+            </span>
+            <div class="faq-icon">+</div>
+          </summary>
+          <div class="mt-4 text-sm text-slate-200 space-y-3">
+            <p class="font-semibold text-white">主な仕事内容</p>
+            <ul class="list-disc list-inside space-y-1">
+              <li>プロダクト／技術戦略の監修</li>
+              <li>新規事業のメンタリング</li>
+              <li>ネットワークの提供、採用支援</li>
+            </ul>
+            <p class="font-semibold text-white pt-2">求める人物像</p>
+            <p>スタートアップ支援経験があり、挑戦者に伴走できる方。CxO経験者歓迎。</p>
+          </div>
+        </details>
+      </div>
+
+      <section id="student" class="mt-20 glass rounded-3xl p-10">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div class="space-y-4">
+            <span class="section-heading">学生インターン募集</span>
+            <h3 class="text-2xl md:text-3xl font-bold text-white">ゼロから挑戦できる“主役舞台”を用意しました</h3>
+            <p class="text-slate-300 text-base">経験や実績は一切不問。挑戦したい気持ちさえあれば、圧倒的な裁量・成長・仲間が待っています。</p>
+            <ul class="text-sm text-slate-200 space-y-2 list-disc list-inside">
+              <li>AIプロダクト開発・マーケの最前線に参画</li>
+              <li>全国・海外どこからでもリモートOK</li>
+              <li>挑戦ログでキャリアポートフォリオを生成</li>
+            </ul>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-6 text-center text-sm">
+            <div class="glass p-6 rounded-2xl space-y-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke="#facc15" stroke-width="1.5" d="M12 6v12m6-6H6"/></svg>
+              <h4 class="text-lg font-semibold text-white">圧倒的裁量</h4>
+              <p class="text-slate-300">最前線の意思決定に関わり、挑戦の場を自ら作る。</p>
+            </div>
+            <div class="glass p-6 rounded-2xl space-y-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke="#facc15" stroke-width="1.5" d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0c3 3 3 17 0 20m0-20c-3 3-3 17 0 20M2 12h20"/></svg>
+              <h4 class="text-lg font-semibold text-white">場所は関係なし</h4>
+              <p class="text-slate-300">完全リモートで、全国・海外から参画可能。</p>
+            </div>
+            <div class="glass p-6 rounded-2xl space-y-3 sm:col-span-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mx-auto" fill="#facc15" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <h4 class="text-lg font-semibold text-white">最初の“主役”になれる</h4>
+              <p class="text-slate-300">仕組みづくり・チーム拡大の主役に。挑戦したい学生を全力応援。</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-10">
+          <a href="#recruit-form" class="cta-button">今すぐ応募する</a>
+        </div>
+      </section>
+
+      <div class="max-w-xl mx-auto bg-slate-900/70 border border-slate-700/60 rounded-3xl p-8 mt-16" id="recruit-form">
+        <h3 class="text-2xl font-semibold text-white mb-6 text-center">応募フォーム</h3>
+        <form action="https://formspree.io/f/xldbvdra" method="POST" class="space-y-4" id="join-form">
+          <input type="text" name="name" placeholder="お名前" class="w-full p-3 rounded-xl bg-slate-950/70 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-yellow-300" required>
+          <input type="email" name="email" placeholder="メールアドレス" class="w-full p-3 rounded-xl bg-slate-950/70 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-yellow-300" required>
+          <textarea name="message" rows="5" placeholder="志望理由やメッセージ" class="w-full p-3 rounded-xl bg-slate-950/70 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-yellow-300" required></textarea>
+          <button type="submit" class="w-full cta-button justify-center">応募する</button>
+        </form>
+        <p class="hidden mt-4 text-center text-emerald-400 font-semibold" id="form-success">応募ありがとうございます！追ってご連絡いたします。</p>
+        <p class="hidden mt-4 text-center text-rose-400 font-semibold" id="form-error">送信中にエラーが発生しました。お手数ですが再度お試しください。</p>
+      </div>
+    </section>
+
+    <section id="faq" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+      <div class="text-center space-y-4">
+        <span class="section-heading">FAQ</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">よくある質問</h2>
+        <p class="text-slate-300 max-w-3xl mx-auto text-base md:text-lg">サービスや応募に関する質問にお答えします。</p>
+      </div>
+      <div class="max-w-3xl mx-auto mt-12 space-y-4">
+        <details>
+          <summary>
+            <span>副業やスキルに自信がなくても利用できますか？</span>
+            <div class="faq-icon">+</div>
+          </summary>
+          <p class="mt-4 text-slate-200 text-sm">もちろん大丈夫です。AI診断と伴走サポートで、未経験でも自分に合った案件から挑戦できます。</p>
+        </details>
+        <details>
+          <summary>
+            <span>利用料金はかかりますか？</span>
+            <div class="faq-icon">+</div>
+          </summary>
+          <p class="mt-4 text-slate-200 text-sm">サービス利用は無料です。今後、キャリア相談や特別サポートなど一部有料オプションも展開予定です。</p>
+        </details>
+        <details>
+          <summary>
+            <span>どんな案件がありますか？</span>
+            <div class="faq-icon">+</div>
+          </summary>
+          <p class="mt-4 text-slate-200 text-sm">ライティング、SNS運用、デザイン、動画編集、プログラミングなど幅広い案件を用意。AIがあなたの強みに合わせて提案します。</p>
+        </details>
+        <details>
+          <summary>
+            <span>他社サービスとの違いは？</span>
+            <div class="faq-icon">+</div>
+          </summary>
+          <p class="mt-4 text-slate-200 text-sm">SNS連携×AI診断により、強みを自動可視化。挑戦ログの生成や伴走コミュニティで挑戦を継続できます。</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="contact" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+      <div class="glass rounded-3xl p-10 text-center space-y-6">
+        <span class="section-heading">Contact</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">挑戦の“次の一手”を、一緒にデザインしよう</h2>
+        <p class="text-slate-300 max-w-3xl mx-auto">サービスに関するご相談、取材・提携のご依頼など、お気軽にお問い合わせください。</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm">
+          <a href="mailto:contact@lifegame.inc" class="secondary-button">contact@lifegame.inc</a>
+          <a href="https://twitter.com/kazuki_lifegame" target="_blank" rel="noopener" class="secondary-button">CEOのX（Twitter）へ</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-12">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 grid lg:grid-cols-4 gap-10 text-sm text-slate-400">
+      <div class="space-y-3">
+        <div class="flex items-center gap-3">
+          <img src="logo.png" alt="LifeGameロゴ" class="h-9 w-9 rounded-xl">
+          <div>
+            <p class="text-sm uppercase tracking-[0.35em] text-gray-400">LifeGame Inc.</p>
+            <p class="text-base font-semibold text-white">Challenge is our Game</p>
+          </div>
+        </div>
+        <p class="text-slate-500 text-xs">Z世代の挑戦をAIで後押しする副業マッチングスタートアップ。</p>
       </div>
       <div>
-        <h3 class="text-xl font-bold text-yellow-400 mb-2">Mission</h3>
-        <p class="text-gray-200">全ての挑戦者に、自分だけの“勝ち筋”を与える。<br>一人ひとりが主役として成長できる社会を創る。</p>
-      </div>
-      <div>
-        <h3 class="text-xl font-bold text-yellow-400 mb-2">Value</h3>
-        <ul class="text-gray-200 list-disc list-inside">
-          <li>限界は自分で決めない</li>
-          <li>圧倒的スピードでPDCAを回す</li>
-          <li>全ての行動は“主役意識”から始まる</li>
-          <li>他人や世論ではなく、自分の信念で未来を設計する</li>
-          <li>できないことほど最速でトライ</li>
+        <h3 class="text-white font-semibold mb-3">ナビゲーション</h3>
+        <ul class="space-y-2">
+          <li><a href="#vision" class="hover:text-yellow-300">ビジョン</a></li>
+          <li><a href="#product" class="hover:text-yellow-300">プロダクト</a></li>
+          <li><a href="#roadmap" class="hover:text-yellow-300">ロードマップ</a></li>
+          <li><a href="#team" class="hover:text-yellow-300">チーム</a></li>
+          <li><a href="#recruit" class="hover:text-yellow-300">採用情報</a></li>
         </ul>
       </div>
-    </div>
-  </section>
-
-  <!-- About（会社紹介） -->
-  <section id="about" class="py-20 px-6 max-w-4xl mx-auto">
-    <h2 class="text-3xl font-bold mb-8">会社紹介</h2>
-    <p class="text-lg mb-6">株式会社LifeGameは、Z世代の“自己実現”と“スキルアップ”をAIで後押しする副業マッチングプラットフォームを開発しています。SNS（XやInstagram等）連携であなたの強み・適性を自動診断、本当に合った副業案件とつなぎます。</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="bg-gray-800 p-6 rounded-xl text-center">
-        <h3 class="text-xl font-semibold mb-2">Kazuki Tsugane</h3>
-        <p class="text-gray-300">Founder, CEO</p>
+      <div>
+        <h3 class="text-white font-semibold mb-3">リソース</h3>
+        <ul class="space-y-2">
+          <li><a href="#faq" class="hover:text-yellow-300">よくある質問</a></li>
+          <li><a href="#recruit-form" class="hover:text-yellow-300">応募フォーム</a></li>
+          <li><a href="mailto:contact@lifegame.inc" class="hover:text-yellow-300">お問い合わせ</a></li>
+        </ul>
       </div>
-      <div class="bg-gray-800 p-6 rounded-xl text-center">
-        <h3 class="text-xl font-semibold mb-2">Jun Otsu</h3>
-        <p class="text-gray-300">Head of Product</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- プロダクト紹介 -->
-  <section id="product" class="py-20 px-6 bg-gray-900">
-    <h2 class="text-3xl font-bold mb-8">プロダクト紹介</h2>
-    <div class="mb-6">
-      <h3 class="text-xl font-bold mb-2">サービス概要</h3>
-      <p class="mb-4">LifeGameは、Z世代の“自己実現”と“スキルアップ”を後押しするAI副業マッチングプラットフォームです。SNS（XやInstagram等）のアカウントと連携し、AIが投稿内容やプロフィールから「あなたの強み・適性・興味」を自動診断。分析結果をもとに“本当に合った副業案件”だけを自動でピックアップしてご提案します。</p>
-      <p>副業が初めての方・自分の強みが分からない方も、自己分析や応募サポート機能で「安心して最初の一歩」を踏み出せます。</p>
-    </div>
-    <div class="mb-6">
-      <h3 class="text-xl font-bold mb-2">サービス特徴</h3>
-      <ul class="list-disc list-inside text-gray-200">
-        <li>SNS連携によるAI自己PR診断＆スキル可視化</li>
-        <li>初心者／未経験者でもすぐ始められる</li>
-        <li>マッチングのミスマッチを最小化</li>
-        <li>すべてオンライン完結＆無料でスタートOK</li>
-      </ul>
-    </div>
-    <!-- 競合比較表 -->
-    <div class="overflow-x-auto mb-10">
-      <h3 class="text-xl font-bold mb-2">競合比較</h3>
-      <table class="min-w-full text-center">
-        <thead>
-          <tr class="text-yellow-400">
-            <th class="py-2 px-4">比較</th>
-            <th class="py-2 px-4">クラウドワークス</th>
-            <th class="py-2 px-4">ランサーズ</th>
-            <th class="py-2 px-4">LifeGame</th>
-          </tr>
-        </thead>
-        <tbody class="text-gray-200">
-          <tr><td class="py-2 px-4">案件検索</td><td>△（自力検索）</td><td>△（自力検索）</td><td>◎（AIが自動推薦）</td></tr>
-          <tr><td class="py-2 px-4">初心者支援</td><td>×</td><td>×</td><td>◎（AI診断サポート）</td></tr>
-          <tr><td class="py-2 px-4">スキル可視化</td><td>×</td><td>×</td><td>◎</td></tr>
-          <tr><td class="py-2 px-4">SNS連携</td><td>×</td><td>×</td><td>◎</td></tr>
-        </tbody>
-      </table>
-      <p class="text-sm text-gray-400 mt-2">※内容はLifeGame社による独自調査に基づいた比較です。</p>
-    </div>
-  </section>
-
-  <!-- ロードマップ -->
-  <section id="roadmap" class="py-16 px-6 max-w-4xl mx-auto">
-    <h2 class="text-3xl font-bold mb-8">ロードマップ</h2>
-    <div class="bg-gray-900 p-8 rounded-xl">
-      <ol class="list-decimal list-inside text-lg text-gray-200 space-y-2">
-        <li>1～2ヶ月目：ユーザー登録機能、X連携、プロファイル画面の実装／AI診断プロトタイプ作成</li>
-        <li>3～4ヶ月目：診断ロジック・DB構築／マッチングアルゴリズム実装・UI整備</li>
-        <li>5～6ヶ月目：Instagram対応・UI/UX改良・セキュリティ強化／βリリース＆ユーザーテスト</li>
-      </ol>
-      <p class="mt-4 text-gray-400">大学生・新卒社会人男女10～20名規模でPoCを実施し、短期PDCAで最速グロース！</p>
-    </div>
-  </section>
-
-  <!-- 代表メッセージ -->
-  <section class="py-16 px-6 max-w-3xl mx-auto">
-    <h2 class="text-3xl font-bold mb-8">代表メッセージ</h2>
-    <div class="bg-gray-900 p-8 rounded-xl">
-      <h3 class="text-xl font-bold mb-4 text-yellow-400">Kazuki Tsugane</h3>
-      <p class="text-gray-200">自分には何もできない——そう思っていた過去の自分を、行動と挑戦で変えてきました。<br>だからこそ、同じように「一歩踏み出したい」全てのZ世代の挑戦を、本気で後押ししたい。<br>LifeGameは、AIの力で“本当の強み”を見つけ、「挑戦の勝ち筋」を与えるサービスです。<br>最初は誰でも未経験。ここでの“最初の挑戦”が、あなたの人生を大きく変えるきっかけになると信じています。</p>
-    </div>
-  </section>
-
-  <!-- チーム紹介セクション＋ポップアップ（モーダル）機能つき 完全版 -->
-<section id="team" class="py-16 px-6 max-w-4xl mx-auto">
-  <h2 class="text-3xl font-bold mb-8">チーム</h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <!-- Kazuki Tsugane カード -->
-    <div onclick="openModal('kazuki')" class="bg-gray-800 p-6 rounded-xl text-center flex flex-col items-center cursor-pointer hover:scale-105 hover:shadow-2xl transition-all">
-      <img src="kazuki.png" alt="Kazuki Tsugane" class="rounded-full w-24 h-24 mb-4">
-      <h3 class="text-xl font-semibold mb-1">Kazuki Tsugane</h3>
-      <p class="text-gray-400">Founder, CEO</p>
-      <a href="https://twitter.com/kazuki_lifegame" target="_blank" class="text-yellow-400 text-sm mt-2 hover:underline">X（Twitter）</a>
-    </div>
-    <!-- Yuka Kimura カード -->
-    <div onclick="openModal('Jun')" class="bg-gray-800 p-6 rounded-xl text-center flex flex-col items-center cursor-pointer hover:scale-105 hover:shadow-2xl transition-all">
-      <img src="unidentified.png" alt="Jun Otsu" class="rounded-full w-24 h-24 mb-4">
-      <h3 class="text-xl font-semibold mb-1">Jun Otsu</h3>
-      <p class="text-gray-400">Head of Product</p>
-      <span class="text-gray-500 text-sm mt-2">（準備中）</span>
-    </div>
-
-  <!-- Kazuki モーダル -->
-  <div id="modal-kazuki" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden">
-    <div class="bg-white rounded-2xl p-8 max-w-md w-full relative animate-pop">
-      <button onclick="closeModal('kazuki')" class="absolute top-3 right-3 text-2xl text-gray-400 hover:text-black">&times;</button>
-      <img src="kazuki.png" class="w-24 h-24 mx-auto rounded-full mb-4">
-      <h3 class="text-2xl font-bold text-center mb-2 text-black">Kazuki Tsugane</h3>
-      <p class="text-gray-700 text-center mb-4">Founder, CEO<br>事業立ち上げ・経営・SNS運用を一手に担当。学生時代から爆速で挑戦を続け、AI×プロダクトの未来を切り拓く。</p>
-      <a href="https://twitter.com/kazuki_lifegame" target="_blank" class="block text-yellow-500 text-center font-bold hover:underline mb-2">X（Twitter）</a>
-    </div>
-  </div>
-  <!-- Yuka モーダル -->
-  <div id="modal-Jun" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden">
-    <div class="bg-white rounded-2xl p-8 max-w-md w-full relative animate-pop">
-      <button onclick="closeModal('Jun')" class="absolute top-3 right-3 text-2xl text-gray-400 hover:text-black">&times;</button>
-      <img src="unidentified.png" class="w-24 h-24 mx-auto rounded-full mb-4">
-      <h3 class="text-2xl font-bold text-center mb-2 text-black">Jun Otsu</h3>
-      <p class="text-gray-700 text-center mb-4">Head of Product<br>代表とともに、チームの「推進力」として最高のプロダクトを作ります。</p>
-    </div>
-  </div>
-</section>
-
-<!-- 必要なJS：モーダル制御 -->
-<script>
-function openModal(name) {
-  document.getElementById(`modal-${name}`).classList.remove('hidden');
-}
-function closeModal(name) {
-  document.getElementById(`modal-${name}`).classList.add('hidden');
-}
-</script>
-
-<!-- Tailwindのアニメーション拡張例（必要なら追加） -->
-<style>
-@keyframes pop {
-  0% { transform: scale(0.95); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-.animate-pop { animation: pop 0.2s cubic-bezier(.4,2,.6,1) both; }
-</style>
-
-
-  <!-- Recruit（採用セクション＆カードクリックで詳細展開＆フォーム） -->
-  <section id="recruit" class="py-20 px-6 max-w-5xl mx-auto">
-    <h2 class="text-3xl font-bold mb-8">採用情報</h2>
-    <p class="mb-8">私たちと一緒に「言葉の力」で世界を変えませんか？</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-      <!-- Head of Product -->
-      <div onclick="toggleDetail('business')" class="bg-gray-800 p-6 rounded-xl cursor-pointer transition hover:bg-yellow-100 hover:text-black">
-        <h3 class="text-xl font-bold mb-1">Head of Business</h3>
-        <p>プロダクト全体を統括し、ユーザー視点で事業推進をします。</p>
-        <div id="detail-product" class="hidden mt-4 text-sm text-gray-200">
-          <p class="mb-2">【主な仕事内容】<br>・事業開発活動<br>・市場調査と企画立案<br>・チームマネジメント</p>
-          <p class="mb-2">【求める人物像】<br>・好奇心旺盛な方<br>・ビジネス力で世界を変えたい方</p>
-          <p>【歓迎条件】<br>・スタートアップ経験者、BD経験者歓迎！</p>
-        </div>
-      </div>
-      <!-- UI/UX Designer -->
-      <div onclick="toggleDetail('designer')" class="bg-gray-800 p-6 rounded-xl cursor-pointer transition hover:bg-yellow-100 hover:text-black">
-        <h3 class="text-xl font-bold mb-1">UI/UX Designer</h3>
-        <p>感性とロジックを融合し、ユーザー体験を設計します。</p>
-        <div id="detail-designer" class="hidden mt-4 text-sm text-gray-200">
-          <p class="mb-2">【主な仕事内容】<br>・サービス設計<br>・プロトタイプ作成<br>・デザインシステム運用</p>
-          <p class="mb-2">【求める人物像】<br>・トレンドへの感度が高い方<br>・Figma/Adobe XD経験者歓迎！</p>
-        </div>
-      </div>
-      <!-- Tech/Biz Advisor -->
-      <div onclick="toggleDetail('advisor')" class="bg-gray-800 p-6 rounded-xl cursor-pointer transition hover:bg-yellow-100 hover:text-black md:col-span-2">
-        <h3 class="text-xl font-bold mb-1">Tech/Biz Advisor</h3>
-        <p>技術とビジネスをつなぎ、戦略を支える知見を提供します。</p>
-        <div id="detail-advisor" class="hidden mt-4 text-sm text-gray-200">
-          <p class="mb-2">【主な仕事内容】<br>・プロダクト監修・技術戦略策定<br>・新規事業メンタリング<br>・ネットワークの提供</p>
-          <p class="mb-2">【求める人物像】<br>・CxO経験や事業立ち上げ経験がある方<br>・スタートアップに興味がある方</p>
-        </div>
+      <div class="space-y-3">
+        <h3 class="text-white font-semibold mb-3">最新情報</h3>
+        <p class="text-slate-500 text-xs">β版の最新情報やイベント情報をニュースレターでお届けします。</p>
+        <form class="flex gap-2">
+          <input type="email" placeholder="メールアドレス" class="flex-1 bg-slate-900/70 border border-slate-700 rounded-full px-4 py-2 text-white placeholder-slate-500 focus:outline-none focus:border-yellow-300" required>
+          <button type="submit" class="cta-button px-5 py-2">登録</button>
+        </form>
       </div>
     </div>
-    <section id="student" class="py-20 px-6 max-w-4xl mx-auto">
-  <h2 class="text-3xl font-bold mb-6 text-yellow-400">学生インターン募集</h2>
-  <p class="text-lg mb-10 text-white">
-    “ゼロ”から始める学生でも、<span class="text-yellow-400 font-bold">圧倒的な成長・裁量・仲間</span>を得られる場所。<br>
-    経験・実績ゼロでも、<span class="text-yellow-400 font-bold">「挑戦したい」その気持ちだけで応募OK</span>。
-  </p>
-  <div class="grid md:grid-cols-2 gap-8">
-    <!-- メリット1 -->
-    <div class="bg-gray-800 rounded-2xl p-8 flex flex-col items-center text-center">
-      <!-- SVGアイコン（成長） -->
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke="#facc15" stroke-width="2" d="M5 12l5 5L20 7" /></svg>
-      <h3 class="text-xl font-semibold mb-2">圧倒的成長環境</h3>
-      <p>AIプロダクト開発・マーケの最前線で、爆速でスキルアップできます。</p>
-    </div>
-    <!-- メリット2 -->
-    <div class="bg-gray-800 rounded-2xl p-8 flex flex-col items-center text-center">
-      <!-- SVGアイコン（地球儀） -->
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="#facc15" stroke-width="2" fill="none"/><path stroke="#facc15" stroke-width="2" d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" /></svg>
-      <h3 class="text-xl font-semibold mb-2">全国・海外から参加OK</h3>
-      <p>リモートワークOK。どこからでも参画できます。</p>
-    </div>
-    <!-- メリット3 -->
-    <div class="bg-gray-800 rounded-2xl p-8 flex flex-col items-center text-center md:col-span-2">
-      <!-- SVGアイコン（星） -->
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mb-4" fill="#facc15" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-      <h3 class="text-xl font-semibold mb-2">最初の“主役”になれる！</h3>
-      <p>仕組みづくり・チーム拡大の主役に。挑戦したい学生を全力応援。</p>
-    </div>
-  </div>
-  <div class="text-center mt-12">
-    <a href="#recruit-form" class="inline-block bg-yellow-400 text-black px-8 py-4 rounded-xl text-xl font-bold shadow-lg hover:bg-yellow-300 transition-all">今すぐ応募する</a>
-  </div>
-  <div class="text-center text-gray-400 mt-6">
-    <p>※実績はこれから！<span class="text-yellow-400">「最初のインターン生」</span>として一緒に歴史を作ろう。</p>
-  </div>
-</section>
-
-    
-    <!-- 応募フォーム -->
-    <div class="max-w-xl mx-auto bg-gray-900 p-6 rounded-xl mb-6">
-      <h3 class="text-2xl font-bold mb-4">応募フォーム</h3>
-      <form action="https://formspree.io/f/xldbvdra" method="POST" class="space-y-4">
-        <input type="text" name="name" placeholder="お名前" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400" required>
-        <input type="email" name="email" placeholder="メールアドレス" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400" required>
-        <textarea name="message" rows="5" placeholder="志望理由やメッセージ" class="w-full p-3 rounded bg-gray-800 text-white placeholder-gray-400" required></textarea>
-        <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded transition duration-200">応募する</button>
-      </form>
-      <div id="form-success" class="hidden mt-4 text-green-400 font-semibold transition duration-200">
-        応募が完了しました。ご入力ありがとうございました！
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="py-16 px-6 max-w-4xl mx-auto">
-    <h2 class="text-3xl font-bold mb-8">FAQ</h2>
-    <div class="space-y-6">
-      <div class="bg-gray-800 p-6 rounded-xl">
-        <h3 class="font-semibold mb-2">Q. 副業・スキルに自信がなくても利用できますか？</h3>
-        <p class="text-gray-300">A. もちろん大丈夫です！AI診断とサポートで、未経験・初心者でも自分に合った案件から始められます。</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-xl">
-        <h3 class="font-semibold mb-2">Q. 利用料はかかりますか？</h3>
-        <p class="text-gray-300">A. サービス利用は無料です。今後、キャリア相談や特別サポートなど一部有料オプションも展開予定です。</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-xl">
-        <h3 class="font-semibold mb-2">Q. どんな案件がありますか？</h3>
-        <p class="text-gray-300">A. ライティング、SNS運用、デザイン、動画編集、プログラミングなど幅広く用意しています。あなたの強みや興味に合った案件だけをAIがご提案します。</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded-xl">
-        <h3 class="font-semibold mb-2">Q. 他社サービスとどう違うの？</h3>
-        <p class="text-gray-300">A. SNS連携×AI診断で“あなたの強みを自動可視化”。マッチング精度が高く、初心者でも始めやすい設計が特長です。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- フッター -->
-  <footer class="text-center py-6 bg-black text-sm text-gray-400">
-    &copy; 2025 株式会社LifeGame. All rights reserved.
+    <p class="text-center text-xs text-slate-600 mt-10">&copy; 2025 LifeGame Inc. All rights reserved.</p>
   </footer>
 
-  <!-- JS（応募完了メッセージ、カード詳細展開） -->
+  <div class="modal" data-modal="kazuki" role="dialog" aria-modal="true" aria-labelledby="modal-title-kazuki">
+    <div class="modal-card">
+      <button class="modal-close" data-modal-close="kazuki" aria-label="閉じる">&times;</button>
+      <img src="kazuki.png" alt="Kazuki Tsugane" class="w-24 h-24 mx-auto rounded-full border border-yellow-300/60 shadow-lg mb-4">
+      <h3 id="modal-title-kazuki" class="text-2xl font-bold text-center mb-2">Kazuki Tsugane</h3>
+      <p class="text-center text-sm text-slate-600">Founder / CEO</p>
+      <p class="text-slate-700 text-sm mt-4 leading-relaxed">学生時代から複数事業を立ち上げ、SNSグロースとAIプロダクト開発を統括。挑戦者が最速で成果にたどり着くための仕組みづくりに情熱を注ぐ。</p>
+      <a href="https://twitter.com/kazuki_lifegame" target="_blank" rel="noopener" class="mt-5 block text-center text-yellow-500 font-semibold">X（Twitter）でつながる</a>
+    </div>
+  </div>
+
+  <div class="modal" data-modal="jun" role="dialog" aria-modal="true" aria-labelledby="modal-title-jun">
+    <div class="modal-card">
+      <button class="modal-close" data-modal-close="jun" aria-label="閉じる">&times;</button>
+      <img src="unidentified.png" alt="Jun Otsu" class="w-24 h-24 mx-auto rounded-full border border-yellow-300/60 shadow-lg mb-4">
+      <h3 id="modal-title-jun" class="text-2xl font-bold text-center mb-2">Jun Otsu</h3>
+      <p class="text-center text-sm text-slate-600">Head of Product</p>
+      <p class="text-slate-700 text-sm mt-4 leading-relaxed">挑戦者視点でUXを磨き込み、AIを活用した価値提案を設計。チームの推進力として、ユーザーと共にプロダクトを進化させる。</p>
+    </div>
+  </div>
+
   <script>
-    // 応募フォーム送信後メッセージ
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.querySelector('form');
-      if(form) {
-        form.addEventListener('submit', function(e) {
-          setTimeout(() => {
-            document.getElementById('form-success').classList.remove('hidden');
-            form.reset();
-          }, 300); // 擬似的な遅延(0.3秒)
-        });
+    document.addEventListener('DOMContentLoaded', () => {
+      const navToggle = document.getElementById('nav-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const navLinks = mobileMenu?.querySelectorAll('a') ?? [];
+
+      if (navToggle && mobileMenu) {
+        const toggleMenu = () => {
+          const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', String(!expanded));
+          mobileMenu.classList.toggle('hidden');
+        };
+
+        navToggle.addEventListener('click', toggleMenu);
+        navLinks.forEach(link => link.addEventListener('click', () => {
+          if (!mobileMenu.classList.contains('hidden')) {
+            toggleMenu();
+          }
+        }));
       }
-    });
-    // カードクリックで詳細展開
-    function toggleDetail(role) {
-      const ids = ["detail-business", "detail-designer", "detail-advisor"];
-      ids.forEach(id => {
-        if(id === "detail-" + role){
-          document.getElementById(id).classList.toggle("hidden");
-        } else {
-          document.getElementById(id).classList.add("hidden");
+
+      const openModal = (name) => {
+        const modal = document.querySelector(`.modal[data-modal="${name}"]`);
+        modal?.classList.add('active');
+      };
+
+      const closeModal = (name) => {
+        const modal = document.querySelector(`.modal[data-modal="${name}"]`);
+        modal?.classList.remove('active');
+      };
+
+      document.querySelectorAll('[data-modal-target]').forEach(button => {
+        button.addEventListener('click', () => openModal(button.getAttribute('data-modal-target')));
+      });
+
+      document.querySelectorAll('[data-modal-close]').forEach(button => {
+        button.addEventListener('click', () => closeModal(button.getAttribute('data-modal-close')));
+      });
+
+      document.querySelectorAll('.modal').forEach(modal => {
+        modal.addEventListener('click', (event) => {
+          if (event.target === modal) {
+            closeModal(modal.getAttribute('data-modal'));
+          }
+        });
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          document.querySelectorAll('.modal.active').forEach(modal => {
+            modal.classList.remove('active');
+          });
         }
       });
-    }
+
+      const form = document.getElementById('join-form');
+      const success = document.getElementById('form-success');
+      const error = document.getElementById('form-error');
+
+      form?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        success?.classList.add('hidden');
+        error?.classList.add('hidden');
+
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch(form.action, {
+            method: form.method,
+            headers: { 'Accept': 'application/json' },
+            body: formData,
+          });
+
+          if (response.ok) {
+            success?.classList.remove('hidden');
+            form.reset();
+          } else {
+            throw new Error('network error');
+          }
+        } catch (err) {
+          console.error(err);
+          error?.classList.remove('hidden');
+        }
+      });
+    });
   </script>
 </body>
 </html>

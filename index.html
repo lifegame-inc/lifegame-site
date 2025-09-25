@@ -28,8 +28,10 @@
       --layer: rgba(10, 15, 36, 0.78);
       --card: rgba(12, 22, 55, 0.86);
       --stroke: rgba(120, 141, 192, 0.28);
-      --accent: #facc15;
-      --accent-strong: #f97316;
+      --accent: #38bdf8;
+      --accent-strong: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.45);
+      --accent-soft: rgba(56, 189, 248, 0.22);
       --text: #f8fafc;
       --text-soft: #c7d2fe;
       --muted: #94a3b8;
@@ -45,9 +47,9 @@
     body {
       margin: 0;
       font-family: 'Plus Jakarta Sans', 'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at 16% 18%, rgba(37, 99, 235, 0.18), transparent 52%),
-                  radial-gradient(circle at 84% 12%, rgba(168, 85, 247, 0.16), transparent 60%),
-                  linear-gradient(135deg, #020617 0%, #030a1f 50%, #05091c 100%);
+      background: radial-gradient(circle at 16% 18%, rgba(59, 130, 246, 0.2), transparent 52%),
+                  radial-gradient(circle at 80% 10%, rgba(129, 140, 248, 0.18), transparent 58%),
+                  linear-gradient(140deg, #010615 0%, #020b1f 45%, #051231 100%);
       color: var(--text);
       line-height: 1.7;
       letter-spacing: 0.01em;
@@ -60,7 +62,7 @@
       content: "";
       position: fixed;
       inset: 0;
-      background: linear-gradient(120deg, rgba(59, 130, 246, 0.08), rgba(250, 204, 21, 0.05));
+      background: linear-gradient(120deg, rgba(59, 130, 246, 0.12), rgba(99, 102, 241, 0.08));
       pointer-events: none;
       z-index: -2;
     }
@@ -77,8 +79,8 @@
     }
 
     ::selection {
-      background: rgba(250, 204, 21, 0.35);
-      color: #0f172a;
+      background: rgba(99, 102, 241, 0.35);
+      color: #0b1224;
     }
 
     a {
@@ -193,14 +195,14 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #facc15, #f97316);
-      color: #0f172a;
-      box-shadow: 0 20px 45px rgba(250, 204, 21, 0.32);
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #0b1224;
+      box-shadow: 0 20px 45px rgba(56, 189, 248, 0.32);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 24px 55px rgba(250, 204, 21, 0.45);
+      box-shadow: 0 24px 55px rgba(99, 102, 241, 0.45);
     }
 
     .btn-ghost {
@@ -211,7 +213,7 @@
 
     .btn-ghost:hover {
       transform: translateY(-2px);
-      border-color: rgba(250, 204, 21, 0.45);
+      border-color: rgba(99, 102, 241, 0.45);
       color: var(--accent);
     }
 
@@ -259,7 +261,7 @@
       letter-spacing: -0.02em;
       font-weight: 700;
       margin: 0;
-      background: linear-gradient(120deg, #f8fafc 0%, #facc15 55%, #f97316 90%);
+      background: linear-gradient(125deg, #f8fafc 0%, var(--accent) 55%, var(--accent-strong) 95%);
       -webkit-background-clip: text;
       color: transparent;
     }
@@ -282,8 +284,8 @@
       gap: 0.45rem;
       padding: 0.4rem 0.95rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(59, 130, 246, 0.25));
+      border: 1px solid rgba(99, 102, 241, 0.35);
       font-weight: 600;
       font-size: 0.85rem;
       color: var(--text-soft);
@@ -322,10 +324,10 @@
       width: 44px;
       height: 44px;
       border-radius: 14px;
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(250, 204, 21, 0.25));
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(99, 102, 241, 0.3));
       display: grid;
       place-items: center;
-      color: var(--accent);
+      color: var(--text);
       font-weight: 700;
       letter-spacing: 0.04em;
     }
@@ -394,8 +396,8 @@
     }
 
     .visual-card.accent {
-      background: linear-gradient(140deg, rgba(250, 204, 21, 0.2), rgba(56, 189, 248, 0.18));
-      border-color: rgba(250, 204, 21, 0.35);
+      background: linear-gradient(140deg, rgba(56, 189, 248, 0.22), rgba(99, 102, 241, 0.2));
+      border-color: rgba(99, 102, 241, 0.45);
     }
 
     .visual-grid {
@@ -418,7 +420,7 @@
     .stat span {
       font-size: 2rem;
       font-weight: 700;
-      background: linear-gradient(120deg, #facc15 0%, #f97316 60%);
+      background: linear-gradient(120deg, var(--accent) 0%, var(--accent-strong) 80%);
       -webkit-background-clip: text;
       color: transparent;
     }
@@ -510,11 +512,11 @@
       width: 52px;
       height: 52px;
       border-radius: 16px;
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(250, 204, 21, 0.25));
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(99, 102, 241, 0.28));
       display: grid;
       place-items: center;
       font-weight: 700;
-      color: var(--accent);
+      color: var(--text);
       letter-spacing: 0.05em;
       font-size: 1.1rem;
     }
@@ -560,6 +562,7 @@
       font-size: 1.1rem;
       letter-spacing: 0.08em;
       color: var(--accent);
+      text-shadow: 0 0 18px var(--accent-glow);
     }
 
     .service-card h3 {
@@ -611,11 +614,11 @@
       width: 44px;
       height: 44px;
       border-radius: 14px;
-      background: linear-gradient(135deg, rgba(250, 204, 21, 0.28), rgba(59, 130, 246, 0.25));
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.32), rgba(99, 102, 241, 0.28));
       display: grid;
       place-items: center;
       font-weight: 700;
-      color: #0f172a;
+      color: #0b1224;
     }
 
     .results-grid {
@@ -637,7 +640,7 @@
     .result-card span {
       font-size: 2.4rem;
       font-weight: 700;
-      background: linear-gradient(120deg, #facc15 0%, #f97316 70%);
+      background: linear-gradient(120deg, var(--accent) 0%, var(--accent-strong) 80%);
       -webkit-background-clip: text;
       color: transparent;
     }
@@ -727,7 +730,7 @@
     .chip {
       padding: 0.35rem 0.75rem;
       border-radius: 999px;
-      background: rgba(37, 99, 235, 0.16);
+      background: rgba(59, 130, 246, 0.2);
       color: rgba(226, 232, 240, 0.92);
       font-size: 0.85rem;
       letter-spacing: 0.04em;
@@ -820,8 +823,8 @@
     textarea:focus,
     select:focus {
       outline: none;
-      border-color: rgba(250, 204, 21, 0.5);
-      box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.16);
+      border-color: rgba(56, 189, 248, 0.5);
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
     }
 
     .form-note {
@@ -836,8 +839,8 @@
       gap: 0.75rem;
       padding: 0.9rem 1.1rem;
       border-radius: 1rem;
-      background: rgba(37, 99, 235, 0.18);
-      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: rgba(59, 130, 246, 0.2);
+      border: 1px solid rgba(148, 163, 184, 0.32);
       font-size: 0.9rem;
     }
 
@@ -917,7 +920,7 @@
       max-width: 520px;
       width: 100%;
       background: rgba(248, 250, 252, 0.96);
-      color: #0f172a;
+      color: #0b1224;
       border-radius: 2rem;
       padding: 2.75rem 2.5rem;
       position: relative;
@@ -1089,15 +1092,15 @@
       <div class="hero-copy">
         <span class="eyebrow">AI Consulting for Bold Growth</span>
         <h1 id="hero-title" class="hero-title">AIとマーケティング戦略で、事業に勝ち筋を描くパートナー</h1>
-        <p class="hero-lead">マーケティングのプロである代表と、開発のプロを備える。データに裏づけられた戦略と、AIを駆使した実装力で、企業の成長エンジンを再設計します。</p>
+        <p class="hero-lead">マーケティングのプロである代表と開発トップがタッグを組み、データに裏づけられた戦略とAIを駆使した実装力で企業の成長エンジンを再設計します。</p>
         <div class="hero-badges" aria-label="チームの強み">
           <span class="badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1v22M4.22 4.22l15.56 15.56M1 12h22M4.22 19.78l15.56-15.56"/></svg>
-            マーケティング戦略・Kazuki Tsugane
+            マーケティング戦略｜Kazuki Tsugane
           </span>
           <span class="badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20l9-5-9-5-9 5 9 5z"/><path d="M12 12l9-5-9-5-9 5 9 5z"/></svg>
-            開発のプロ・Jun Otsu
+            開発リード｜Jun Otsu
           </span>
           <span class="badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10"/><path d="M7 22h10"/><path d="M12 17v5"/></svg>
@@ -1120,7 +1123,7 @@
             <span class="highlight-icon">AI</span>
             <div>
               <strong>AI実装まで一気通貫で支援</strong>
-              <p>Jun Otsuが率いる開発チームが、AIプロダクトと業務フローを設計・構築。営業やマーケティングのオートメーション化で継続的に伸びる仕組みをつくります。</p>
+              <p>Jun Otsu率いる開発チームがAIプロダクトと業務フローを設計・構築。営業やマーケティングのオートメーション化で継続的に伸びる仕組みをつくります。</p>
             </div>
           </article>
         </div>
@@ -1184,7 +1187,7 @@
           <article class="value-card">
             <div class="value-icon">3</div>
             <h3>スケールする開発とグロース運用</h3>
-            <p>Jun Otsuが率いる開発チームが、ビジネス要件を満たすAIプロダクトを素早く構築。</p>
+            <p>Jun Otsu率いる開発チームが、ビジネス要件を満たすAIプロダクトを素早く構築。</p>
             <ul>
               <li>高速なMVP開発とユーザーテスト</li>
               <li>継続的なモデル改善とMLOps設計</li>
@@ -1196,7 +1199,7 @@
         <div class="section-heading" style="margin-top:5rem;">
           <span class="section-label">Service Lines</span>
           <h2>事業グロースに必要な領域をフルスタックで提供</h2>
-          <p>戦略立案から実行、組織設計まで、ひとつのチームで完結。マーケティングのプロであるCEOと、開発のプロであるJun Otsuが、中長期に耐えるグロース体制をつくり上げます。</p>
+          <p>戦略立案から実行、組織設計までをひとつのチームで完結。マーケティングのプロであるCEOと開発のプロ Jun Otsu が、中長期に耐えるグロース体制をつくり上げます。</p>
         </div>
         <div class="services-grid">
           <article class="service-card">
@@ -1222,7 +1225,7 @@
           <article class="service-card">
             <strong>03</strong>
             <h3>Product & Data Engineering</h3>
-            <p>Jun Otsuが率いる開発チームが、実装まで責任を持つ。高速なMVPと継続改善。</p>
+            <p>Jun Otsu率いる開発チームが実装まで責任を持ち、高速なMVP開発と継続改善を両立。</p>
             <ul>
               <li>AIアプリ・API開発</li>
               <li>MLOps・データ基盤構築</li>
@@ -1299,7 +1302,7 @@
           </article>
           <article class="result-card">
             <span>6→18ヶ月</span>
-            <p>Jun Otsuが率いるチームがAIオンボーディングを自動化。営業サイクルを3分の1に短縮し、ARRを最速で回収。</p>
+            <p>Jun Otsu率いるチームがAIオンボーディングを自動化。営業サイクルを3分の1に短縮し、ARR回収期間を劇的に圧縮。</p>
           </article>
           <article class="result-card">
             <span>97%満足</span>
@@ -1312,8 +1315,8 @@
       <div class="container">
         <div class="section-heading">
           <span class="section-label">Team</span>
-          <h2>マーケティングのプロCEO × 開発のプロJun Otsu。二人が事業グロースを牽引</h2>
-          <p>戦略思考、顧客理解、AI開発、実装マネジメントまでを兼ね備えたエグゼクティブデュオ。経営の意思決定と現場の実行を同時にドライブします。</p>
+          <h2>マーケティングのプロCEOと開発の第一人者 Jun Otsu が事業グロースを牽引</h2>
+          <p>戦略思考、顧客理解、AI開発、実装マネジメントまでを兼ね備えたエグゼクティブデュオが、経営の意思決定と現場の実行を同時にドライブします。</p>
         </div>
         <div class="team-grid">
           <article class="team-card" data-member="ceo" tabindex="0" role="button" aria-pressed="false">
@@ -1321,7 +1324,7 @@
             <div class="team-meta">
               <strong>Marketing CEO</strong>
               <h3>Kazuki Tsugane</h3>
-              <p>マーケティング戦略のプロ。Kazuki Tsuganeがブランド構築からグロースオペレーション設計まで統括。</p>
+              <p>マーケティング戦略のプロとして、ブランド構築からグロースオペレーション設計までをリード。</p>
             </div>
             <div class="team-expertise">
               <span class="chip">ブランド戦略</span>
@@ -1332,9 +1335,9 @@
           <article class="team-card" data-member="otsu" tabindex="0" role="button" aria-pressed="false">
             <img src="unidentified.png" alt="Lead Engineer Jun Otsuのポートレート">
             <div class="team-meta">
-              <strong>Lead Engineer Jun Otsu</strong>
+              <strong>Lead Engineer</strong>
               <h3>Jun Otsu</h3>
-              <p>開発のプロ。Jun OtsuがAIプロダクト、データ基盤、MLOps構築で事業にスケールする仕組みを実装。</p>
+              <p>開発の第一線でAIプロダクト、データ基盤、MLOpsを設計し、スケールする仕組みを実装。</p>
             </div>
             <div class="team-expertise">
               <span class="chip">AIアーキテクト</span>
@@ -1390,7 +1393,7 @@
         <div class="section-heading">
           <span class="section-label">Contact</span>
           <h2>AIグロースの勝ち筋を、一緒に設計しましょう</h2>
-          <p>まずは30分のオンラインセッションで課題を伺います。事業フェーズに応じたアプローチと、CEO・Jun Otsuが描くグロースシナリオをご提案します。</p>
+          <p>まずは30分のオンラインセッションで課題を伺います。事業フェーズに応じたアプローチと、CEOとJun Otsuが描くグロースシナリオをご提案します。</p>
         </div>
         <div class="contact-grid">
           <div class="contact-panel">
@@ -1481,7 +1484,7 @@
     <div class="modal-card">
       <button class="modal-close" data-close>&times;</button>
       <h3 id="modal-ceo-title">マーケティングCEOの視点</h3>
-      <p>グロースの本質は「顧客が選ぶ理由」を磨き続けること。私はB2B/B2C双方でブランド戦略とグロース設計をリードし、ARR100億円規模の事業まで伴走してきました。LifeGame Consultingでは、AIとマーケティングを融合させ、スピード感のある成長曲線を描くことにこだわっています。経営陣と同じ目線で議論し、現場と一緒に実行する。それが私たちのスタイルです。</p>
+      <p>グロースの本質は「顧客が選ぶ理由」を磨き続けることだと考えています。B2B/B2C双方でブランド戦略とグロース設計をリードし、ARR100億円規模の事業まで伴走してきました。LifeGame ConsultingではAIとマーケティングを融合させ、スピード感のある成長曲線を描くことにこだわっています。経営陣と同じ目線で議論し、現場と一緒に実行する――それが私たちのスタイルです。</p>
     </div>
   </div>
 
@@ -1489,7 +1492,7 @@
     <div class="modal-card">
       <button class="modal-close" data-close>&times;</button>
       <h3 id="modal-otsu-title">開発のプロ・Jun Otsuのこだわり</h3>
-      <p>私はAIプロダクト開発とMLOpsのスペシャリストとして、スタートアップからエンタープライズまで幅広い案件を牽引してきました。LifeGame Consultingでは、ビジネス要件を理解したうえで、最短で価値を出すアーキテクチャを設計。AIが成果に直結するよう、データパイプラインと運用体制まで作り込みます。戦略と開発が分断しないよう、CEOと常に歩調を合わせて伴走するのが使命です。</p>
+      <p>AIプロダクト開発とMLOpsのスペシャリストとして、スタートアップからエンタープライズまで幅広い案件を牽引してきました。LifeGame Consultingではビジネス要件を踏まえ、最短で価値を生むアーキテクチャを設計します。AIが成果に直結するようデータパイプラインと運用体制まで作り込み、戦略と開発が分断しないようCEOと常に歩調を合わせて伴走することを使命としています。</p>
     </div>
   </div>
   <script>

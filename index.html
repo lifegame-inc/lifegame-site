@@ -1,8 +1,3 @@
-<<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LifeGame Consulting | AIで描く勝ち筋のあるグロース戦略</title>
   <meta name="description" content="LifeGame ConsultingはAIとマーケティングの戦略設計で事業成長をブーストするパートナー。マーケティングのプロであるCEOと開発のプロであるJun Otsuが、データ駆動の実行まで伴走します。">
   <meta name="keywords" content="AIコンサル, 事業グロース, マーケティング戦略, 営業強化, プロダクト開発, LifeGame Consulting">
@@ -28,8 +23,10 @@
       --layer: rgba(10, 15, 36, 0.78);
       --card: rgba(12, 22, 55, 0.86);
       --stroke: rgba(120, 141, 192, 0.28);
-      --accent: #facc15;
-      --accent-strong: #f97316;
+      --accent: #38bdf8;
+      --accent-strong: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.45);
+      --accent-soft: rgba(56, 189, 248, 0.22);
       --text: #f8fafc;
       --text-soft: #c7d2fe;
       --muted: #94a3b8;
@@ -45,9 +42,9 @@
     body {
       margin: 0;
       font-family: 'Plus Jakarta Sans', 'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at 16% 18%, rgba(37, 99, 235, 0.18), transparent 52%),
-                  radial-gradient(circle at 84% 12%, rgba(168, 85, 247, 0.16), transparent 60%),
-                  linear-gradient(135deg, #020617 0%, #030a1f 50%, #05091c 100%);
+      background: radial-gradient(circle at 16% 18%, rgba(59, 130, 246, 0.2), transparent 52%),
+                  radial-gradient(circle at 80% 10%, rgba(129, 140, 248, 0.18), transparent 58%),
+                  linear-gradient(140deg, #010615 0%, #020b1f 45%, #051231 100%);
       color: var(--text);
       line-height: 1.7;
       letter-spacing: 0.01em;
@@ -60,7 +57,7 @@
       content: "";
       position: fixed;
       inset: 0;
-      background: linear-gradient(120deg, rgba(59, 130, 246, 0.08), rgba(250, 204, 21, 0.05));
+      background: linear-gradient(120deg, rgba(59, 130, 246, 0.12), rgba(99, 102, 241, 0.08));
       pointer-events: none;
       z-index: -2;
     }
@@ -77,8 +74,8 @@
     }
 
     ::selection {
-      background: rgba(250, 204, 21, 0.35);
-      color: #0f172a;
+      background: rgba(99, 102, 241, 0.35);
+      color: #0b1224;
     }
 
     a {
@@ -104,70 +101,7 @@
       z-index: 50;
       background: rgba(6, 10, 28, 0.85);
       backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.2rem 0;
-      gap: 1.5rem;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.95rem;
-    }
-
-    .brand img {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.35);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
-
-    .nav-link {
-      position: relative;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--muted);
-      transition: color 0.2s ease;
-      padding: 0.35rem 0;
-    }
-
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 100%;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      transform: scaleX(0);
-      transform-origin: center;
-      transition: transform 0.2s ease;
-    }
-
-    .nav-link:hover,
-    .nav-link:focus-visible {
-      color: var(--text);
-    }
-
-    .nav-link:hover::after,
-    .nav-link:focus-visible::after {
+@@ -171,183 +173,183 @@
       transform: scaleX(1);
     }
 
@@ -193,14 +127,14 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #facc15, #f97316);
-      color: #0f172a;
-      box-shadow: 0 20px 45px rgba(250, 204, 21, 0.32);
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #0b1224;
+      box-shadow: 0 20px 45px rgba(56, 189, 248, 0.32);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 24px 55px rgba(250, 204, 21, 0.45);
+      box-shadow: 0 24px 55px rgba(99, 102, 241, 0.45);
     }
 
     .btn-ghost {
@@ -211,7 +145,7 @@
 
     .btn-ghost:hover {
       transform: translateY(-2px);
-      border-color: rgba(250, 204, 21, 0.45);
+      border-color: rgba(99, 102, 241, 0.45);
       color: var(--accent);
     }
 
@@ -259,7 +193,7 @@
       letter-spacing: -0.02em;
       font-weight: 700;
       margin: 0;
-      background: linear-gradient(120deg, #f8fafc 0%, #facc15 55%, #f97316 90%);
+      background: linear-gradient(125deg, #f8fafc 0%, var(--accent) 55%, var(--accent-strong) 95%);
       -webkit-background-clip: text;
       color: transparent;
     }
@@ -282,8 +216,8 @@
       gap: 0.45rem;
       padding: 0.4rem 0.95rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.25);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(59, 130, 246, 0.25));
+      border: 1px solid rgba(99, 102, 241, 0.35);
       font-weight: 600;
       font-size: 0.85rem;
       color: var(--text-soft);
@@ -322,10 +256,10 @@
       width: 44px;
       height: 44px;
       border-radius: 14px;
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(250, 204, 21, 0.25));
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(99, 102, 241, 0.3));
       display: grid;
       place-items: center;
-      color: var(--accent);
+      color: var(--text);
       font-weight: 700;
       letter-spacing: 0.04em;
     }
@@ -351,24 +285,7 @@
       top: -60px;
       right: -120px;
       animation: float 12s ease-in-out infinite;
-    }
-
-    .orb.two {
-      width: 220px;
-      height: 220px;
-      background: radial-gradient(circle, rgba(244, 114, 182, 0.35), transparent 70%);
-      bottom: 60px;
-      left: -70px;
-      animation: float 14s ease-in-out infinite reverse;
-    }
-
-    .visual-stack {
-      position: relative;
-      padding: 2.75rem 2.25rem;
-      border-radius: 2.25rem;
-      background: linear-gradient(155deg, rgba(15, 23, 42, 0.95), rgba(12, 22, 55, 0.75));
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      box-shadow: 0 35px 80px rgba(15, 23, 42, 0.45);
+@@ -372,75 +374,75 @@
       overflow: hidden;
     }
 
@@ -394,8 +311,8 @@
     }
 
     .visual-card.accent {
-      background: linear-gradient(140deg, rgba(250, 204, 21, 0.2), rgba(56, 189, 248, 0.18));
-      border-color: rgba(250, 204, 21, 0.35);
+      background: linear-gradient(140deg, rgba(56, 189, 248, 0.22), rgba(99, 102, 241, 0.2));
+      border-color: rgba(99, 102, 241, 0.45);
     }
 
     .visual-grid {
@@ -418,7 +335,7 @@
     .stat span {
       font-size: 2rem;
       font-weight: 700;
-      background: linear-gradient(120deg, #facc15 0%, #f97316 60%);
+      background: linear-gradient(120deg, var(--accent) 0%, var(--accent-strong) 80%);
       -webkit-background-clip: text;
       color: transparent;
     }
@@ -444,47 +361,7 @@
     main section {
       padding: 5.5rem 0;
       position: relative;
-    }
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.4rem 1.1rem;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.18);
-      color: var(--accent);
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-    }
-
-    .section-heading {
-      display: grid;
-      gap: 1rem;
-      margin-bottom: 3rem;
-      max-width: 700px;
-    }
-
-    .section-heading h2 {
-      margin: 0;
-      font-size: clamp(2rem, 3.4vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .section-heading p {
-      margin: 0;
-      color: rgba(226, 232, 240, 0.82);
-      font-size: 1rem;
-    }
-
-    .value-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.75rem;
-    }
-
+@@ -488,100 +490,101 @@
     .value-card {
       position: relative;
       padding: 2rem;
@@ -510,11 +387,11 @@
       width: 52px;
       height: 52px;
       border-radius: 16px;
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(250, 204, 21, 0.25));
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(99, 102, 241, 0.28));
       display: grid;
       place-items: center;
       font-weight: 700;
-      color: var(--accent);
+      color: var(--text);
       letter-spacing: 0.05em;
       font-size: 1.1rem;
     }
@@ -560,6 +437,7 @@
       font-size: 1.1rem;
       letter-spacing: 0.08em;
       color: var(--accent);
+      text-shadow: 0 0 18px var(--accent-glow);
     }
 
     .service-card h3 {
@@ -585,7 +463,7 @@
       display: grid;
       gap: 2rem;
       background: rgba(10, 19, 44, 0.7);
-      border-radius: 2.5rem;
+@@ -589,77 +592,77 @@
       border: 1px solid rgba(148, 163, 184, 0.18);
       padding: 3rem;
       box-shadow: var(--shadow-lg);
@@ -611,11 +489,11 @@
       width: 44px;
       height: 44px;
       border-radius: 14px;
-      background: linear-gradient(135deg, rgba(250, 204, 21, 0.28), rgba(59, 130, 246, 0.25));
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.32), rgba(99, 102, 241, 0.28));
       display: grid;
       place-items: center;
       font-weight: 700;
-      color: #0f172a;
+      color: #0b1224;
     }
 
     .results-grid {
@@ -637,7 +515,7 @@
     .result-card span {
       font-size: 2.4rem;
       font-weight: 700;
-      background: linear-gradient(120deg, #facc15 0%, #f97316 70%);
+      background: linear-gradient(120deg, var(--accent) 0%, var(--accent-strong) 80%);
       -webkit-background-clip: text;
       color: transparent;
     }
@@ -663,45 +541,7 @@
       font-size: 0.95rem;
       letter-spacing: 0.05em;
     }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2rem;
-    }
-
-    .team-card {
-      position: relative;
-      display: grid;
-      gap: 1rem;
-      padding: 2.5rem;
-      border-radius: 2rem;
-      background: rgba(15, 23, 42, 0.72);
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      box-shadow: var(--shadow-md);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      cursor: pointer;
-    }
-
-    .team-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 40px 90px rgba(15, 23, 42, 0.45);
-    }
-
-    .team-card img {
-      width: 86px;
-      height: 86px;
-      border-radius: 20px;
-      object-fit: cover;
-      box-shadow: 0 18px 40px rgba(14, 26, 53, 0.45);
-    }
-
-    .team-meta {
-      display: grid;
-      gap: 0.4rem;
-    }
-
-    .team-meta strong {
+@@ -705,51 +708,51 @@
       font-size: 0.9rem;
       letter-spacing: 0.12em;
       color: var(--accent);
@@ -727,7 +567,7 @@
     .chip {
       padding: 0.35rem 0.75rem;
       border-radius: 999px;
-      background: rgba(37, 99, 235, 0.16);
+      background: rgba(59, 130, 246, 0.2);
       color: rgba(226, 232, 240, 0.92);
       font-size: 0.85rem;
       letter-spacing: 0.04em;
@@ -753,48 +593,7 @@
       margin: 0;
       font-size: 1.3rem;
       font-weight: 600;
-    }
-
-    .talent-card p {
-      margin: 0;
-      color: rgba(203, 213, 225, 0.88);
-    }
-
-    .talent-card ul {
-      margin: 0;
-      padding-left: 1.1rem;
-      color: rgba(148, 163, 184, 0.9);
-      display: grid;
-      gap: 0.4rem;
-      font-size: 0.95rem;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2.5rem;
-      align-items: start;
-    }
-
-    .contact-panel {
-      padding: 2.5rem;
-      border-radius: 2rem;
-      background: rgba(10, 19, 44, 0.78);
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      box-shadow: var(--shadow-lg);
-      display: grid;
-      gap: 1.25rem;
-    }
-
-    form {
-      display: grid;
-      gap: 1.25rem;
-    }
-
-    label {
-      display: grid;
-      gap: 0.4rem;
-      font-weight: 600;
+@@ -798,68 +801,68 @@
       color: rgba(226, 232, 240, 0.85);
     }
 
@@ -820,8 +619,8 @@
     textarea:focus,
     select:focus {
       outline: none;
-      border-color: rgba(250, 204, 21, 0.5);
-      box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.16);
+      border-color: rgba(56, 189, 248, 0.5);
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
     }
 
     .form-note {
@@ -836,8 +635,8 @@
       gap: 0.75rem;
       padding: 0.9rem 1.1rem;
       border-radius: 1rem;
-      background: rgba(37, 99, 235, 0.18);
-      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: rgba(59, 130, 246, 0.2);
+      border: 1px solid rgba(148, 163, 184, 0.32);
       font-size: 0.9rem;
     }
 
@@ -863,35 +662,7 @@
 
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 2rem;
-      align-items: start;
-    }
-
-    .footer-brand {
-      display: grid;
-      gap: 0.9rem;
-    }
-
-    .footer-brand p {
-      margin: 0;
-      color: rgba(148, 163, 184, 0.88);
-      font-size: 0.95rem;
-    }
-
-    .footer-links {
-      display: grid;
-      gap: 0.65rem;
-      color: rgba(148, 163, 184, 0.88);
-      font-size: 0.95rem;
-    }
-
-    .copyright {
-      margin-top: 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: rgba(148, 163, 184, 0.6);
+@@ -895,51 +898,51 @@
       font-size: 0.85rem;
       flex-wrap: wrap;
       gap: 1rem;
@@ -917,7 +688,7 @@
       max-width: 520px;
       width: 100%;
       background: rgba(248, 250, 252, 0.96);
-      color: #0f172a;
+      color: #0b1224;
       border-radius: 2rem;
       padding: 2.75rem 2.5rem;
       position: relative;
@@ -943,127 +714,7 @@
       margin: 0;
       font-size: 1.65rem;
       font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-
-    .modal-card p {
-      margin: 0;
-      color: rgba(30, 41, 59, 0.85);
-      line-height: 1.8;
-      font-size: 0.98rem;
-    }
-    @keyframes float {
-      0%, 100% { transform: translate3d(0, 0, 0); }
-      50% { transform: translate3d(0, -14px, 0); }
-    }
-
-    @media (max-width: 1080px) {
-      .hero {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-      }
-      .hero-copy,
-      .hero-visual {
-        grid-column: span 1;
-      }
-      .visual-stack {
-        margin: 0 auto;
-      }
-    }
-
-    @media (max-width: 960px) {
-      .nav-links {
-        position: fixed;
-        inset: 72px 16px auto 16px;
-        flex-direction: column;
-        align-items: stretch;
-        background: rgba(6, 12, 31, 0.95);
-        border: 1px solid rgba(148, 163, 184, 0.22);
-        border-radius: 1.5rem;
-        padding: 1.5rem;
-        box-shadow: var(--shadow-lg);
-        transform: translateY(-25px);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s ease, transform 0.2s ease;
-      }
-
-      .nav-links.open {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-
-      .nav {
-        padding: 1rem 0;
-      }
-
-      .nav-cta {
-        display: none;
-      }
-
-      .menu-toggle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      main section {
-        padding: 4.5rem 0;
-      }
-
-      .value-grid,
-      .services-grid,
-      .blueprint-steps,
-      .results-grid,
-      .team-grid,
-      .talent-grid,
-      .contact-grid,
-      .footer-grid {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-      }
-
-      .partner-panel ul {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero {
-        padding: 4rem 0 3.5rem;
-      }
-      .visual-stack {
-        padding: 2rem 1.75rem;
-      }
-      .value-card,
-      .service-card,
-      .blueprint,
-      .team-card,
-      .contact-panel {
-        padding: 2rem;
-      }
-      .footer-grid {
-        gap: 1.5rem;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="orb one" aria-hidden="true"></div>
-  <div class="orb two" aria-hidden="true"></div>
-  <header>
-    <div class="container nav">
-      <a href="#top" class="brand">
-        <img src="logo.png" alt="LifeGame Consulting ロゴ">
+@@ -1067,82 +1070,82 @@
         LifeGame Consulting
       </a>
       <nav class="nav-links" id="mobile-menu" aria-label="メインナビゲーション">
@@ -1089,15 +740,15 @@
       <div class="hero-copy">
         <span class="eyebrow">AI Consulting for Bold Growth</span>
         <h1 id="hero-title" class="hero-title">AIとマーケティング戦略で、事業に勝ち筋を描くパートナー</h1>
-        <p class="hero-lead">マーケティングのプロである代表と、開発のプロを備える。データに裏づけられた戦略と、AIを駆使した実装力で、企業の成長エンジンを再設計します。</p>
+        <p class="hero-lead">マーケティングのプロである代表と開発トップがタッグを組み、データに裏づけられた戦略とAIを駆使した実装力で企業の成長エンジンを再設計します。</p>
         <div class="hero-badges" aria-label="チームの強み">
           <span class="badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1v22M4.22 4.22l15.56 15.56M1 12h22M4.22 19.78l15.56-15.56"/></svg>
-            マーケティング戦略・Kazuki Tsugane
+            マーケティング戦略｜Kazuki Tsugane
           </span>
           <span class="badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20l9-5-9-5-9 5 9 5z"/><path d="M12 12l9-5-9-5-9 5 9 5z"/></svg>
-            開発のプロ・Jun Otsu
+            開発リード｜Jun Otsu
           </span>
           <span class="badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10"/><path d="M7 22h10"/><path d="M12 17v5"/></svg>
@@ -1120,7 +771,7 @@
             <span class="highlight-icon">AI</span>
             <div>
               <strong>AI実装まで一気通貫で支援</strong>
-              <p>Jun Otsuが率いる開発チームが、AIプロダクトと業務フローを設計・構築。営業やマーケティングのオートメーション化で継続的に伸びる仕組みをつくります。</p>
+              <p>Jun Otsu率いる開発チームがAIプロダクトと業務フローを設計・構築。営業やマーケティングのオートメーション化で継続的に伸びる仕組みをつくります。</p>
             </div>
           </article>
         </div>
@@ -1146,19 +797,7 @@
               <p style="margin:0;color:rgba(203,213,225,0.85);">リアルタイムで市場・顧客データを収集し、AIが勝ち筋シナリオを提案。CEOとJun Otsuが意思決定と実行をスプリントで推進します。</p>
             </div>
           </div>
-          <div class="signature">
-            <strong>EXECUTIVE DUO</strong>
-            <span>Marketing CEO × Lead Engineer Jun Otsu が、戦略〜実装〜成長のすべてにコミット。</span>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="services">
-      <div class="container">
-        <div class="section-heading">
-          <span class="section-label">Why LifeGame Consulting</span>
-          <h2>AIとマーケティングを統合したグロース設計で、成果が出るまで伴走</h2>
-          <p>プロジェクトの初速を決めるマーケットインサイトから、顧客体験の設計、AIによる自動化、収益モデルの最適化まで。戦略思考とプロダクト開発力を兼ね備えたデュオが、事業の勝ち筋を確実に形にします。</p>
+@@ -1162,89 +1165,89 @@
         </div>
         <div class="value-grid">
           <article class="value-card">
@@ -1184,7 +823,7 @@
           <article class="value-card">
             <div class="value-icon">3</div>
             <h3>スケールする開発とグロース運用</h3>
-            <p>Jun Otsuが率いる開発チームが、ビジネス要件を満たすAIプロダクトを素早く構築。</p>
+            <p>Jun Otsu率いる開発チームが、ビジネス要件を満たすAIプロダクトを素早く構築。</p>
             <ul>
               <li>高速なMVP開発とユーザーテスト</li>
               <li>継続的なモデル改善とMLOps設計</li>
@@ -1196,7 +835,7 @@
         <div class="section-heading" style="margin-top:5rem;">
           <span class="section-label">Service Lines</span>
           <h2>事業グロースに必要な領域をフルスタックで提供</h2>
-          <p>戦略立案から実行、組織設計まで、ひとつのチームで完結。マーケティングのプロであるCEOと、開発のプロであるJun Otsuが、中長期に耐えるグロース体制をつくり上げます。</p>
+          <p>戦略立案から実行、組織設計までをひとつのチームで完結。マーケティングのプロであるCEOと開発のプロ Jun Otsu が、中長期に耐えるグロース体制をつくり上げます。</p>
         </div>
         <div class="services-grid">
           <article class="service-card">
@@ -1222,7 +861,7 @@
           <article class="service-card">
             <strong>03</strong>
             <h3>Product & Data Engineering</h3>
-            <p>Jun Otsuが率いる開発チームが、実装まで責任を持つ。高速なMVPと継続改善。</p>
+            <p>Jun Otsu率いる開発チームが実装まで責任を持ち、高速なMVP開発と継続改善を両立。</p>
             <ul>
               <li>AIアプリ・API開発</li>
               <li>MLOps・データ基盤構築</li>
@@ -1248,32 +887,7 @@
           <span class="section-label">Engagement Blueprint</span>
           <h2>代表とトップエンジニアがハンズオンで伴走するグロースプロセス</h2>
           <p>スプリント単位で課題を分解し、戦略→設計→実装→定着のループを高速に回す。大規模企業からスタートアップまで、変化に強い体制をつくります。</p>
-        </div>
-        <div class="blueprint">
-          <div class="blueprint-steps">
-            <article class="step">
-              <div class="step-number">Step 1</div>
-              <h3>Ignite</h3>
-              <p>マーケット視点と社内データを統合し、勝ち筋仮説を設計。CEOがトップラインの課題を整理します。</p>
-            </article>
-            <article class="step">
-              <div class="step-number">Step 2</div>
-              <h3>Architect</h3>
-              <p>UX・施策ロードマップとKPIを設計。Jun Otsuが技術要件とAIモデルの設計をリードします。</p>
-            </article>
-            <article class="step">
-              <div class="step-number">Step 3</div>
-              <h3>Automate</h3>
-              <p>AIと自動化の実装、オペレーション設計、チームへのナレッジトランスファーを実行。</p>
-            </article>
-            <article class="step">
-              <div class="step-number">Step 4</div>
-              <h3>Scale</h3>
-              <p>継続改善とグロース実行体制の内製化を支援。結果のモニタリングとガバナンスまで伴走。</p>
-            </article>
-          </div>
-          <div class="partner-panel">
-            <h3 style="margin:0;font-size:1.35rem;font-weight:600;">パートナーシップで得られるもの</h3>
+@@ -1277,86 +1280,86 @@
             <ul>
               <li>経営課題を可視化するエグゼクティブボード</li>
               <li>営業・マーケに特化したAI活用シナリオ</li>
@@ -1299,7 +913,7 @@
           </article>
           <article class="result-card">
             <span>6→18ヶ月</span>
-            <p>Jun Otsuが率いるチームがAIオンボーディングを自動化。営業サイクルを3分の1に短縮し、ARRを最速で回収。</p>
+            <p>Jun Otsu率いるチームがAIオンボーディングを自動化。営業サイクルを3分の1に短縮し、ARR回収期間を劇的に圧縮。</p>
           </article>
           <article class="result-card">
             <span>97%満足</span>
@@ -1312,8 +926,8 @@
       <div class="container">
         <div class="section-heading">
           <span class="section-label">Team</span>
-          <h2>マーケティングのプロCEO × 開発のプロJun Otsu。二人が事業グロースを牽引</h2>
-          <p>戦略思考、顧客理解、AI開発、実装マネジメントまでを兼ね備えたエグゼクティブデュオ。経営の意思決定と現場の実行を同時にドライブします。</p>
+          <h2>マーケティングのプロCEOと開発の第一人者 Jun Otsu が事業グロースを牽引</h2>
+          <p>戦略思考、顧客理解、AI開発、実装マネジメントまでを兼ね備えたエグゼクティブデュオが、経営の意思決定と現場の実行を同時にドライブします。</p>
         </div>
         <div class="team-grid">
           <article class="team-card" data-member="ceo" tabindex="0" role="button" aria-pressed="false">
@@ -1321,7 +935,7 @@
             <div class="team-meta">
               <strong>Marketing CEO</strong>
               <h3>Kazuki Tsugane</h3>
-              <p>マーケティング戦略のプロ。Kazuki Tsuganeがブランド構築からグロースオペレーション設計まで統括。</p>
+              <p>マーケティング戦略のプロとして、ブランド構築からグロースオペレーション設計までをリード。</p>
             </div>
             <div class="team-expertise">
               <span class="chip">ブランド戦略</span>
@@ -1332,9 +946,9 @@
           <article class="team-card" data-member="otsu" tabindex="0" role="button" aria-pressed="false">
             <img src="unidentified.png" alt="Lead Engineer Jun Otsuのポートレート">
             <div class="team-meta">
-              <strong>Lead Engineer Jun Otsu</strong>
+              <strong>Lead Engineer</strong>
               <h3>Jun Otsu</h3>
-              <p>開発のプロ。Jun OtsuがAIプロダクト、データ基盤、MLOps構築で事業にスケールする仕組みを実装。</p>
+              <p>開発の第一線でAIプロダクト、データ基盤、MLOpsを設計し、スケールする仕組みを実装。</p>
             </div>
             <div class="team-expertise">
               <span class="chip">AIアーキテクト</span>
@@ -1360,11 +974,7 @@
             <ul>
               <li>ブランド/ファネル戦略の立案・実行</li>
               <li>データドリブンなKPIマネジメント</li>
-              <li>マルチチャネル施策のディレクション</li>
-            </ul>
-          </article>
-          <article class="talent-card">
-            <h3>営業エグゼクティブ</h3>
+@@ -1368,51 +1371,51 @@
             <p>AIを活用した新しい営業モデルを共に創り、収益を拡張するリーダーを歓迎。</p>
             <ul>
               <li>エンタープライズ/SMB双方の提案経験</li>
@@ -1390,7 +1000,7 @@
         <div class="section-heading">
           <span class="section-label">Contact</span>
           <h2>AIグロースの勝ち筋を、一緒に設計しましょう</h2>
-          <p>まずは30分のオンラインセッションで課題を伺います。事業フェーズに応じたアプローチと、CEO・Jun Otsuが描くグロースシナリオをご提案します。</p>
+          <p>まずは30分のオンラインセッションで課題を伺います。事業フェーズに応じたアプローチと、CEOとJun Otsuが描くグロースシナリオをご提案します。</p>
         </div>
         <div class="contact-grid">
           <div class="contact-panel">
@@ -1416,46 +1026,7 @@
               <label>
                 会社名 / 部署
                 <input type="text" name="company" placeholder="LifeGame Inc. / 事業開発部">
-              </label>
-              <label>
-                ご相談種別
-                <select name="type" required>
-                  <option value="" disabled selected>選択してください</option>
-                  <option value="strategy">AIグロース戦略を相談したい</option>
-                  <option value="sales">営業/マーケ自動化を検討したい</option>
-                  <option value="product">AIプロダクト開発を依頼したい</option>
-                  <option value="other">その他のご相談</option>
-                </select>
-              </label>
-              <label>
-                ご相談内容
-                <textarea name="message" placeholder="課題や実現したいことをご記入ください" required></textarea>
-              </label>
-              <p class="form-note">送信いただくと、自動返信メールで受付をお知らせします。</p>
-              <div class="status-banner" id="form-status" role="status" aria-live="polite"></div>
-              <button class="btn btn-primary" type="submit">送信する</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#top" class="brand" style="font-size:1rem;">
-            <img src="logo.png" alt="LifeGame Consulting ロゴ">
-            LifeGame Consulting
-          </a>
-          <p>AIとマーケティングのプロがタッグを組み、事業グロースに必要なすべてを提供するコンサルティングファームです。</p>
-        </div>
-        <div class="footer-links">
-          <strong style="color:var(--text);font-size:1rem;">Service</strong>
-          <a href="#services">グロース戦略設計</a>
-          <a href="#services">AI実装支援</a>
-          <a href="#blueprint">データ/開発伴走</a>
+@@ -1459,59 +1462,59 @@
         </div>
         <div class="footer-links">
           <strong style="color:var(--text);font-size:1rem;">Company</strong>
@@ -1481,7 +1052,7 @@
     <div class="modal-card">
       <button class="modal-close" data-close>&times;</button>
       <h3 id="modal-ceo-title">マーケティングCEOの視点</h3>
-      <p>グロースの本質は「顧客が選ぶ理由」を磨き続けること。私はB2B/B2C双方でブランド戦略とグロース設計をリードし、ARR100億円規模の事業まで伴走してきました。LifeGame Consultingでは、AIとマーケティングを融合させ、スピード感のある成長曲線を描くことにこだわっています。経営陣と同じ目線で議論し、現場と一緒に実行する。それが私たちのスタイルです。</p>
+      <p>グロースの本質は「顧客が選ぶ理由」を磨き続けることだと考えています。B2B/B2C双方でブランド戦略とグロース設計をリードし、ARR100億円規模の事業まで伴走してきました。LifeGame ConsultingではAIとマーケティングを融合させ、スピード感のある成長曲線を描くことにこだわっています。経営陣と同じ目線で議論し、現場と一緒に実行する――それが私たちのスタイルです。</p>
     </div>
   </div>
 
@@ -1489,7 +1060,7 @@
     <div class="modal-card">
       <button class="modal-close" data-close>&times;</button>
       <h3 id="modal-otsu-title">開発のプロ・Jun Otsuのこだわり</h3>
-      <p>私はAIプロダクト開発とMLOpsのスペシャリストとして、スタートアップからエンタープライズまで幅広い案件を牽引してきました。LifeGame Consultingでは、ビジネス要件を理解したうえで、最短で価値を出すアーキテクチャを設計。AIが成果に直結するよう、データパイプラインと運用体制まで作り込みます。戦略と開発が分断しないよう、CEOと常に歩調を合わせて伴走するのが使命です。</p>
+      <p>AIプロダクト開発とMLOpsのスペシャリストとして、スタートアップからエンタープライズまで幅広い案件を牽引してきました。LifeGame Consultingではビジネス要件を踏まえ、最短で価値を生むアーキテクチャを設計します。AIが成果に直結するようデータパイプラインと運用体制まで作り込み、戦略と開発が分断しないようCEOと常に歩調を合わせて伴走することを使命としています。</p>
     </div>
   </div>
   <script>
@@ -1515,58 +1086,3 @@
     yearEl.textContent = new Date().getFullYear();
 
     const teamCards = document.querySelectorAll('.team-card');
-    const modals = {
-      ceo: document.getElementById('modal-ceo'),
-      otsu: document.getElementById('modal-otsu'),
-    };
-
-    teamCards.forEach((card) => {
-      card.addEventListener('click', () => {
-        const member = card.getAttribute('data-member');
-        modals[member]?.classList.add('active');
-      });
-
-      card.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          const member = card.getAttribute('data-member');
-          modals[member]?.classList.add('active');
-        }
-      });
-    });
-
-    document.querySelectorAll('[data-close]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        btn.closest('.modal').classList.remove('active');
-      });
-    });
-
-    Object.values(modals).forEach((modal) => {
-      modal.addEventListener('click', (event) => {
-        if (event.target === modal) {
-          modal.classList.remove('active');
-        }
-      });
-    });
-
-    const form = document.getElementById('contact-form');
-    const status = document.getElementById('form-status');
-
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      status.textContent = '送信中...';
-      status.className = 'status-banner';
-      setTimeout(() => {
-        if (Math.random() > 0.1) {
-          status.textContent = '送信が完了しました。担当よりご連絡いたします。';
-          status.className = 'status-banner success';
-          form.reset();
-        } else {
-          status.textContent = '送信に失敗しました。お手数ですが再度お試しください。';
-          status.className = 'status-banner error';
-        }
-      }, 800);
-    });
-  </script>
-</body>
-</html>

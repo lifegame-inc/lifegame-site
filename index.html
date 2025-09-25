@@ -47,6 +47,9 @@
   --radius-md: 20px;
   --radius-sm: 14px;
   --backdrop-blur: saturate(180%) blur(20px);
+  --measure: 68ch;
+  --measure-tight: 56ch;
+  --measure-narrow: 46ch;
 }
 
 *,
@@ -73,6 +76,11 @@ body {
   letter-spacing: 0.01em;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
 }
 
 body::after {
@@ -317,6 +325,8 @@ main {
   grid-column: span 7;
   display: grid;
   gap: 1.5rem;
+  max-width: 38rem;
+  justify-self: start;
 }
 
 .eyebrow {
@@ -341,12 +351,14 @@ main {
   background: linear-gradient(120deg, #f8fafc 0%, #60a5fa 55%, #38bdf8 100%);
   -webkit-background-clip: text;
   color: transparent;
+  text-wrap: balance;
 }
 
 .lede {
   font-size: 1.08rem;
   color: var(--text-soft);
   margin: 0;
+  max-width: var(--measure-tight);
 }
 
 .hero-actions {
@@ -483,19 +495,22 @@ main {
   display: grid;
   gap: 1.2rem;
   text-align: left;
-  margin-bottom: 3rem;
+  margin: 0 auto 3rem;
+  max-width: 56rem;
 }
 
 .section-header h2 {
   margin: 0;
   font-size: clamp(2rem, 3vw, 2.8rem);
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
 .section-intro {
   margin: 0;
   color: var(--text-soft);
-  max-width: 760px;
+  max-width: var(--measure);
+  text-wrap: balance;
 }
 
 .feature-grid {
@@ -517,11 +532,13 @@ main {
 .feature-card h3 {
   margin: 0;
   font-size: 1.35rem;
+  text-wrap: balance;
 }
 
 .feature-card p {
   margin: 0;
   color: var(--text-soft);
+  max-width: var(--measure-tight);
 }
 
 .feature-card ul {
@@ -554,6 +571,13 @@ main {
   gap: 0.9rem;
 }
 
+.service-card h3,
+.process-card h3,
+.result-card h3,
+.team-card h3 {
+  text-wrap: balance;
+}
+
 .badge {
   align-self: flex-start;
   padding: 0.35rem 0.85rem;
@@ -569,6 +593,7 @@ main {
 .service-card p {
   margin: 0;
   color: var(--text-soft);
+  max-width: var(--measure-tight);
 }
 
 .service-card ul {
@@ -614,6 +639,7 @@ main {
 .process-card p {
   margin: 0;
   color: var(--text-soft);
+  max-width: var(--measure-tight);
 }
 
 .process-card ul {
@@ -640,6 +666,12 @@ main {
   box-shadow: var(--shadow-sm);
 }
 
+.result-card p {
+  margin: 0;
+  color: var(--text-soft);
+  max-width: var(--measure-tight);
+}
+
 .result-value {
   font-size: 1.6rem;
   font-weight: 700;
@@ -658,16 +690,30 @@ main {
   gap: 1.2rem;
 }
 
+.partner-panel > p {
+  color: var(--text-soft);
+  max-width: var(--measure-tight);
+}
+
 .partner-panel ul {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
   padding: 0;
   margin: 0;
-  color: var(--muted);
-  letter-spacing: 0.05em;
-  font-size: 0.95rem;
+}
+
+.partner-panel li {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(96, 165, 250, 0.24);
+  background: rgba(15, 23, 42, 0.55);
+  padding: 0.65rem 0.9rem;
+  text-align: center;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.88rem;
+  color: rgba(191, 219, 254, 0.8);
 }
 
 .team-grid {
@@ -716,11 +762,13 @@ main {
 .team-card h3 {
   margin: 0;
   font-size: 1.4rem;
+  text-wrap: balance;
 }
 
 .team-card p {
   margin: 0;
   color: var(--text-soft);
+  max-width: var(--measure-narrow);
 }
 
 .chip-list {
@@ -753,6 +801,7 @@ main {
 .talent-panel p {
   margin: 0;
   color: var(--text-soft);
+  max-width: var(--measure-narrow);
 }
 
 .chip-rail {
@@ -795,6 +844,11 @@ main {
   color: var(--text-soft);
   display: grid;
   gap: 0.5rem;
+}
+
+.contact-info p,
+.contact-info .note {
+  max-width: var(--measure-narrow);
 }
 
 .contact-info .note {
@@ -1052,7 +1106,6 @@ main {
     scroll-behavior: auto !important;
   }
 }
-
 </style>
   
 </head>
@@ -1088,8 +1141,8 @@ main {
         <div class="container hero-layout">
           <div class="hero-copy">
             <p class="eyebrow">AI × Growth Consulting</p>
-            <h1>勝ち筋を描き、事業成長を実現する<h1>
-            <p class="lede">市場データと現場の知見を掛け合わせ、戦略から実装、収益化まで一気通貫で支援します</p>
+            <h1>勝ち筋を描き、事業成長を実現する</h1>
+            <p class="lede">市場データと現場の知見を掛け合わせ、戦略立案から実装・収益化まで一気通貫で伴走します。</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#contact">無料相談を予約</a>
               <a class="btn btn-secondary" href="#services">サービス概要を見る</a>
@@ -1145,7 +1198,7 @@ main {
         <div class="container section-header">
           <p class="eyebrow">Why LifeGame</p>
           <h2>戦略×実装を同じ熱量でやり切る、AI時代のグロースパートナー</h2>
-          <p class="section-intro">トップラインのボトルネックをAIで特定し、マーケティング／営業／プロダクトの壁を越えた一気通貫の改善ロードマップを設計します。CxO視点での意思決定支援と、現場伴走型の実行体制が強みです。</p>
+          <p class="section-intro">トップラインのボトルネックをAIで特定し、マーケティング／営業／プロダクトを貫く改善ロードマップを描きます。CxO視点の意思決定支援と現場伴走型の実行体制で、戦略と実装をワンチームに束ねます。</p>
         </div>
         <div class="container feature-grid">
           <article class="feature-card">
@@ -1182,7 +1235,7 @@ main {
         <div class="container section-header">
           <p class="eyebrow">Services</p>
           <h2>事業成長を牽引する4つのサービスライン</h2>
-          <p class="section-intro">戦略立案からプロダクト改善、営業・CS組織の立ち上げまで、事業フェーズに応じて必要なギアを選択できます。</p>
+          <p class="section-intro">戦略立案からプロダクト改善、営業・CS組織の立ち上げまで、成長のボトルネックに合わせて伴走します。フェーズに応じた4つのサービスラインを組み合わせて成果に直結するギアを選べます。</p>
         </div>
         <div class="container service-grid">
           <article class="service-card">
@@ -1286,7 +1339,7 @@ main {
         <div class="container section-header">
           <p class="eyebrow">Results</p>
           <h2>成果に直結する伴走で、実装フェーズまでコミット</h2>
-          <p class="section-intro">SaaS、FinTech、メディア、ヘルスケア、BtoB製造業など幅広い領域で実績を積み上げています。</p>
+          <p class="section-intro">SaaS、FinTech、メディア、ヘルスケア、製造業DXまで幅広い領域で成果創出を重ねています。戦略から実装まで伴走したプロジェクトの一部をご紹介します。</p>
         </div>
         <div class="container results-grid">
           <article class="result-card">
@@ -1307,14 +1360,16 @@ main {
         </div>
         <div class="container partner-panel">
           <h3>パートナー企業・支援領域</h3>
+          <p>スタートアップからエンタープライズまで、AIを軸にした成長共創の実績があります。</p>
           <ul>
-            <li>Enterprise SaaS</li>
+            <li>Series B SaaS</li>
+            <li>Enterprise DX</li>
             <li>FinTech</li>
+            <li>Healthcare</li>
             <li>HR Tech</li>
-            <li>ヘルスケア</li>
+            <li>Manufacturing</li>
+            <li>Media</li>
             <li>D2C / EC</li>
-            <li>製造業DX</li>
-            <li>メディア</li>
           </ul>
         </div>
       </section>
@@ -1356,6 +1411,21 @@ main {
               <li>データアーキテクチャ</li>
             </ul>
           </article>
+          <article class="team-card">
+            <div class="team-profile">
+              <img src="yuka.png" alt="Yuka Nakamura" width="96" height="96" loading="lazy" decoding="async">
+              <div>
+                <p class="role">COO / Operations Designer</p>
+                <h3>中村優香（Yuka Nakamura）</h3>
+              </div>
+            </div>
+            <p>元大手コンサルティングファーム。Go-to-Market再設計とオペレーション改善を専門に、複数事業のスケールを牽引。組織設計と定着化に強み。</p>
+            <ul class="chip-list">
+              <li>GTMデザイン</li>
+              <li>オペレーション改善</li>
+              <li>チェンジマネジメント</li>
+            </ul>
+          </article>
         </div>
         <div class="container talent-panel">
           <h3>採用・パートナー募集</h3>
@@ -1374,7 +1444,7 @@ main {
         <div class="container section-header">
           <p class="eyebrow">Contact</p>
           <h2>まずは課題感をお聞かせください</h2>
-          <p class="section-intro">1営業日以内にご返信いたします。現在は月3社までの新規プロジェクトをお受けしています。</p>
+          <p class="section-intro">1営業日以内にご返信いたします。現在は月3社までの新規プロジェクトを受け付けているため、お早めにご相談ください。</p>
         </div>
         <div class="container contact-grid">
           <div class="contact-info">

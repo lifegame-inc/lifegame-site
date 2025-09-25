@@ -1,10 +1,10 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LifeGame Consulting | AIで描く勝ち筋のあるグロース戦略</title>
-  <meta name="description" content="LifeGame ConsultingはAIとマーケティングの戦略設計で事業成長をブーストするパートナー。マーケティングのプロであるCEOと開発のプロであるJun Otsuが、データ駆動の実行まで伴走します。">
+  <meta name="description" content="LifeGame ConsultingはAIとマーケティングの戦略設計で事業成長を加速させるパートナー。マーケティングのプロであるCEOとフルスタック開発者が、戦略から実行まで伴走します。">
   <meta name="keywords" content="AIコンサル, 事業グロース, マーケティング戦略, 営業強化, プロダクト開発, LifeGame Consulting">
   <meta name="author" content="LifeGame Consulting">
   <meta property="og:type" content="website">
@@ -21,1552 +21,432 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --base: #05091c;
-      --base-soft: rgba(9, 17, 45, 0.82);
-      --layer: rgba(10, 15, 36, 0.78);
-      --card: rgba(12, 22, 55, 0.86);
-      --stroke: rgba(120, 141, 192, 0.28);
-      --accent: #facc15;
-      --accent-strong: #f97316;
-      --text: #f8fafc;
-      --text-soft: #c7d2fe;
-      --muted: #94a3b8;
-      --shadow-lg: 0 32px 120px rgba(8, 17, 40, 0.55);
-      --shadow-md: 0 20px 60px rgba(8, 17, 40, 0.45);
-      --blur: blur(22px);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Plus Jakarta Sans', 'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at 16% 18%, rgba(37, 99, 235, 0.18), transparent 52%),
-                  radial-gradient(circle at 84% 12%, rgba(168, 85, 247, 0.16), transparent 60%),
-                  linear-gradient(135deg, #020617 0%, #030a1f 50%, #05091c 100%);
-      color: var(--text);
-      line-height: 1.7;
-      letter-spacing: 0.01em;
-      min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(120deg, rgba(59, 130, 246, 0.08), rgba(250, 204, 21, 0.05));
-      pointer-events: none;
-      z-index: -2;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 0);
-      background-size: 120px 120px;
-      opacity: 0.22;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    ::selection {
-      background: rgba(250, 204, 21, 0.35);
-      color: #0f172a;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: min(1120px, 92%);
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(6, 10, 28, 0.85);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.2rem 0;
-      gap: 1.5rem;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.95rem;
-    }
-
-    .brand img {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.35);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
-
-    .nav-link {
-      position: relative;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--muted);
-      transition: color 0.2s ease;
-      padding: 0.35rem 0;
-    }
-
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 100%;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      transform: scaleX(0);
-      transform-origin: center;
-      transition: transform 0.2s ease;
-    }
-
-    .nav-link:hover,
-    .nav-link:focus-visible {
-      color: var(--text);
-    }
-
-    .nav-link:hover::after,
-    .nav-link:focus-visible::after {
-      transform: scaleX(1);
-    }
-
-    .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.45rem;
-      padding: 0.72rem 1.35rem;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-      cursor: pointer;
-      border: 1px solid transparent;
-      color: inherit;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #facc15, #f97316);
-      color: #0f172a;
-      box-shadow: 0 20px 45px rgba(250, 204, 21, 0.32);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 24px 55px rgba(250, 204, 21, 0.45);
-    }
-
-    .btn-ghost {
-      border-color: rgba(148, 163, 184, 0.28);
-      background: rgba(15, 23, 42, 0.5);
-      color: var(--text);
-    }
-
-    .btn-ghost:hover {
-      transform: translateY(-2px);
-      border-color: rgba(250, 204, 21, 0.45);
-      color: var(--accent);
-    }
-
-    .menu-toggle {
-      display: none;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      background: rgba(15, 23, 42, 0.65);
-      color: var(--text);
-    }
-
-    .hero {
-      padding: 5.5rem 0 5rem;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 2.5rem;
-      align-items: center;
-    }
-
-    .hero-copy {
-      grid-column: span 7;
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 1rem;
-      border-radius: 999px;
-      background: rgba(59, 130, 246, 0.12);
-      color: var(--text-soft);
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .hero-title {
-      font-size: clamp(2.6rem, 4vw, 4.2rem);
-      line-height: 1.12;
-      letter-spacing: -0.02em;
-      font-weight: 700;
-      margin: 0;
-      background: linear-gradient(120deg, #f8fafc 0%, #facc15 55%, #f97316 90%);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-lead {
-      font-size: 1.05rem;
-      color: rgba(226, 232, 240, 0.85);
-      margin: 0;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.4rem 0.95rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      font-weight: 600;
-      font-size: 0.85rem;
-      color: var(--text-soft);
-    }
-
-    .badge svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .hero-highlights {
-      display: grid;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .highlight-card {
-      display: flex;
-      gap: 1.1rem;
-      align-items: flex-start;
-      padding: 1.25rem 1.5rem;
-      border-radius: 1.5rem;
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      box-shadow: var(--shadow-md);
-    }
-
-    .highlight-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(250, 204, 21, 0.25));
-      display: grid;
-      place-items: center;
-      color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    .hero-visual {
-      grid-column: span 5;
-      position: relative;
-    }
-
-    .orb {
-      position: absolute;
-      border-radius: 999px;
-      filter: blur(0);
-      mix-blend-mode: screen;
-      opacity: 0.65;
-      pointer-events: none;
-    }
-
-    .orb.one {
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.4), transparent 65%);
-      top: -60px;
-      right: -120px;
-      animation: float 12s ease-in-out infinite;
-    }
-
-    .orb.two {
-      width: 220px;
-      height: 220px;
-      background: radial-gradient(circle, rgba(244, 114, 182, 0.35), transparent 70%);
-      bottom: 60px;
-      left: -70px;
-      animation: float 14s ease-in-out infinite reverse;
-    }
-
-    .visual-stack {
-      position: relative;
-      padding: 2.75rem 2.25rem;
-      border-radius: 2.25rem;
-      background: linear-gradient(155deg, rgba(15, 23, 42, 0.95), rgba(12, 22, 55, 0.75));
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      box-shadow: 0 35px 80px rgba(15, 23, 42, 0.45);
-      overflow: hidden;
-    }
-
-    .visual-stack::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border-radius: 1.75rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
-    .visual-card {
-      position: relative;
-      background: rgba(15, 23, 42, 0.85);
-      border-radius: 1.5rem;
-      padding: 1.6rem;
-      border: 1px solid rgba(148, 163, 184, 0.24);
-      display: grid;
-      gap: 0.6rem;
-      box-shadow: 0 18px 45px rgba(14, 26, 53, 0.45);
-    }
-
-    .visual-card.accent {
-      background: linear-gradient(140deg, rgba(250, 204, 21, 0.2), rgba(56, 189, 248, 0.18));
-      border-color: rgba(250, 204, 21, 0.35);
-    }
-
-    .visual-grid {
-      display: grid;
-      gap: 1.25rem;
-    }
-
-    .visual-stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-    }
-
-    .stat {
-      flex: 1 1 120px;
-      display: grid;
-      gap: 0.25rem;
-    }
-
-    .stat span {
-      font-size: 2rem;
-      font-weight: 700;
-      background: linear-gradient(120deg, #facc15 0%, #f97316 60%);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .signature {
-      display: grid;
-      gap: 0.45rem;
-      padding: 1.25rem 1.5rem;
-      border-radius: 1.5rem;
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      background: rgba(15, 23, 42, 0.65);
-      margin-top: 1.25rem;
-    }
-
-    .signature strong {
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      color: var(--text-soft);
-    }
-
-    main section {
-      padding: 5.5rem 0;
-      position: relative;
-    }
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.4rem 1.1rem;
-      border-radius: 999px;
-      background: rgba(148, 163, 184, 0.18);
-      color: var(--accent);
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-    }
-
-    .section-heading {
-      display: grid;
-      gap: 1rem;
-      margin-bottom: 3rem;
-      max-width: 700px;
-    }
-
-    .section-heading h2 {
-      margin: 0;
-      font-size: clamp(2rem, 3.4vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .section-heading p {
-      margin: 0;
-      color: rgba(226, 232, 240, 0.82);
-      font-size: 1rem;
-    }
-
-    .value-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.75rem;
-    }
-
-    .value-card {
-      position: relative;
-      padding: 2rem;
-      border-radius: 2rem;
-      background: var(--card);
-      border: 1px solid var(--stroke);
-      box-shadow: var(--shadow-md);
-      display: grid;
-      gap: 1rem;
-    }
-
-    .value-card::after {
-      content: "";
-      position: absolute;
-      inset: 1px;
-      border-radius: calc(2rem - 1px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    .value-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(250, 204, 21, 0.25));
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.05em;
-      font-size: 1.1rem;
-    }
-
-    .value-card h3 {
-      margin: 0;
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-
-    .value-card p {
-      margin: 0;
-      color: rgba(203, 213, 225, 0.9);
-    }
-
-    .value-card ul {
-      margin: 0;
-      padding-left: 1.1rem;
-      color: rgba(148, 163, 184, 0.9);
-      font-size: 0.95rem;
-      display: grid;
-      gap: 0.4rem;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2rem;
-    }
-
-    .service-card {
-      position: relative;
-      padding: 2.3rem;
-      border-radius: 2.25rem;
-      background: rgba(10, 19, 44, 0.78);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      box-shadow: var(--shadow-md);
-      display: grid;
-      gap: 1.2rem;
-    }
-
-    .service-card strong {
-      font-size: 1.1rem;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-    }
-
-    .service-card h3 {
-      margin: 0;
-      font-size: 1.6rem;
-      font-weight: 700;
-    }
-
-    .service-card p {
-      margin: 0;
-      color: rgba(203, 213, 225, 0.88);
-    }
-
-    .service-card ul {
-      margin: 0;
-      padding-left: 1.1rem;
-      display: grid;
-      gap: 0.45rem;
-      color: rgba(148, 163, 184, 0.92);
-    }
-
-    .blueprint {
-      display: grid;
-      gap: 2rem;
-      background: rgba(10, 19, 44, 0.7);
-      border-radius: 2.5rem;
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      padding: 3rem;
-      box-shadow: var(--shadow-lg);
-    }
-
-    .blueprint-steps {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1.5rem;
-    }
-
-    .step {
-      position: relative;
-      padding: 1.75rem;
-      border-radius: 1.75rem;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .step-number {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, rgba(250, 204, 21, 0.28), rgba(59, 130, 246, 0.25));
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      color: #0f172a;
-    }
-
-    .results-grid {
-      margin-top: 2.5rem;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.5rem;
-    }
-
-    .result-card {
-      padding: 2rem;
-      border-radius: 1.75rem;
-      background: rgba(15, 23, 42, 0.65);
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .result-card span {
-      font-size: 2.4rem;
-      font-weight: 700;
-      background: linear-gradient(120deg, #facc15 0%, #f97316 70%);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .partner-panel {
-      margin-top: 2rem;
-      display: grid;
-      gap: 1.5rem;
-      padding: 2.5rem;
-      border-radius: 2rem;
-      background: rgba(12, 22, 55, 0.75);
-      border: 1px solid rgba(148, 163, 184, 0.22);
-    }
-
-    .partner-panel ul {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      color: rgba(148, 163, 184, 0.85);
-      font-size: 0.95rem;
-      letter-spacing: 0.05em;
-    }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2rem;
-    }
-
-    .team-card {
-      position: relative;
-      display: grid;
-      gap: 1rem;
-      padding: 2.5rem;
-      border-radius: 2rem;
-      background: rgba(15, 23, 42, 0.72);
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      box-shadow: var(--shadow-md);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      cursor: pointer;
-    }
-
-    .team-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 40px 90px rgba(15, 23, 42, 0.45);
-    }
-
-    .team-card img {
-      width: 86px;
-      height: 86px;
-      border-radius: 20px;
-      object-fit: cover;
-      box-shadow: 0 18px 40px rgba(14, 26, 53, 0.45);
-    }
-
-    .team-meta {
-      display: grid;
-      gap: 0.4rem;
-    }
-
-    .team-meta strong {
-      font-size: 0.9rem;
-      letter-spacing: 0.12em;
-      color: var(--accent);
-    }
-
-    .team-meta h3 {
-      margin: 0;
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
-    .team-meta p {
-      margin: 0;
-      color: rgba(203, 213, 225, 0.85);
-    }
-
-    .team-expertise {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-    }
-
-    .chip {
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(37, 99, 235, 0.16);
-      color: rgba(226, 232, 240, 0.92);
-      font-size: 0.85rem;
-      letter-spacing: 0.04em;
-    }
-
-    .talent-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-    }
-
-    .talent-card {
-      padding: 2rem;
-      border-radius: 1.75rem;
-      background: rgba(15, 23, 42, 0.68);
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      display: grid;
-      gap: 0.9rem;
-    }
-
-    .talent-card h3 {
-      margin: 0;
-      font-size: 1.3rem;
-      font-weight: 600;
-    }
-
-    .talent-card p {
-      margin: 0;
-      color: rgba(203, 213, 225, 0.88);
-    }
-
-    .talent-card ul {
-      margin: 0;
-      padding-left: 1.1rem;
-      color: rgba(148, 163, 184, 0.9);
-      display: grid;
-      gap: 0.4rem;
-      font-size: 0.95rem;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2.5rem;
-      align-items: start;
-    }
-
-    .contact-panel {
-      padding: 2.5rem;
-      border-radius: 2rem;
-      background: rgba(10, 19, 44, 0.78);
-      border: 1px solid rgba(148, 163, 184, 0.22);
-      box-shadow: var(--shadow-lg);
-      display: grid;
-      gap: 1.25rem;
-    }
-
-    form {
-      display: grid;
-      gap: 1.25rem;
-    }
-
-    label {
-      display: grid;
-      gap: 0.4rem;
-      font-weight: 600;
-      color: rgba(226, 232, 240, 0.85);
-    }
-
-    input,
-    textarea,
-    select {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.28);
-      border-radius: 1rem;
-      padding: 0.85rem 1rem;
-      color: var(--text);
-      font: inherit;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      resize: vertical;
-      min-height: 52px;
-    }
-
-    textarea {
-      min-height: 140px;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      outline: none;
-      border-color: rgba(250, 204, 21, 0.5);
-      box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.16);
-    }
-
-    .form-note {
-      margin: 0;
-      font-size: 0.9rem;
-      color: rgba(148, 163, 184, 0.85);
-    }
-
-    .status-banner {
-      display: none;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.9rem 1.1rem;
-      border-radius: 1rem;
-      background: rgba(37, 99, 235, 0.18);
-      border: 1px solid rgba(148, 163, 184, 0.28);
-      font-size: 0.9rem;
-    }
-
-    .status-banner.success {
-      display: inline-flex;
-      background: rgba(34, 197, 94, 0.18);
-      border-color: rgba(34, 197, 94, 0.35);
-    }
-
-    .status-banner.error {
-      display: inline-flex;
-      background: rgba(239, 68, 68, 0.18);
-      border-color: rgba(239, 68, 68, 0.35);
-    }
-
-    footer {
-      padding: 3rem 0 4rem;
-      border-top: 1px solid rgba(148, 163, 184, 0.12);
-      margin-top: 4rem;
-      background: rgba(5, 8, 22, 0.85);
-      backdrop-filter: blur(14px);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 2rem;
-      align-items: start;
-    }
-
-    .footer-brand {
-      display: grid;
-      gap: 0.9rem;
-    }
-
-    .footer-brand p {
-      margin: 0;
-      color: rgba(148, 163, 184, 0.88);
-      font-size: 0.95rem;
-    }
-
-    .footer-links {
-      display: grid;
-      gap: 0.65rem;
-      color: rgba(148, 163, 184, 0.88);
-      font-size: 0.95rem;
-    }
-
-    .copyright {
-      margin-top: 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: rgba(148, 163, 184, 0.6);
-      font-size: 0.85rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(3, 6, 18, 0.75);
-      backdrop-filter: blur(14px);
-      z-index: 100;
-      padding: 3rem 1.5rem;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-card {
-      max-width: 520px;
-      width: 100%;
-      background: rgba(248, 250, 252, 0.96);
-      color: #0f172a;
-      border-radius: 2rem;
-      padding: 2.75rem 2.5rem;
-      position: relative;
-      box-shadow: 0 45px 80px rgba(15, 23, 42, 0.45);
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 1.25rem;
-      right: 1.25rem;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      border: none;
-      background: rgba(15, 23, 42, 0.08);
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .modal-card h3 {
-      margin: 0;
-      font-size: 1.65rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-
-    .modal-card p {
-      margin: 0;
-      color: rgba(30, 41, 59, 0.85);
-      line-height: 1.8;
-      font-size: 0.98rem;
-    }
-    @keyframes float {
-      0%, 100% { transform: translate3d(0, 0, 0); }
-      50% { transform: translate3d(0, -14px, 0); }
-    }
-
-    @media (max-width: 1080px) {
-      .hero {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-      }
-      .hero-copy,
-      .hero-visual {
-        grid-column: span 1;
-      }
-      .visual-stack {
-        margin: 0 auto;
-      }
-    }
-
-    @media (max-width: 960px) {
-      .nav-links {
-        position: fixed;
-        inset: 72px 16px auto 16px;
-        flex-direction: column;
-        align-items: stretch;
-        background: rgba(6, 12, 31, 0.95);
-        border: 1px solid rgba(148, 163, 184, 0.22);
-        border-radius: 1.5rem;
-        padding: 1.5rem;
-        box-shadow: var(--shadow-lg);
-        transform: translateY(-25px);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s ease, transform 0.2s ease;
-      }
-
-      .nav-links.open {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-
-      .nav {
-        padding: 1rem 0;
-      }
-
-      .nav-cta {
-        display: none;
-      }
-
-      .menu-toggle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      main section {
-        padding: 4.5rem 0;
-      }
-
-      .value-grid,
-      .services-grid,
-      .blueprint-steps,
-      .results-grid,
-      .team-grid,
-      .talent-grid,
-      .contact-grid,
-      .footer-grid {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-      }
-
-      .partner-panel ul {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero {
-        padding: 4rem 0 3.5rem;
-      }
-      .visual-stack {
-        padding: 2rem 1.75rem;
-      }
-      .value-card,
-      .service-card,
-      .blueprint,
-      .team-card,
-      .contact-panel {
-        padding: 2rem;
-      }
-      .footer-grid {
-        gap: 1.5rem;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <script defer src="assets/js/main.js"></script>
 </head>
 <body>
-  <div class="orb one" aria-hidden="true"></div>
-  <div class="orb two" aria-hidden="true"></div>
-  <header>
-    <div class="container nav">
-      <a href="#top" class="brand">
-        <img src="logo.png" alt="LifeGame Consulting ロゴ">
-        LifeGame Consulting
-      </a>
-      <nav class="nav-links" id="mobile-menu" aria-label="メインナビゲーション">
-        <a class="nav-link" href="#services">サービス</a>
-        <a class="nav-link" href="#blueprint">アプローチ</a>
-        <a class="nav-link" href="#results">実績</a>
-        <a class="nav-link" href="#team">チーム</a>
-        <a class="nav-link" href="#recruit">採用情報</a>
-        <a class="nav-link" href="#contact">お問い合わせ</a>
-      </nav>
-      <div class="nav-cta">
-        <a class="btn btn-ghost" href="#contact">資料請求</a>
-        <a class="btn btn-primary" href="#contact">相談してみる</a>
+  <div class="page-shell">
+    <header class="site-header" data-js="header">
+      <div class="container">
+        <div class="header-inner">
+          <a class="brand" href="#hero" aria-label="LifeGame Consulting">
+            <img src="logo.png" alt="LifeGame Consulting ロゴ" width="42" height="42" loading="lazy" decoding="async">
+            <span>LifeGame Consulting</span>
+          </a>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-js="nav-toggle">
+            <span class="sr-only">メニューを開閉</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M10 18h10" /></svg>
+          </button>
+          <nav class="primary-nav" id="primary-navigation" aria-label="メインナビゲーション" data-js="nav" data-open="false">
+            <ul>
+              <li><a href="#why" class="nav-link">Why Us</a></li>
+              <li><a href="#services" class="nav-link">Services</a></li>
+              <li><a href="#blueprint" class="nav-link">Blueprint</a></li>
+              <li><a href="#results" class="nav-link">Results</a></li>
+              <li><a href="#team" class="nav-link">Team</a></li>
+            </ul>
+            <a class="btn btn-ghost" href="#contact">相談する</a>
+          </nav>
+        </div>
       </div>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="メニューを開く">
-        ☰
-      </button>
-    </div>
-  </header>
+    </header>
 
-  <main id="top">
-    <section class="container hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <span class="eyebrow">AI Consulting for Bold Growth</span>
-        <h1 id="hero-title" class="hero-title">AIとマーケティング戦略で、事業に勝ち筋を描くパートナー</h1>
-        <p class="hero-lead">マーケティングのプロである代表と、開発のプロを備える。データに裏づけられた戦略と、AIを駆使した実装力で、企業の成長エンジンを再設計します。</p>
-        <div class="hero-badges" aria-label="チームの強み">
-          <span class="badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1v22M4.22 4.22l15.56 15.56M1 12h22M4.22 19.78l15.56-15.56"/></svg>
-            マーケティング戦略・Kazuki Tsugane
-          </span>
-          <span class="badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20l9-5-9-5-9 5 9 5z"/><path d="M12 12l9-5-9-5-9 5 9 5z"/></svg>
-            開発のプロ・Jun Otsu
-          </span>
-          <span class="badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10"/><path d="M7 22h10"/><path d="M12 17v5"/></svg>
-            グロース案件 50社以上
-          </span>
-        </div>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#contact">AIグロース相談を予約</a>
-          <a class="btn btn-ghost" href="#results">成果を見る</a>
-        </div>
-        <div class="hero-highlights">
-          <article class="highlight-card">
-            <span class="highlight-icon">ROI</span>
-            <div>
-              <strong>事業の勝ち筋をマーケット視点で特定</strong>
-              <p>市場リサーチからポジショニング、メッセージ、ファネルまでを再構築。AIで仮説検証を高速化し、投資ROIを最大化します。</p>
+    <main>
+      <section class="hero" id="hero">
+        <div class="container hero-layout">
+          <div class="hero-copy">
+            <p class="eyebrow">AI × Growth Consulting</p>
+            <h1>勝ち筋を描くブループリントで、事業成長をグロースさせる</h1>
+            <p class="lede">市場・データ・現場感を統合したハイブリッドチームが、戦略立案から施策の実装、そして収益化までフルスタックで伴走します。AIを核に、意思決定のスピードと精度を100倍に。</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact">無料相談を予約</a>
+              <a class="btn btn-secondary" href="#services">サービス概要を見る</a>
             </div>
-          </article>
-          <article class="highlight-card">
-            <span class="highlight-icon">AI</span>
-            <div>
-              <strong>AI実装まで一気通貫で支援</strong>
-              <p>Jun Otsuが率いる開発チームが、AIプロダクトと業務フローを設計・構築。営業やマーケティングのオートメーション化で継続的に伸びる仕組みをつくります。</p>
+            <dl class="metrics">
+              <div>
+                <dt>平均ROI改善</dt>
+                <dd><span>+142%</span></dd>
+              </div>
+              <div>
+                <dt>戦略リリースまで</dt>
+                <dd><span>45日</span></dd>
+              </div>
+              <div>
+                <dt>実行フェーズ継続率</dt>
+                <dd><span>92%</span></dd>
+              </div>
+            </dl>
+          </div>
+          <div class="hero-visual">
+            <div class="insight-card">
+              <h2>Revenue Blueprint</h2>
+              <p>AIが導出した需要予測と、現場ヒアリングによる仮説検証を統合。事業のレベニューエンジンを可視化します。</p>
+              <ul>
+                <li>
+                  <span>37</span>
+                  <div>
+                    <strong>施策プール</strong>
+                    <p>ROIフィットに基づく優先度付け済み</p>
+                  </div>
+                </li>
+                <li>
+                  <span>18</span>
+                  <div>
+                    <strong>顧客セグメント</strong>
+                    <p>LTVとCACをリアルタイムでモニタリング</p>
+                  </div>
+                </li>
+              </ul>
+              <footer>
+                <p>データの鮮度と現場の熱量をシームレスに接続。</p>
+              </footer>
             </div>
+            <div class="floating-card">
+              <p>Predictive Pipeline</p>
+              <strong>月次成長率 +28%</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="why">
+        <div class="container section-header">
+          <p class="eyebrow">Why LifeGame</p>
+          <h2>戦略×実装を同じ熱量でやり切る、AI時代のグロースパートナー</h2>
+          <p class="section-intro">トップラインのボトルネックをAIで特定し、マーケティング／営業／プロダクトの壁を越えた一気通貫の改善ロードマップを設計します。CxO視点での意思決定支援と、現場伴走型の実行体制が強みです。</p>
+        </div>
+        <div class="container feature-grid">
+          <article class="feature-card">
+            <h3>経営に効くデータドリブン設計</h3>
+            <p>経営数値・定性インサイト・AI予測モデルを一枚に重ねた「勝ち筋ボード」を作成。経営会議での意思決定を加速させます。</p>
+            <ul>
+              <li>North Star KPIの再定義と分解</li>
+              <li>AI需要予測・リードスコアリング</li>
+              <li>シナリオプランニングの自動化</li>
+            </ul>
+          </article>
+          <article class="feature-card">
+            <h3>高速なグロース実行力</h3>
+            <p>週次スプリントで施策→検証→改善を回し、デジタルとリアルを越えて事業を伸ばします。生成AIの業務組み込みも支援。</p>
+            <ul>
+              <li>コンテンツ・広告運用のアジャイル改善</li>
+              <li>SFA/CRM自動化とプレイブック整備</li>
+              <li>オンボーディング〜サクセス体制の構築</li>
+            </ul>
+          </article>
+          <article class="feature-card">
+            <h3>変革を続けるチームづくり</h3>
+            <p>現場が再現できるナレッジ体系と習慣をセットで提供。内製化と外部支援の最適バランスをデザインします。</p>
+            <ul>
+              <li>マネジメントレベルのコーチング</li>
+              <li>ラーニングジャーニーと評価設計</li>
+              <li>採用・アサイン計画まで伴走</li>
+            </ul>
           </article>
         </div>
-      </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="visual-stack">
-          <div class="visual-grid">
-            <div class="visual-card accent">
-              <h3 style="margin:0;font-size:1.1rem;letter-spacing:0.08em;text-transform:uppercase;">Growth Dashboard</h3>
-              <div class="visual-stats">
-                <div class="stat">
-                  <span>312%</span>
-                  <small>AIパーソナライズ施策のCVR向上</small>
-                </div>
-                <div class="stat">
-                  <span>8.6x</span>
-                  <small>営業パイプライン成長</small>
-                </div>
+      </section>
+
+      <section class="section" id="services">
+        <div class="container section-header">
+          <p class="eyebrow">Services</p>
+          <h2>事業成長を牽引する4つのサービスライン</h2>
+          <p class="section-intro">戦略立案からプロダクト改善、営業・CS組織の立ち上げまで、事業フェーズに応じて必要なギアを選択できます。</p>
+        </div>
+        <div class="container service-grid">
+          <article class="service-card">
+            <header>
+              <span class="badge">Strategy Design</span>
+              <h3>AI Growth Blueprint</h3>
+            </header>
+            <p>市場構造・競合・顧客インサイトをAIで解析し、3〜6か月で成果が出るロードマップを提示。経営ダッシュボードも構築します。</p>
+            <ul>
+              <li>市場・顧客データの高速スキャン</li>
+              <li>勝ち筋仮説の検証と優先順位付け</li>
+              <li>アクションプランとKPIの定義</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <header>
+              <span class="badge">Revenue</span>
+              <h3>Sales &amp; Marketing Acceleration</h3>
+            </header>
+            <p>デマンドジェネレーションからフィールドセールスまでを一気通貫で最適化。生成AIを使ったナーチャリング設計も提供します。</p>
+            <ul>
+              <li>ABM/PLG施策の立案と実装</li>
+              <li>CRM/SFAのオートメーション</li>
+              <li>広告・コンテンツのクリエイティブ最適化</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <header>
+              <span class="badge">Product</span>
+              <h3>Product-led Growth</h3>
+            </header>
+            <p>オンボーディング、利用活性化、アップセル導線までUX視点で徹底的に磨き込み。AIを活用したパーソナライゼーションも実装。</p>
+            <ul>
+              <li>ユーザーリサーチと課題構造化</li>
+              <li>活用シナリオとIn-appコミュニケーション</li>
+              <li>機能改善・ロードマップの共創</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <header>
+              <span class="badge">Enablement</span>
+              <h3>Change Management &amp; Talent</h3>
+            </header>
+            <p>組織の習慣化とナレッジ浸透を仕組み化。アセスメントとサクセスプランをセットにした伴走支援で成果の定着を狙います。</p>
+            <ul>
+              <li>マネジメント層のコーチングプログラム</li>
+              <li>採用・オンボーディング設計</li>
+              <li>プレイブックと評価指標の整備</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="blueprint">
+        <div class="container section-header">
+          <p class="eyebrow">Blueprint</p>
+          <h2>事業を加速させる4ステップの実装プロセス</h2>
+          <p class="section-intro">状況に応じてスプリントを柔軟に組み替えながらも、成果にコミットするフレームで前進させます。</p>
+        </div>
+        <div class="container process-grid">
+          <article class="process-card">
+            <span class="step">01</span>
+            <h3>Discover</h3>
+            <p>定性/定量リサーチとAIリーディングでボトルネックを特定。勝ち筋仮説と測定指標を定義します。</p>
+            <ul>
+              <li>顧客/競合スキャン</li>
+              <li>AI需要予測モデルの構築</li>
+            </ul>
+          </article>
+          <article class="process-card">
+            <span class="step">02</span>
+            <h3>Design</h3>
+            <p>Growth Blueprintに落とし込み、戦略オプションを比較検証。成功確率を高めるオペレーション設計を行います。</p>
+            <ul>
+              <li>シナリオプランニング</li>
+              <li>実行チームの編成</li>
+            </ul>
+          </article>
+          <article class="process-card">
+            <span class="step">03</span>
+            <h3>Deliver</h3>
+            <p>マルチファンクショナルなチームで施策を高速実装。週次スプリントでROIを最大化します。</p>
+            <ul>
+              <li>施策実行と自動レポーティング</li>
+              <li>生成AIの活用ワークフロー構築</li>
+            </ul>
+          </article>
+          <article class="process-card">
+            <span class="step">04</span>
+            <h3>Scale</h3>
+            <p>成果を仕組み化して定着。ナレッジと体制を内製化しながら継続的な伸びしろを設計します。</p>
+            <ul>
+              <li>プレイブックとトレーニング</li>
+              <li>KPIの高度化と運用移管</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="results">
+        <div class="container section-header">
+          <p class="eyebrow">Results</p>
+          <h2>成果に直結する伴走で、実装フェーズまでコミット</h2>
+          <p class="section-intro">SaaS、FinTech、メディア、ヘルスケア、BtoB製造業など幅広い領域で実績を積み上げています。</p>
+        </div>
+        <div class="container results-grid">
+          <article class="result-card">
+            <span class="result-value">ARR +310%</span>
+            <h3>シリーズB SaaS</h3>
+            <p>エンタープライズ向けにABMを構築。AIスコアリングを導入し、商談創出率が3.4倍に。</p>
+          </article>
+          <article class="result-card">
+            <span class="result-value">解約率 1/3</span>
+            <h3>サブスクリプションD2C</h3>
+            <p>チャーンリスクモデルを構築し、CX改善とカスタマーサクセスの再設計でLTVが1.8倍。</p>
+          </article>
+          <article class="result-card">
+            <span class="result-value">営業生産性 +68%</span>
+            <h3>産業機器メーカー</h3>
+            <p>営業プロセスのデジタル化とプレイブック整備で、受注までのリードタイムを40%短縮。</p>
+          </article>
+        </div>
+        <div class="container partner-panel">
+          <h3>パートナー企業・支援領域</h3>
+          <ul>
+            <li>Enterprise SaaS</li>
+            <li>FinTech</li>
+            <li>HR Tech</li>
+            <li>ヘルスケア</li>
+            <li>D2C / EC</li>
+            <li>製造業DX</li>
+            <li>メディア</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="team">
+        <div class="container section-header">
+          <p class="eyebrow">Team</p>
+          <h2>事業と現場を知り尽くしたハイブリッドチーム</h2>
+          <p class="section-intro">事業会社・スタートアップ・外資コンサルで実績を積んだメンバーが、ステージに応じた知見で伴走します。</p>
+        </div>
+        <div class="container team-grid">
+          <article class="team-card">
+            <div class="team-profile">
+              <img src="kazuki.png" alt="Kazuki Tsugane" width="96" height="96" loading="lazy" decoding="async">
+              <div>
+                <p class="role">CEO / Growth Strategist</p>
+                <h3>Kazuki Tsugane</h3>
               </div>
             </div>
-            <div class="visual-card">
-              <strong style="font-size:0.95rem;color:rgba(226,232,240,0.8);">Signal → Strategy → Scale</strong>
-              <p style="margin:0;color:rgba(203,213,225,0.85);">リアルタイムで市場・顧客データを収集し、AIが勝ち筋シナリオを提案。CEOとJun Otsuが意思決定と実行をスプリントで推進します。</p>
+            <p>SMB〜Enterpriseまでのグロース戦略立案と実行で10年以上の実績。AI活用による意思決定高速化と組織変革が専門領域。</p>
+            <ul class="chip-list">
+              <li>マーケ&セールス戦略</li>
+              <li>PLGデザイン</li>
+              <li>組織変革</li>
+            </ul>
+          </article>
+          <article class="team-card">
+            <div class="team-profile">
+              <img src="unidentified.png" alt="Jun Otsu" width="96" height="96" loading="lazy" decoding="async">
+              <div>
+                <p class="role">CTO / Full-stack Developer</p>
+                <h3>Jun Otsu</h3>
+              </div>
             </div>
+            <p>プロダクト開発とAI/MLの実装が専門。事業の勝ち筋に沿った技術選定と、ユーザー価値を高めるUX設計を推進。</p>
+            <ul class="chip-list">
+              <li>フルスタック開発</li>
+              <li>AIプラットフォーム</li>
+              <li>データアーキテクチャ</li>
+            </ul>
+          </article>
+          <article class="team-card">
+            <div class="team-profile">
+              <img src="yuka.png" alt="Yuka Tanaka" width="96" height="96" loading="lazy" decoding="async">
+              <div>
+                <p class="role">Experience Strategist</p>
+                <h3>Yuka Tanaka</h3>
+              </div>
+            </div>
+            <p>ユーザーリサーチとブランド体験設計を担当。カスタマージャーニーの最適化と、CXデザインの仕組み化が強み。</p>
+            <ul class="chip-list">
+              <li>UXリサーチ</li>
+              <li>サービスデザイン</li>
+              <li>ブランド戦略</li>
+            </ul>
+          </article>
+        </div>
+        <div class="container talent-panel">
+          <h3>採用・パートナー募集</h3>
+          <p>プロジェクトベースで協業いただけるグロースマーケター、データサイエンティスト、プロダクトマネージャーを募集しています。</p>
+          <div class="chip-rail">
+            <span>Growth Lead</span>
+            <span>Data Scientist</span>
+            <span>Customer Success</span>
+            <span>Product Manager</span>
+            <span>UX Researcher</span>
           </div>
-          <div class="signature">
-            <strong>EXECUTIVE DUO</strong>
-            <span>Marketing CEO × Lead Engineer Jun Otsu が、戦略〜実装〜成長のすべてにコミット。</span>
-          </div>
         </div>
-      </div>
-    </section>
-    <section id="services">
-      <div class="container">
-        <div class="section-heading">
-          <span class="section-label">Why LifeGame Consulting</span>
-          <h2>AIとマーケティングを統合したグロース設計で、成果が出るまで伴走</h2>
-          <p>プロジェクトの初速を決めるマーケットインサイトから、顧客体験の設計、AIによる自動化、収益モデルの最適化まで。戦略思考とプロダクト開発力を兼ね備えたデュオが、事業の勝ち筋を確実に形にします。</p>
-        </div>
-        <div class="value-grid">
-          <article class="value-card">
-            <div class="value-icon">1</div>
-            <h3>勝てる市場ポジションを設計</h3>
-            <p>顧客の「選ぶ理由」をデータで可視化し、ブランドと体験を磨き上げる。</p>
-            <ul>
-              <li>競合マップとホワイトスペース分析</li>
-              <li>ブランドストーリーとメッセージ設計</li>
-              <li>ファネル全体のUXリデザイン</li>
-            </ul>
-          </article>
-          <article class="value-card">
-            <div class="value-icon">2</div>
-            <h3>AIで営業・マーケを自走化</h3>
-            <p>リード獲得からナーチャリング、クロージングまでをAIと自動化で高速化。</p>
-            <ul>
-              <li>AIリードスコアリングとパーソナライズ</li>
-              <li>営業プレイブックと自動アクション</li>
-              <li>運用ダッシュボードの内製化</li>
-            </ul>
-          </article>
-          <article class="value-card">
-            <div class="value-icon">3</div>
-            <h3>スケールする開発とグロース運用</h3>
-            <p>Jun Otsuが率いる開発チームが、ビジネス要件を満たすAIプロダクトを素早く構築。</p>
-            <ul>
-              <li>高速なMVP開発とユーザーテスト</li>
-              <li>継続的なモデル改善とMLOps設計</li>
-              <li>グロース実行チームへのナレッジ移管</li>
-            </ul>
-          </article>
-        </div>
+      </section>
 
-        <div class="section-heading" style="margin-top:5rem;">
-          <span class="section-label">Service Lines</span>
-          <h2>事業グロースに必要な領域をフルスタックで提供</h2>
-          <p>戦略立案から実行、組織設計まで、ひとつのチームで完結。マーケティングのプロであるCEOと、開発のプロであるJun Otsuが、中長期に耐えるグロース体制をつくり上げます。</p>
+      <section class="section contact" id="contact">
+        <div class="container section-header">
+          <p class="eyebrow">Contact</p>
+          <h2>まずは課題感をお聞かせください</h2>
+          <p class="section-intro">1営業日以内にご返信いたします。現在は月3社までの新規プロジェクトをお受けしています。</p>
         </div>
-        <div class="services-grid">
-          <article class="service-card">
-            <strong>01</strong>
-            <h3>Market Intelligence Lab</h3>
-            <p>市場と顧客データの探索からブランド戦略、KPI設計までを一気通貫で実行。</p>
+        <div class="container contact-grid">
+          <div class="contact-info">
+            <h3>ご相談の多いテーマ</h3>
             <ul>
-              <li>顧客インサイト調査・定量分析</li>
-              <li>ブランドアーキテクチャ設計</li>
-              <li>マルチチャネルのグロースKPI</li>
+              <li>事業成長の鈍化原因を特定したい</li>
+              <li>AIを活用した営業・マーケ施策を内製化したい</li>
+              <li>プロダクトとGo-to-Marketの連動を強化したい</li>
+              <li>CS組織とLTV改善のロードマップを描きたい</li>
             </ul>
-          </article>
-          <article class="service-card">
-            <strong>02</strong>
-            <h3>AI Growth Playbook</h3>
-            <p>営業・マーケティング活動をAIで強化し、売上に直結するオペレーションを構築。</p>
-            <ul>
-              <li>リードスコアリングとレコメンドAI</li>
-              <li>セールスイネーブルメント基盤</li>
-              <li>コンテンツ自動生成ワークフロー</li>
-            </ul>
-          </article>
-          <article class="service-card">
-            <strong>03</strong>
-            <h3>Product & Data Engineering</h3>
-            <p>Jun Otsuが率いる開発チームが、実装まで責任を持つ。高速なMVPと継続改善。</p>
-            <ul>
-              <li>AIアプリ・API開発</li>
-              <li>MLOps・データ基盤構築</li>
-              <li>品質管理とセキュリティガバナンス</li>
-            </ul>
-          </article>
-          <article class="service-card">
-            <strong>04</strong>
-            <h3>Revenue Acceleration Ops</h3>
-            <p>マーケティングと営業の収益モデルを再設計し、継続的に伸びる体制を実装。</p>
-            <ul>
-              <li>ファネル最適化とLTV最大化</li>
-              <li>インサイドセールス/フィールド連携</li>
-              <li>運用ダッシュボードと意思決定支援</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-    <section id="blueprint">
-      <div class="container">
-        <div class="section-heading">
-          <span class="section-label">Engagement Blueprint</span>
-          <h2>代表とトップエンジニアがハンズオンで伴走するグロースプロセス</h2>
-          <p>スプリント単位で課題を分解し、戦略→設計→実装→定着のループを高速に回す。大規模企業からスタートアップまで、変化に強い体制をつくります。</p>
-        </div>
-        <div class="blueprint">
-          <div class="blueprint-steps">
-            <article class="step">
-              <div class="step-number">Step 1</div>
-              <h3>Ignite</h3>
-              <p>マーケット視点と社内データを統合し、勝ち筋仮説を設計。CEOがトップラインの課題を整理します。</p>
-            </article>
-            <article class="step">
-              <div class="step-number">Step 2</div>
-              <h3>Architect</h3>
-              <p>UX・施策ロードマップとKPIを設計。Jun Otsuが技術要件とAIモデルの設計をリードします。</p>
-            </article>
-            <article class="step">
-              <div class="step-number">Step 3</div>
-              <h3>Automate</h3>
-              <p>AIと自動化の実装、オペレーション設計、チームへのナレッジトランスファーを実行。</p>
-            </article>
-            <article class="step">
-              <div class="step-number">Step 4</div>
-              <h3>Scale</h3>
-              <p>継続改善とグロース実行体制の内製化を支援。結果のモニタリングとガバナンスまで伴走。</p>
-            </article>
+            <p class="note">守秘義務契約（NDA）締結前でも、概要ベースで相談可能です。</p>
           </div>
-          <div class="partner-panel">
-            <h3 style="margin:0;font-size:1.35rem;font-weight:600;">パートナーシップで得られるもの</h3>
-            <ul>
-              <li>経営課題を可視化するエグゼクティブボード</li>
-              <li>営業・マーケに特化したAI活用シナリオ</li>
-              <li>KPIをリアルタイムで追える指標設計とダッシュボード</li>
-              <li>自律的に回るグロースチームとプレイブック</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="results">
-      <div class="container">
-        <div class="section-heading">
-          <span class="section-label">Impact</span>
-          <h2>成果が語る、LifeGame Consultingのグロース力</h2>
-          <p>B2B SaaS、D2C、Fintechなど多様なドメインで、戦略設計からAI実装までをハンズオンで支援。スケール可能な成長カーブを描いてきました。</p>
-        </div>
-        <div class="results-grid">
-          <article class="result-card">
-            <span>+342%</span>
-            <p>ABM施策にAIレコメンドを導入し、パイプライン価値を3倍以上に。CEOが戦略と営業フローを直接設計。</p>
-          </article>
-          <article class="result-card">
-            <span>6→18ヶ月</span>
-            <p>Jun Otsuが率いるチームがAIオンボーディングを自動化。営業サイクルを3分の1に短縮し、ARRを最速で回収。</p>
-          </article>
-          <article class="result-card">
-            <span>97%満足</span>
-            <p>経営陣との定例ボードで意思決定を高速化。事業責任者からの満足度スコア97%を獲得。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-    <section id="team">
-      <div class="container">
-        <div class="section-heading">
-          <span class="section-label">Team</span>
-          <h2>マーケティングのプロCEO × 開発のプロJun Otsu。二人が事業グロースを牽引</h2>
-          <p>戦略思考、顧客理解、AI開発、実装マネジメントまでを兼ね備えたエグゼクティブデュオ。経営の意思決定と現場の実行を同時にドライブします。</p>
-        </div>
-        <div class="team-grid">
-          <article class="team-card" data-member="ceo" tabindex="0" role="button" aria-pressed="false">
-            <img src="kazuki.png" alt="Kazuki Tsuganeのポートレート">
-            <div class="team-meta">
-              <strong>Marketing CEO</strong>
-              <h3>Kazuki Tsugane</h3>
-              <p>マーケティング戦略のプロ。Kazuki Tsuganeがブランド構築からグロースオペレーション設計まで統括。</p>
+          <form class="contact-form" id="contact-form" method="POST" action="https://formsubmit.co/contact@lifegame.co.jp" data-js="contact-form">
+            <input type="hidden" name="_captcha" value="false">
+            <div class="form-field">
+              <label for="company">会社名</label>
+              <input type="text" id="company" name="company" autocomplete="organization" required>
             </div>
-            <div class="team-expertise">
-              <span class="chip">ブランド戦略</span>
-              <span class="chip">ABM設計</span>
-              <span class="chip">ファネル最適化</span>
+            <div class="form-field">
+              <label for="name">お名前</label>
+              <input type="text" id="name" name="name" autocomplete="name" required>
             </div>
-          </article>
-          <article class="team-card" data-member="otsu" tabindex="0" role="button" aria-pressed="false">
-            <img src="unidentified.png" alt="Lead Engineer Jun Otsuのポートレート">
-            <div class="team-meta">
-              <strong>Lead Engineer Jun Otsu</strong>
-              <h3>Jun Otsu</h3>
-              <p>開発のプロ。Jun OtsuがAIプロダクト、データ基盤、MLOps構築で事業にスケールする仕組みを実装。</p>
+            <div class="form-field">
+              <label for="email">メールアドレス</label>
+              <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required>
             </div>
-            <div class="team-expertise">
-              <span class="chip">AIアーキテクト</span>
-              <span class="chip">MLOps</span>
-              <span class="chip">プロダクト開発</span>
+            <div class="form-field">
+              <label for="budget">ご予算の目安</label>
+              <select id="budget" name="budget" required>
+                <option value="" disabled selected>選択してください</option>
+                <option value="~1m">〜100万円</option>
+                <option value="1-3m">100〜300万円</option>
+                <option value="3-5m">300〜500万円</option>
+                <option value="5m~">500万円以上</option>
+              </select>
             </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="recruit">
-      <div class="container">
-        <div class="section-heading">
-          <span class="section-label">Recruit</span>
-          <h2>プロフェッショナルが挑むAIグロースチームに参画しませんか</h2>
-          <p>LifeGame Consultingは「成果への執着」と「AI活用の創造性」を軸に動くチーム。マーケティング、営業、開発のプロフェッショナルが互いに連携し、クライアントの勝ち筋を実装します。</p>
-        </div>
-        <div class="talent-grid">
-          <article class="talent-card">
-            <h3>マーケティングディレクター</h3>
-            <p>戦略と実行の両面で、クライアントの市場価値を最大化するエースを募集。</p>
-            <ul>
-              <li>ブランド/ファネル戦略の立案・実行</li>
-              <li>データドリブンなKPIマネジメント</li>
-              <li>マルチチャネル施策のディレクション</li>
-            </ul>
-          </article>
-          <article class="talent-card">
-            <h3>営業エグゼクティブ</h3>
-            <p>AIを活用した新しい営業モデルを共に創り、収益を拡張するリーダーを歓迎。</p>
-            <ul>
-              <li>エンタープライズ/SMB双方の提案経験</li>
-              <li>ABM・インバウンド施策との連携</li>
-              <li>レベニューオペレーションの設計</li>
-            </ul>
-          </article>
-          <article class="talent-card">
-            <h3>リードAIエンジニア</h3>
-            <p>Jun Otsuと共にAI実装の中核を担い、継続的に学習するプロダクトを共創。</p>
-            <ul>
-              <li>AI/MLプロジェクトの開発リード経験</li>
-              <li>データパイプラインとMLOpsの構築</li>
-              <li>クライアント課題を技術で解く思考</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="section-heading">
-          <span class="section-label">Contact</span>
-          <h2>AIグロースの勝ち筋を、一緒に設計しましょう</h2>
-          <p>まずは30分のオンラインセッションで課題を伺います。事業フェーズに応じたアプローチと、CEO・Jun Otsuが描くグロースシナリオをご提案します。</p>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-panel">
-            <h3 style="margin:0;font-size:1.35rem;font-weight:600;">ご相談メニュー</h3>
-            <p style="margin:0;color:rgba(203,213,225,0.88);">AI活用による売上拡大、営業/マーケの自動化、新規事業検証など、目的に応じてカスタマイズしたプランをご用意します。</p>
-            <ul style="margin:0;padding-left:1.1rem;color:rgba(148,163,184,0.9);display:grid;gap:0.4rem;font-size:0.95rem;">
-              <li>現状課題のヒアリングとグロース診断</li>
-              <li>AI活用テーマの洗い出しとROI試算</li>
-              <li>プロジェクト設計とスプリント計画の提示</li>
-            </ul>
-            <p class="form-note">2営業日以内にCEOまたはJun Otsuより直接ご連絡いたします。</p>
-          </div>
-          <div class="contact-panel">
-            <form id="contact-form">
-              <label>
-                氏名
-                <input type="text" name="name" placeholder="山田 太郎" required>
-              </label>
-              <label>
-                メールアドレス
-                <input type="email" name="email" placeholder="you@example.com" required>
-              </label>
-              <label>
-                会社名 / 部署
-                <input type="text" name="company" placeholder="LifeGame Inc. / 事業開発部">
-              </label>
-              <label>
-                ご相談種別
-                <select name="type" required>
-                  <option value="" disabled selected>選択してください</option>
-                  <option value="strategy">AIグロース戦略を相談したい</option>
-                  <option value="sales">営業/マーケ自動化を検討したい</option>
-                  <option value="product">AIプロダクト開発を依頼したい</option>
-                  <option value="other">その他のご相談</option>
-                </select>
-              </label>
-              <label>
-                ご相談内容
-                <textarea name="message" placeholder="課題や実現したいことをご記入ください" required></textarea>
-              </label>
-              <p class="form-note">送信いただくと、自動返信メールで受付をお知らせします。</p>
-              <div class="status-banner" id="form-status" role="status" aria-live="polite"></div>
+            <div class="form-field">
+              <label for="message">ご相談内容</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <div class="form-footer">
+              <p class="privacy">送信いただく情報は当社のプライバシーポリシーに基づき取り扱います。</p>
               <button class="btn btn-primary" type="submit">送信する</button>
-            </form>
-          </div>
+            </div>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
+    <footer class="site-footer">
+      <div class="container footer-grid">
         <div class="footer-brand">
-          <a href="#top" class="brand" style="font-size:1rem;">
-            <img src="logo.png" alt="LifeGame Consulting ロゴ">
-            LifeGame Consulting
+          <a class="brand" href="#hero">
+            <img src="logo.png" alt="LifeGame Consulting" width="38" height="38" loading="lazy" decoding="async">
+            <span>LifeGame Consulting</span>
           </a>
-          <p>AIとマーケティングのプロがタッグを組み、事業グロースに必要なすべてを提供するコンサルティングファームです。</p>
+          <p>AIと人の知恵を掛け合わせ、事業の勝ち筋を描き切るグロースパートナー。</p>
         </div>
-        <div class="footer-links">
-          <strong style="color:var(--text);font-size:1rem;">Service</strong>
-          <a href="#services">グロース戦略設計</a>
-          <a href="#services">AI実装支援</a>
-          <a href="#blueprint">データ/開発伴走</a>
+        <div>
+          <h3>Company</h3>
+          <ul>
+            <li><a href="#why">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
         </div>
-        <div class="footer-links">
-          <strong style="color:var(--text);font-size:1rem;">Company</strong>
-          <a href="#team">チーム</a>
-          <a href="#results">実績</a>
-          <a href="#recruit">採用情報</a>
+        <div>
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#blueprint">Blueprint</a></li>
+            <li><a href="#results">Case Studies</a></li>
+            <li><a href="#contact">資料請求</a></li>
+          </ul>
         </div>
-        <div class="footer-links">
-          <strong style="color:var(--text);font-size:1rem;">Contact</strong>
-          <a href="mailto:hello@lifegame.ai">hello@lifegame.ai</a>
-          <a href="#contact">資料請求</a>
-          <a href="#contact">無料相談を予約</a>
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="mailto:contact@lifegame.co.jp">contact@lifegame.co.jp</a></li>
+            <li>Tokyo / Remote</li>
+          </ul>
         </div>
       </div>
-      <div class="copyright">
-        <span>© <span id="year"></span> LifeGame Consulting. All Rights Reserved.</span>
-        <span>Privacy &amp; Compliance Ready</span>
+      <div class="container copyright">
+        <p>&copy; 2024 LifeGame Consulting Inc.</p>
+        <a href="#contact">Privacy Policy</a>
       </div>
-    </div>
-  </footer>
-
-  <div class="modal" id="modal-ceo" role="dialog" aria-modal="true" aria-labelledby="modal-ceo-title">
-    <div class="modal-card">
-      <button class="modal-close" data-close>&times;</button>
-      <h3 id="modal-ceo-title">マーケティングCEOの視点</h3>
-      <p>グロースの本質は「顧客が選ぶ理由」を磨き続けること。私はB2B/B2C双方でブランド戦略とグロース設計をリードし、ARR100億円規模の事業まで伴走してきました。LifeGame Consultingでは、AIとマーケティングを融合させ、スピード感のある成長曲線を描くことにこだわっています。経営陣と同じ目線で議論し、現場と一緒に実行する。それが私たちのスタイルです。</p>
-    </div>
+    </footer>
   </div>
-
-  <div class="modal" id="modal-otsu" role="dialog" aria-modal="true" aria-labelledby="modal-otsu-title">
-    <div class="modal-card">
-      <button class="modal-close" data-close>&times;</button>
-      <h3 id="modal-otsu-title">開発のプロ・Jun Otsuのこだわり</h3>
-      <p>私はAIプロダクト開発とMLOpsのスペシャリストとして、スタートアップからエンタープライズまで幅広い案件を牽引してきました。LifeGame Consultingでは、ビジネス要件を理解したうえで、最短で価値を出すアーキテクチャを設計。AIが成果に直結するよう、データパイプラインと運用体制まで作り込みます。戦略と開発が分断しないよう、CEOと常に歩調を合わせて伴走するのが使命です。</p>
-    </div>
-  </div>
-  <script>
-    const navToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    navToggle.addEventListener('click', () => {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
-      navToggle.setAttribute('aria-expanded', !expanded);
-      navLinks.classList.toggle('open');
-      navToggle.setAttribute('aria-label', expanded ? 'メニューを開く' : 'メニューを閉じる');
-    });
-
-    navLinks.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        navToggle.setAttribute('aria-label', 'メニューを開く');
-      });
-    });
-
-    const yearEl = document.getElementById('year');
-    yearEl.textContent = new Date().getFullYear();
-
-    const teamCards = document.querySelectorAll('.team-card');
-    const modals = {
-      ceo: document.getElementById('modal-ceo'),
-      otsu: document.getElementById('modal-otsu'),
-    };
-
-    teamCards.forEach((card) => {
-      card.addEventListener('click', () => {
-        const member = card.getAttribute('data-member');
-        modals[member]?.classList.add('active');
-      });
-
-      card.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          const member = card.getAttribute('data-member');
-          modals[member]?.classList.add('active');
-        }
-      });
-    });
-
-    document.querySelectorAll('[data-close]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        btn.closest('.modal').classList.remove('active');
-      });
-    });
-
-    Object.values(modals).forEach((modal) => {
-      modal.addEventListener('click', (event) => {
-        if (event.target === modal) {
-          modal.classList.remove('active');
-        }
-      });
-    });
-
-    const form = document.getElementById('contact-form');
-    const status = document.getElementById('form-status');
-
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      status.textContent = '送信中...';
-      status.className = 'status-banner';
-      setTimeout(() => {
-        if (Math.random() > 0.1) {
-          status.textContent = '送信が完了しました。担当よりご連絡いたします。';
-          status.className = 'status-banner success';
-          form.reset();
-        } else {
-          status.textContent = '送信に失敗しました。お手数ですが再度お試しください。';
-          status.className = 'status-banner error';
-        }
-      }, 800);
-    });
-  </script>
 </body>
 </html>

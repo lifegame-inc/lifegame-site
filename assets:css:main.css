@@ -23,6 +23,9 @@
   --radius-md: 20px;
   --radius-sm: 14px;
   --backdrop-blur: saturate(180%) blur(20px);
+  --measure: 68ch;
+  --measure-tight: 56ch;
+  --measure-narrow: 46ch;
 }
 
 *,
@@ -49,6 +52,11 @@ body {
   letter-spacing: 0.01em;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
 }
 
 body::after {
@@ -293,6 +301,8 @@ main {
   grid-column: span 7;
   display: grid;
   gap: 1.5rem;
+  max-width: 38rem;
+  justify-self: start;
 }
 
 .eyebrow {
@@ -317,12 +327,14 @@ main {
   background: linear-gradient(120deg, #f8fafc 0%, #60a5fa 55%, #38bdf8 100%);
   -webkit-background-clip: text;
   color: transparent;
+  text-wrap: balance;
 }
 
 .lede {
   font-size: 1.08rem;
   color: var(--text-soft);
   margin: 0;
+  max-width: var(--measure-tight);
 }
 
 .hero-actions {
@@ -459,19 +471,22 @@ main {
   display: grid;
   gap: 1.2rem;
   text-align: left;
-  margin-bottom: 3rem;
+  margin: 0 auto 3rem;
+  max-width: 56rem;
 }
 
 .section-header h2 {
   margin: 0;
   font-size: clamp(2rem, 3vw, 2.8rem);
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
 .section-intro {
   margin: 0;
   color: var(--text-soft);
-  max-width: 760px;
+  max-width: var(--measure);
+  text-wrap: balance;
 }
 
 .feature-grid {
@@ -493,11 +508,13 @@ main {
 .feature-card h3 {
   margin: 0;
   font-size: 1.35rem;
+  text-wrap: balance;
 }
 
 .feature-card p {
   margin: 0;
   color: var(--text-soft);
+  max-width: var(--measure-tight);
 }
 
 .feature-card ul {
@@ -530,6 +547,13 @@ main {
   gap: 0.9rem;
 }
 
+.service-card h3,
+.process-card h3,
+.result-card h3,
+.team-card h3 {
+  text-wrap: balance;
+}
+
 .badge {
   align-self: flex-start;
   padding: 0.35rem 0.85rem;
@@ -545,6 +569,7 @@ main {
 .service-card p {
   margin: 0;
   color: var(--text-soft);
+  max-width: var(--measure-tight);
 }
 
 .service-card ul {
@@ -590,6 +615,7 @@ main {
 .process-card p {
   margin: 0;
   color: var(--text-soft);
+  max-width: var(--measure-tight);
 }
 
 .process-card ul {
@@ -616,6 +642,12 @@ main {
   box-shadow: var(--shadow-sm);
 }
 
+.result-card p {
+  margin: 0;
+  color: var(--text-soft);
+  max-width: var(--measure-tight);
+}
+
 .result-value {
   font-size: 1.6rem;
   font-weight: 700;
@@ -634,16 +666,30 @@ main {
   gap: 1.2rem;
 }
 
+.partner-panel > p {
+  color: var(--text-soft);
+  max-width: var(--measure-tight);
+}
+
 .partner-panel ul {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
   padding: 0;
   margin: 0;
-  color: var(--muted);
-  letter-spacing: 0.05em;
-  font-size: 0.95rem;
+}
+
+.partner-panel li {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(96, 165, 250, 0.24);
+  background: rgba(15, 23, 42, 0.55);
+  padding: 0.65rem 0.9rem;
+  text-align: center;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.88rem;
+  color: rgba(191, 219, 254, 0.8);
 }
 
 .team-grid {
@@ -692,11 +738,13 @@ main {
 .team-card h3 {
   margin: 0;
   font-size: 1.4rem;
+  text-wrap: balance;
 }
 
 .team-card p {
   margin: 0;
   color: var(--text-soft);
+  max-width: var(--measure-narrow);
 }
 
 .chip-list {
@@ -729,6 +777,7 @@ main {
 .talent-panel p {
   margin: 0;
   color: var(--text-soft);
+  max-width: var(--measure-narrow);
 }
 
 .chip-rail {
@@ -771,6 +820,11 @@ main {
   color: var(--text-soft);
   display: grid;
   gap: 0.5rem;
+}
+
+.contact-info p,
+.contact-info .note {
+  max-width: var(--measure-narrow);
 }
 
 .contact-info .note {
